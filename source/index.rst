@@ -12,7 +12,6 @@ A canopy of apple-blossom
 
    docs/recon/README.md
    docs/recon/website.md
-   docs/recon/sensitive-files.md
-   docs/recon/repositories.md
+   docs/recon/scanning.md
    docs/recon/ssrf.md
    docs/recon/creative.md

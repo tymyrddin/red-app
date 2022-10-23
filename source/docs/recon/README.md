@@ -2,7 +2,8 @@
 
 ## What?
 
-Identifying technologies and outdated modules used in the development of web applications.  
+Identifying technologies and outdated modules used in the development of web applications, and perhaps finding some 
+usernames, passwords, keys, tokens ...  
 
 ## Why?
 
@@ -12,7 +13,6 @@ web application.
 ## How?
 
 * [Website reconnaissance](website.md)
-* [Sensitive files discovery](sensitive-files.md)
-* [Eyeing repositories](repositories.md)
+* [Scanning applications](scanning.md)
 * [Check for server-side request forgery](ssrf.md)
 * [Get creative](creative.md)
