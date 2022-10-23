@@ -11,7 +11,7 @@ A canopy of apple-blossom
    :caption: Information gathering
 
    docs/recon/README.md
-   docs/recon/website.md
+   docs/recon/frontend.md
 
 .. toctree::
    :glob:

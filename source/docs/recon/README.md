@@ -12,5 +12,5 @@ web application.
 
 ## How?
 
-* [Website reconnaissance](website.md)
+* [Website reconnaissance](frontend.md)
 
