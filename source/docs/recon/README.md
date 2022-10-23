@@ -13,6 +13,4 @@ web application.
 ## How?
 
 * [Website reconnaissance](website.md)
-* [Scanning applications](scanning.md)
-* [Check for server-side request forgery](ssrf.md)
-* [Get creative](creative.md)
+

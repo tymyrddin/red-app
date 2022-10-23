@@ -12,6 +12,21 @@ A canopy of apple-blossom
 
    docs/recon/README.md
    docs/recon/website.md
-   docs/recon/scanning.md
-   docs/recon/ssrf.md
-   docs/recon/creative.md
+
+.. toctree::
+   :glob:
+   :maxdepth: 1
+   :includehidden:
+   :caption: Enumeration
+
+   docs/enum/README.md
+   docs/enum/webserver.md
+   docs/enum/input-vectors.md
+   docs/enum/ssrf.md
+   docs/enum/scanning.md
+   docs/enum/creative.md
+
+.. toctree::
+   :caption: Links
+
+   Red Team <https://tymyrddin.github.io/red/>

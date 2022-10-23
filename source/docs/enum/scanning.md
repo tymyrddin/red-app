@@ -7,3 +7,8 @@ application audit tools: Dynamic and static.
 while it is running (how it responds to input).
 * In a static analysis, the source code is reviewed for vulnerabilities. Can be done manually or using
 a static code analysis tool.
+
+## Resources
+
+* [ZAP Baseline scan](https://www.zaproxy.org/docs/docker/baseline-scan/)
+* [ZAP Full scan](https://www.zaproxy.org/docs/docker/full-scan/)

