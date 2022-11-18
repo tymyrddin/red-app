@@ -1,4 +1,4 @@
-# Frontend reconnaissance
+# Frontend OSINT
 
 Website reconnaissance: download, crawl, or scrape it, manually inspect it. Download documents from the site if any, 
 or from known platforms, and use, for example, FOCA (Fingerprinting Organizations with Collected Archives) to scan 

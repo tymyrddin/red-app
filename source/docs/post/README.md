@@ -12,6 +12,6 @@ web application.
 
 ## How?
 
-* [Website OSINT](frontend.md)
-* [Mapping](mapping.md)
+* [Post exploitation](overview.md)
+* [Weevely](weevely.md)
 
