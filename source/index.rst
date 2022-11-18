@@ -15,6 +15,10 @@ itself is vulnerable (unlikely, but one never knows).
 
    docs/recon/README.md
    docs/recon/frontend.md
+   docs/recon/dns.md
+   docs/recon/fingerprint-webserver.md
+   docs/recon/crawl-site.md
+   docs/recon/app.md
    docs/recon/scanning.md
    docs/recon/databases.md
    docs/recon/mapping.md
@@ -99,10 +103,10 @@ itself is vulnerable (unlikely, but one never knows).
 .. toctree::
    :maxdepth: 1
    :includehidden:
-   :caption: THM Capture The Flag
+   :caption: Capture The Flag
 
-   docs/thm/README.md
-   docs/thm/picklerick.md
+   docs/ctf/README.md
+   docs/ctf/picklerick.md
 
 .. toctree::
    :caption: Links

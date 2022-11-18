@@ -13,6 +13,10 @@ web application.
 ## How?
 
 * [Website OSINT](frontend.md)
+* [DNS profiling](dns.md)
+* [Fingerprint webserver](fingerprint-webserver.md)
+* [Crawl website](crawl-site.md)
+* [Gathering application information](app.md)
 * [Scanning applications](scanning.md)
 * [Databases](databases.md)
 * [Mapping](mapping.md)
