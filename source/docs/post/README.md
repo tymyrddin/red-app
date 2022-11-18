@@ -2,13 +2,12 @@
 
 ## What?
 
-Identifying technologies and outdated modules used in the development of web applications, and perhaps finding some 
-usernames, passwords, keys, tokens ...  
+Post exploitation.
 
 ## Why?
 
-To be able to search for exploits on exploit-db.com to further demonstrate the exploitation of issues in the 
-web application.
+To be able to take action, like install software, get user data that can possibly give access to even more sites or 
+systems, destroy or alter audit trails to hide tracks of having been there, etc.
 
 ## How?
 
