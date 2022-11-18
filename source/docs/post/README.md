@@ -13,4 +13,8 @@ systems, destroy or alter audit trails to hide tracks of having been there, etc.
 
 * [Post exploitation](overview.md)
 * [Weevely](weevely.md)
+* [Escalate a reverse shell to a more powerful shell](escalate-shell.md)
+* [Privilege escalation on a web server](privesc.md)
+* [Linux enumeration](linux-post.md)
+* [Windows enumeration](windows-post.md)
 

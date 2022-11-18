@@ -4,6 +4,9 @@ A canopy of apple-blossom
 TL/DR: Many web applications can still easily be exploited to gain unauthorized access to sensitive data and web
 servers. Threats include SQL Injection, Code Injection, XSS, and Cookie poisoning.
 
+And if not for that and shared hosting is used, there may be access via a vulnerable neighbour. Or maybe the server
+itself is vulnerable (unlikely, but one never knows).
+
 .. toctree::
    :glob:
    :maxdepth: 1
@@ -66,6 +69,20 @@ servers. Threats include SQL Injection, Code Injection, XSS, and Cookie poisonin
    docs/databases/crack-root.md
 
 .. toctree::
+   :maxdepth: 1
+   :includehidden:
+   :caption: Server
+
+   docs/server/README.md
+   docs/server/traversal.md
+   docs/server/response-splitting.md
+   docs/server/poison-cache.md
+   docs/server/spoof.md
+   docs/server/hijack-app-session.md
+   docs/server/mitm.md
+   docs/server/bruteforce.md
+
+.. toctree::
    :glob:
    :maxdepth: 1
    :includehidden:
@@ -74,6 +91,18 @@ servers. Threats include SQL Injection, Code Injection, XSS, and Cookie poisonin
    docs/post/README.md
    docs/post/overview.md
    docs/post/weevely.md
+   docs/post/escalate-shell.md
+   docs/post/privesc.md
+   docs/post/linux-post.md
+   docs/post/windows-post.md
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+   :caption: THM Capture The Flag
+
+   docs/thm/README.md
+   docs/thm/picklerick.md
 
 .. toctree::
    :caption: Links

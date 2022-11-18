@@ -12,5 +12,5 @@
     4.1 Exploiting a vulnerability
     4.2 Setting up access to alternative services (remote desktop, VNC)
 5 Disabling the firewall (AND)
-6 Compromising alternative hosts on the network
+6 Compromising other sites on the server or hosts on the network
 ```
