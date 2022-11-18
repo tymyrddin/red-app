@@ -1,8 +1,8 @@
 A canopy of apple-blossom
 ===================================================
 
-.. image:: _static/images/in-progress.png
-  :alt: In progress ...
+TL/DR: Many web applications can still easily be exploited to gain unauthorized access to sensitive data and web
+servers. Threats include SQL Injection, Code Injection, XSS, and Cookie poisoning.
 
 .. toctree::
    :glob:
