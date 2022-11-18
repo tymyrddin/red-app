@@ -12,6 +12,8 @@ servers. Threats include SQL Injection, Code Injection, XSS, and Cookie poisonin
 
    docs/recon/README.md
    docs/recon/frontend.md
+   docs/recon/scanning.md
+   docs/recon/databases.md
    docs/recon/mapping.md
 
 .. toctree::
@@ -25,8 +27,6 @@ servers. Threats include SQL Injection, Code Injection, XSS, and Cookie poisonin
    docs/enum/input-vectors.md
    docs/enum/xss.md
    docs/enum/ssrf.md
-   docs/enum/scanning.md
-   docs/enum/databases.md
    docs/enum/creative.md
 
 .. toctree::

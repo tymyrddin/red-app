@@ -17,7 +17,7 @@
 `nmap` uses default password and user lists, but do plug in other lists:
 
 ### MySQL
-Reduce the pool of users for the brute-force attack by [user enumeration](../enum/databases.md).
+Reduce the pool of users for the brute-force attack by [user enumeration](../recon/databases.md).
 
 ```text
 # nmap --script mysql-brute <target>
