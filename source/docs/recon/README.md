@@ -17,7 +17,6 @@ web application.
 * [Fingerprint webserver](fingerprint-webserver.md)
 * [Crawl website](crawl-site.md)
 * [Gathering application information](app.md)
-* [Scanning applications](scanning.md)
 * [Databases](databases.md)
 * [Mapping](mapping.md)
 

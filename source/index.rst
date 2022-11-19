@@ -19,7 +19,6 @@ itself is vulnerable (unlikely, but one never knows).
    docs/recon/fingerprint-webserver.md
    docs/recon/crawl-site.md
    docs/recon/app.md
-   docs/recon/scanning.md
    docs/recon/databases.md
    docs/recon/mapping.md
 
@@ -30,6 +29,7 @@ itself is vulnerable (unlikely, but one never knows).
    :caption: Enumeration
 
    docs/enum/README.md
+   docs/enum/scanning.md
    docs/enum/webserver.md
    docs/enum/input-vectors.md
    docs/enum/xss.md
