@@ -111,4 +111,4 @@ itself is vulnerable (unlikely, but one never knows).
 .. toctree::
    :caption: Links
 
-   Red Team <https://tymyrddin.github.io/red/>
+   Red Team <https://red.tymyrddin.dev/>
