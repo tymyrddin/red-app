@@ -43,18 +43,23 @@ itself is vulnerable (unlikely, but one never knows).
    :caption: Exploitation
 
    docs/exploit/README.md
-   docs/exploit/file-upload.md
-   docs/exploit/rce.md
-   docs/exploit/lfi.md
-   docs/exploit/rfi.md
    docs/exploit/xss.md
-   docs/exploit/hook-to-beef.md
-   docs/exploit/cookies.md
+   docs/exploit/redirects.md
    docs/exploit/clickjacking.md
    docs/exploit/csrf.md
-   docs/exploit/last-resort.md
-   docs/exploit/mitb.md
-   docs/exploit/browser-based.md
+   docs/exploit/idor.md
+   docs/exploit/sql.md
+   docs/exploit/race.md
+   docs/exploit/lfi.md
+   docs/exploit/ssrf.md
+   docs/exploit/id.md
+   docs/exploit/xxe.md
+   docs/exploit/ti.md
+   docs/exploit/access.md
+   docs/exploit/rce.md
+   docs/exploit/sop.md
+   docs/exploit/sso.md
+   docs/exploit/disclosure.md
 
 .. toctree::
    :maxdepth: 1
