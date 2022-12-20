@@ -16,5 +16,5 @@ To discover all the possible ways of attacking a target before deciding on the m
 * [Scope discovery](dns.md)
 * [Other sneaky OSINT techniques](sneaky.md)
 * [Tech stack fingerprinting](techstack.md)
-* [Automate recon](automate.md)
+* [Automate](automate.md)
 
