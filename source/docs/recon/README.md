@@ -2,21 +2,19 @@
 
 ## What?
 
-Identifying technologies and outdated modules used in the development of web applications, and perhaps finding some 
-usernames, passwords, keys, tokens ...  
+Recon strategies for gathering intel on a target and automating recon with bash scripting.
 
 ## Why?
 
-To be able to search for exploits on exploit-db.com to further demonstrate the exploitation of issues in the 
-web application.
+To discover all the possible ways of attacking a target before deciding on the most effective approach.
 
 ## How?
 
-* [Website OSINT](frontend.md)
-* [DNS profiling](dns.md)
-* [Fingerprint webserver](fingerprint-webserver.md)
-* [Crawl website](crawl-site.md)
-* [Gathering application information](app.md)
-* [Databases](databases.md)
-* [Mapping](mapping.md)
+* [Manually walk through the target](stroll.md)
+* [Advanced searching](red-recon:docs/osint/searching)
+* [Google dorking](red-recon:docs/osint/google-dorking)
+* [Scope discovery](dns.md)
+* [Other sneaky OSINT techniques](sneaky.md)
+* [Tech stack fingerprinting](techstack.md)
+* [Automate recon](automate.md)
 

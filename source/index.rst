@@ -8,33 +8,30 @@ And if not for that and shared hosting is used, there may be access via a vulner
 itself is vulnerable (unlikely, but one never knows).
 
 .. toctree::
-   :glob:
    :maxdepth: 1
    :includehidden:
-   :caption: Information gathering
+   :caption: Weaponisation
 
-   docs/recon/README.md
-   docs/recon/frontend.md
-   docs/recon/dns.md
-   docs/recon/fingerprint-webserver.md
-   docs/recon/crawl-site.md
-   docs/recon/app.md
-   docs/recon/databases.md
-   docs/recon/mapping.md
+   docs/prep/README.md
+   Install a Kali VM <https://red.tymyrddin.dev/projects/iac/en/latest/docs/lab/kali.html>
+   Install a Windows VM <https://red.tymyrddin.dev/projects/iac/en/latest/docs/lab/windows.html>
+   Setting up Burp Suite on Kali <https://red.tymyrddin.dev/projects/iac/en/latest/docs/lab/burp.html>
+   Setting up ZAP on Kali <https://red.tymyrddin.dev/projects/iac/en/latest/docs/lab/zap.html>
 
 .. toctree::
    :glob:
    :maxdepth: 1
    :includehidden:
-   :caption: Enumeration
+   :caption: Reconnaissance
 
-   docs/enum/README.md
-   docs/enum/scanning.md
-   docs/enum/webserver.md
-   docs/enum/input-vectors.md
-   docs/enum/xss.md
-   docs/enum/ssrf.md
-   docs/enum/creative.md
+   docs/recon/README.md
+   docs/recon/stroll.md
+   Advanced searching <https://red.tymyrddin.dev/projects/recon/en/latest/docs/osint/searching.html>
+   Google dorking <https://red.tymyrddin.dev/projects/recon/en/latest/docs/osint/google-dorking.html>
+   docs/recon/dns.md
+   docs/recon/sneaky.md
+   docs/recon/techstack.md
+   docs/recon/automate.md
 
 .. toctree::
    :glob:
