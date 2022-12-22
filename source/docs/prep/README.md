@@ -13,5 +13,5 @@ Develop an agile choreography for building disposable local web application pent
 * [Kali VM](red-iac:docs/lab/kali)
 * [Windows VM](red-iac:docs/lab/windows)
 * [Setting up Burp Suite on Kali](red-iac:docs/lab/burp)
-* [Setting up ZAP on Kali](red-iac:docs/lab/burp)
+* [Setting up ZAP on Kali](red-iac:docs/lab/zap)
 

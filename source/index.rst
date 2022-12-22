@@ -37,6 +37,17 @@ itself is vulnerable (unlikely, but one never knows).
    :glob:
    :maxdepth: 1
    :includehidden:
+   :caption: Enumeration
+
+   docs/enum/README.md
+   docs/enum/scanning.md
+   docs/enum/input-vectors.md
+   docs/enum/creative.md
+
+.. toctree::
+   :glob:
+   :maxdepth: 1
+   :includehidden:
    :caption: Exploitation
 
    docs/exploit/README.md
