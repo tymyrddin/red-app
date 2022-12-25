@@ -61,7 +61,7 @@ itself is vulnerable (unlikely, but one never knows).
    docs/exploit/ssrf.md
    docs/exploit/id.md
    docs/exploit/xxe.md
-   docs/exploit/ti.md
+   docs/exploit/ssti.md
    docs/exploit/access.md
    docs/exploit/rce.md
    docs/exploit/sop.md
