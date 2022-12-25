@@ -2,7 +2,7 @@
 
 ## What?
 
-Setting up a Kali VM with tools for pentesting.
+Build a virtual local testlab with tools for pentesting.
 
 ## Why?
 
@@ -10,8 +10,10 @@ Develop an agile choreography for building disposable local web application pent
 
 ## How?
 
-* [Kali VM](red-iac:docs/lab/kali)
-* [Windows VM](red-iac:docs/lab/windows)
-* [Setting up Burp Suite on Kali](red-iac:docs/lab/burp)
-* [Setting up ZAP on Kali](red-iac:docs/lab/zap)
+* [Build a virtual local testlab](red-iac:docs/lab/README)
+* [HTTP proxies, requests, responses, and traffic analysers](proxies.md)
+* [Vulnerability discovery and exploitation](automate.md)
+* [Recognise targets](recognise.md)
+* [Re-useful extensions](extensions.md)
+* [Create recon scripts](recon-scripts.md)
 

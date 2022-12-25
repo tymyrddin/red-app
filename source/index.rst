@@ -13,10 +13,12 @@ itself is vulnerable (unlikely, but one never knows).
    :caption: Weaponisation
 
    docs/prep/README.md
-   Install a Kali VM <https://red.tymyrddin.dev/projects/iac/en/latest/docs/lab/kali.html>
-   Install a Windows VM <https://red.tymyrddin.dev/projects/iac/en/latest/docs/lab/windows.html>
-   Setting up Burp Suite on Kali <https://red.tymyrddin.dev/projects/iac/en/latest/docs/lab/burp.html>
-   Setting up ZAP on Kali <https://red.tymyrddin.dev/projects/iac/en/latest/docs/lab/zap.html>
+   Build a virtual local testlab <https://red.tymyrddin.dev/projects/iac/en/latest/docs/lab/README.html>
+   docs/prep/proxies.md
+   docs/prep/automate.md
+   docs/prep/recognise.md
+   docs/prep/extensions.md
+   docs/prep/recon-scripts.md
 
 .. toctree::
    :glob:
@@ -31,7 +33,6 @@ itself is vulnerable (unlikely, but one never knows).
    docs/recon/dns.md
    docs/recon/sneaky.md
    docs/recon/techstack.md
-   docs/recon/automate.md
 
 .. toctree::
    :glob:
@@ -41,14 +42,13 @@ itself is vulnerable (unlikely, but one never knows).
 
    docs/enum/README.md
    docs/enum/scanning.md
-   docs/enum/input-vectors.md
-   docs/enum/creative.md
+   docs/enum/binaries.md
 
 .. toctree::
    :glob:
    :maxdepth: 1
    :includehidden:
-   :caption: Exploitation
+   :caption: Detection and exploitation
 
    docs/exploit/README.md
    docs/exploit/xss.md
@@ -58,7 +58,6 @@ itself is vulnerable (unlikely, but one never knows).
    docs/exploit/idor.md
    docs/exploit/sql.md
    docs/exploit/race.md
-   docs/exploit/lfi.md
    docs/exploit/ssrf.md
    docs/exploit/id.md
    docs/exploit/xxe.md

@@ -28,7 +28,7 @@ PHP (and nc):
 
 ## Notes
 
-Works only in combination with a [local file inclusion vulnerability](../exploit/lfi.md).
+Works only in combination with a local file inclusion vulnerability.
 
 ## Tools
 * [Burp suite CE proxy](https://portswigger.net/burp/documentation/desktop/getting-started/intercepting-http-traffic)
