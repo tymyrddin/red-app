@@ -7,6 +7,14 @@ servers. Threats include SQL Injection, Code Injection, XSS, and Cookie poisonin
 And if not for that and shared hosting is used, there may be access via a vulnerable neighbour. Or maybe the server
 itself is vulnerable (unlikely, but one never knows).
 
+----
+
+.. image:: _static/images/burp-books.png
+  :alt: Useful books
+
+----
+
+
 .. toctree::
    :maxdepth: 1
    :includehidden:
