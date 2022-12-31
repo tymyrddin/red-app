@@ -2,7 +2,7 @@
 
 ## XSS
 
-To detect most of the vulnerabilities in web applications, the basic tool to detect, analyze, and exploit them, is an HTTP proxy like Zap or Burp to analyse each HTTP request made by the application. And field by field, modify the content with some basic testing strings.
+To detect most of the vulnerabilities in web applications, the basic tool to detect, analyse, and exploit them, is an HTTP proxy like Zap or Burp to analyse each HTTP request made by the application. And field by field, modify the content with some basic testing strings.
 
 ## CSRF
 
