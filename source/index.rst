@@ -123,6 +123,14 @@ itself is vulnerable (unlikely, but one never knows).
 .. toctree::
    :maxdepth: 1
    :includehidden:
+   :caption: Portswigger labs
+
+   docs/pal/README.md
+   docs/pal/xss.md
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
    :caption: Capture The Flag
 
    docs/ctf/README.md
