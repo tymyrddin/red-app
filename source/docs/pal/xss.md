@@ -1,6 +1,8 @@
 # Cross-site scripting
 
-## Reflected XSS into HTML context with nothing encoded
+## Basics
+
+### Reflected XSS into HTML context with nothing encoded
 
 Reflected XSS is the simplest variety of cross-site scripting. It arises when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way.
 
@@ -14,7 +16,7 @@ To solve the lab, perform a cross-site scripting attack that calls the alert fun
 | ![Reflected XSS](../../_static/images/reflected-no-enc-3.png) |
 | ![Reflected XSS](../../_static/images/reflected-no-enc-4.png) |
 
-## Stored XSS into HTML context with nothing encoded
+### Stored XSS into HTML context with nothing encoded
 
 Stored XSS (also known as persistent or second-order XSS) arises when an application receives data from an untrusted source and includes that data within its later HTTP responses in an unsafe way. 
 
@@ -27,7 +29,7 @@ To solve this lab, submit a comment that calls the alert function when the blog 
 | ![Stored XSS](../../_static/images/stored-no-enc2.png) |
 | ![Stored XSS](../../_static/images/stored-no-enc3.png) |
 
-## DOM XSS in document.write sink using source location.search
+### DOM XSS in document.write sink using source location.search
 
 DOM-based XSS (also known as DOM XSS) arises when an application contains some client-side JavaScript that processes data from an untrusted source in an unsafe way, usually by writing the data back to the DOM. 
 
@@ -60,7 +62,7 @@ Trying closing the `img` tag first:
 |:--:|
 | ![DOM XSS](../../_static/images/dom6.png) |
 
-## DOM XSS in innerHTML sink using source location.search
+### DOM XSS in innerHTML sink using source location.search
 
 | ![DOM XSS](../../_static/images/dom7.png) |
 |:--:|
@@ -72,7 +74,7 @@ Trying closing the `img` tag first:
 |:--:|
 | During the rendering of the page, the image fails to load. This will raise the JavaScript<br>`alert`<br> box, confirming the XSS vulnerability. |
 
-## DOM XSS in jQuery anchor href attribute sink using location.search source
+### DOM XSS in jQuery anchor href attribute sink using location.search source
 
 This lab contains a DOM-based cross-site scripting vulnerability in the submit feedback page. 
 
@@ -94,7 +96,7 @@ To solve this lab, make the "back" link alert `document.cookie`:
 
 Click the `Back` button on the site to trigger the attack.
 
-## DOM XSS in jQuery selector sink using a hashchange event
+### DOM XSS in jQuery selector sink using a hashchange event
 
 This lab contains a DOM-based cross-site scripting vulnerability on the home page. It uses jQuery's `$()` selector function to auto-scroll to a given post, whose title is passed via the `location.hash` property.
 
@@ -119,7 +121,7 @@ To solve the lab, deliver an exploit to the victim that calls the `print()` func
 |:--:|
 | Then click `View Exploit` to try it out on yourself. If that worked, click <br>`Deliver Exploit to Victim`. |
 
-## Reflected XSS into attribute with angle brackets HTML-encoded
+### Reflected XSS into attribute with angle brackets HTML-encoded
 
 This lab contains a reflected cross-site scripting vulnerability in the search blog functionality where angle brackets are HTML-encoded. To solve this lab, perform a cross-site scripting attack that injects an attribute and calls the alert function. 
 
@@ -141,13 +143,13 @@ The resulting HTML:
     </section>
 
 
-## Stored XSS into anchor href attribute with double quotes HTML-encoded
+### Stored XSS into anchor href attribute with double quotes HTML-encoded
 
 This lab contains a stored cross-site scripting vulnerability in the comment functionality. To solve this lab, submit a comment that calls the alert function when the comment author name is clicked. 
 
 ![Stored XSS](../../_static/images/stored-enc1.png)
 
-## Reflected XSS into a JavaScript string with angle brackets HTML encoded
+### Reflected XSS into a JavaScript string with angle brackets HTML encoded
 
     <script>
         var searchTerms = '&lt;alphanumeric';
@@ -162,44 +164,48 @@ Again, taking the lead from Hacktricks XSS page, in the section on [Inside JavaS
 
 ![Reflected XSS](../../_static/images/reflected-enc2.png)
 
-## DOM XSS in document.write sink using source location.search inside a select element
+## Practitioner
 
-## DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded
+### DOM XSS in document.write sink using source location.search inside a select element
 
-## Reflected DOM XSS
+### DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded
 
-## Stored DOM XSS
+### Reflected DOM XSS
 
-## Exploiting cross-site scripting to steal cookies
+### Stored DOM XSS
 
-## Exploiting cross-site scripting to capture passwords
+### Exploiting cross-site scripting to steal cookies
 
-## Exploiting XSS to perform CSRF
+### Exploiting cross-site scripting to capture passwords
 
-## Reflected XSS into HTML context with most tags and attributes blocked
+### Exploiting XSS to perform CSRF
 
-## Reflected XSS into HTML context with all tags blocked except custom ones
+### Reflected XSS into HTML context with most tags and attributes blocked
 
-## Reflected XSS with some SVG markup allowed
+### Reflected XSS into HTML context with all tags blocked except custom ones
 
-## Reflected XSS in canonical link tag
+### Reflected XSS with some SVG markup allowed
 
-## Reflected XSS into a JavaScript string with single quote and backslash escaped
+### Reflected XSS in canonical link tag
 
-## Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped
+### Reflected XSS into a JavaScript string with single quote and backslash escaped
 
-## Stored XSS into onclick event with angle brackets and double quotes HTML-encoded and single quotes and backslash escaped
+### Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped
 
-## Reflected XSS into a template literal with angle brackets, single, double quotes, backslash and backticks Unicode-escaped
+### Stored XSS into onclick event with angle brackets and double quotes HTML-encoded and single quotes and backslash escaped
 
-## Reflected XSS with event handlers and href attributes blocked
+### Reflected XSS into a template literal with angle brackets, single, double quotes, backslash and backticks Unicode-escaped
 
-## Reflected XSS in a JavaScript URL with some characters blocked
+## Expert
 
-## Reflected XSS with AngularJS sandbox escape without strings
+### Reflected XSS with event handlers and href attributes blocked
 
-## Reflected XSS with AngularJS sandbox escape and CSP
+### Reflected XSS in a JavaScript URL with some characters blocked
 
-## Reflected XSS protected by very strict CSP, with dangling markup attack
+### Reflected XSS with AngularJS sandbox escape without strings
 
-## Reflected XSS protected by CSP, with CSP bypass
+### Reflected XSS with AngularJS sandbox escape and CSP
+
+### Reflected XSS protected by very strict CSP, with dangling markup attack
+
+### Reflected XSS protected by CSP, with CSP bypass

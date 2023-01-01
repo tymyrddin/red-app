@@ -93,20 +93,6 @@ itself is vulnerable (unlikely, but one never knows).
    docs/databases/crack-root.md
 
 .. toctree::
-   :maxdepth: 1
-   :includehidden:
-   :caption: Server
-
-   docs/server/README.md
-   docs/server/traversal.md
-   docs/server/response-splitting.md
-   docs/server/poison-cache.md
-   docs/server/spoof.md
-   docs/server/hijack-app-session.md
-   docs/server/mitm.md
-   docs/server/bruteforce.md
-
-.. toctree::
    :glob:
    :maxdepth: 1
    :includehidden:
@@ -127,6 +113,30 @@ itself is vulnerable (unlikely, but one never knows).
 
    docs/pal/README.md
    docs/pal/xss.md
+   docs/pal/sqli.md
+   docs/pal/csrf.md
+   docs/pal/clickjacking.md
+   docs/pal/dom.md
+   docs/pal/cors.md
+   docs/pal/xxe.md
+   docs/pal/ssrf.md
+   docs/pal/smuggling.md
+   docs/pal/os.md
+   docs/pal/ssti.md
+   docs/pal/traversal.md
+   docs/pal/access.md
+   docs/pal/auth.md
+   docs/pal/sockets.md
+   docs/pal/cache.md
+   docs/pal/id.md
+   docs/pal/disclosure.md
+   docs/pal/business.md
+   docs/pal/headers.md
+   docs/pal/oauth.md
+   docs/pal/file-upload.md
+   docs/pal/jwt.md
+   docs/pal/essential.md
+   docs/pal/pollution.md
 
 .. toctree::
    :maxdepth: 1

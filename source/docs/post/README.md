@@ -2,7 +2,7 @@
 
 ## What?
 
-Post exploitation.
+Post exploitation support.
 
 ## Why?
 
