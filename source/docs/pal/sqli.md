@@ -10,37 +10,45 @@ This lab contains an SQL injection vulnerability in the product category filter.
 
 To solve the lab, perform an SQL injection attack that causes the application to display details of all products in any category, both released and unreleased. 
 
+----
+
 Trying `/product?productId=7'`:
 
-| ![Basic SQLi](../../_static/images/sqli-basic1.png) |
-|:--:|
-| ![Basic SQLi](../../_static/images/sqli-basic2.png) |
-| ![Basic SQLi](../../_static/images/sqli-basic3.png) |
+![Basic SQLi](../../_static/images/sqli-basic1.png)
+
+Details page product 7:
+
+![Basic SQLi](../../_static/images/sqli-basic2.png)
+
+Adding a `'` gives:
+
+![Basic SQLi](../../_static/images/sqli-basic3.png)
 
 Trying `Category=Pets'`:
 
-| ![Basic SQLi](../../_static/images/sqli-basic4.png) |
-|:--:|
-| ![Basic SQLi](../../_static/images/sqli-basic5.png) |
-| Bingo! |
+![Basic SQLi](../../_static/images/sqli-basic4.png)
 
-Payload:
+Adding a `'`:
+
+![Basic SQLi](../../_static/images/sqli-basic5.png)
+
+Bingo! Create payload:
 
     https://<random-string>.web-security-academy.net/filter?category=Pets' OR 1=1 -- 
 
 ### SQL injection vulnerability allowing login bypass
 
-This lab contains an SQL injection vulnerability in the login function.
+This lab contains an SQL injection vulnerability in the login function. To solve the lab, perform an SQL injection attack that logs in to the application as the `administrator` user. 
 
-To solve the lab, perform an SQL injection attack that logs in to the application as the `administrator` user. 
+----
 
 SQL:
 
     SELECT * FROM users WHERE username = 'administrator' AND password = '' OR 1=1 --
 
-| ![Basic SQLi](../../_static/images/sqli-basic6.png) |
-|:--:|
-| ![Basic SQLi](../../_static/images/sqli-basic7.png) |
+Or:
+
+![Basic SQLi](../../_static/images/sqli-basic6.png)
 
 ## Practitioner
 
