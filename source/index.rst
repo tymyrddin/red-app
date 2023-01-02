@@ -79,36 +79,6 @@ itself is vulnerable (unlikely, but one never knows).
 .. toctree::
    :maxdepth: 1
    :includehidden:
-   :caption: Database
-
-   docs/databases/README.md
-   docs/databases/db-exploits.md
-   docs/databases/sqli.md
-   docs/databases/confirm-vuln.md
-   docs/databases/login-bypass.md
-   docs/databases/extract-info.md
-   docs/databases/outside-www.md
-   docs/databases/get-shell.md
-   docs/databases/access-pwd-db.md
-   docs/databases/crack-root.md
-
-.. toctree::
-   :glob:
-   :maxdepth: 1
-   :includehidden:
-   :caption: Post-exploitation
-
-   docs/post/README.md
-   docs/post/overview.md
-   docs/post/weevely.md
-   docs/post/escalate-shell.md
-   docs/post/privesc.md
-   docs/post/linux-post.md
-   docs/post/windows-post.md
-
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
    :caption: Portswigger labs
 
    docs/pal/README.md
