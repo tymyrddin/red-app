@@ -56,7 +56,7 @@ itself is vulnerable (unlikely, but one never knows).
    :glob:
    :maxdepth: 1
    :includehidden:
-   :caption: Detection and exploitation
+   :caption: Vulnerabilities
 
    docs/exploit/README.md
    docs/exploit/xss.md
@@ -64,7 +64,7 @@ itself is vulnerable (unlikely, but one never knows).
    docs/exploit/clickjacking.md
    docs/exploit/csrf.md
    docs/exploit/idor.md
-   docs/exploit/sql.md
+   docs/exploit/sqli.md
    docs/exploit/race.md
    docs/exploit/ssrf.md
    docs/exploit/id.md

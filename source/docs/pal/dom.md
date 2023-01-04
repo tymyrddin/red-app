@@ -4,8 +4,6 @@
 
 ### DOM XSS using web messages
 
-### DOM XSS using web messages and a JavaScript URL
-
 This lab demonstrates a simple web message vulnerability. To solve this lab, use the exploit server to post a message to the target site that causes the `print()` function to be called.
 
 ----
@@ -31,6 +29,8 @@ When the iframe loads, the `postMessage()` method sends a web message to the hom
 ![DOM-based](../../_static/images/dom-based1.png)
 
 3. **Store** the exploit in the exploit server and **Deliver it to the victim**.
+
+### DOM XSS using web messages and a JavaScript URL
 
 ### DOM XSS using web messages and JSON.parse
 
