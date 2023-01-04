@@ -2,8 +2,6 @@
 
 ## Basics
 
-----
-
 ### CORS vulnerability with basic origin reflection
 
 #### Description
