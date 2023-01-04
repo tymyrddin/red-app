@@ -104,18 +104,6 @@ This website has an insecure CORS configuration in that it trusts the `null` ori
 8. Go to **Access log**
 9. Copy the administrator's API key, and enter it as solution to the lab.
 
-#### Exploitability
-
-To exploit this vulnerability, an attacker would have to create an exploit from a well-know template script. Then, the attacker would need to convince the administrator into visiting the page with the exploit, potentially giving the attacker access to the administrator's account and all associated privileges and resources.
-
-#### Impact
-
-The attacker could disable account notifications, enable 2FA to lock them out, and transfer their data to an arbitrary address.
-
-#### Remediation
-
-An attacker can directly forge a request from any trusted origin. Apply protections to sensitive data, such as authentication and session management, in addition to configuring CORS.
-
 ## Practitioner
 
 ### CORS vulnerability with trusted insecure protocols
