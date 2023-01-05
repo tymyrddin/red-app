@@ -1,14 +1,12 @@
 # Cross-site scripting
 
-## Basics
+## Reflected XSS into HTML context with nothing encoded
 
-### Reflected XSS into HTML context with nothing encoded
-
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded) contains a simple reflected cross-site scripting vulnerability in the search functionality. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Copy and paste into the search box:
 
@@ -24,13 +22,13 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ----
 
-### Stored XSS into HTML context with nothing encoded
+## Stored XSS into HTML context with nothing encoded
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/stored/lab-html-context-nothing-encoded) contains a stored cross-site scripting vulnerability in the comment functionality.  
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Enter the following into the comment box:
 
@@ -49,13 +47,13 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ----
 
-### DOM XSS in document.write sink using source location.search
+## DOM XSS in document.write sink using source location.search
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-document-write-sink) contains a DOM-based cross-site scripting vulnerability in the search query tracking functionality. It uses the JavaScript `document.write` function, which writes data out to the page. The `document.write` function is called with data from `location.search`, which can be controlled using the website URL.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Enter a random alphanumeric string into the search box.
 2. Right-click and inspect the element, and observe that your random string has been placed inside an `img src` attribute.
@@ -74,13 +72,13 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ----
 
-### DOM XSS in innerHTML sink using source location.search
+## DOM XSS in innerHTML sink using source location.search
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-innerhtml-sink) contains a DOM-based cross-site scripting vulnerability in the search blog functionality. It uses an innerHTML assignment, which changes the HTML contents of a div element, using data from `location.search`.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. If there is a query in the `location.search` variable (the URL input), `document.getElementById` gets the element with ID `searchMessage`. Then it will set its `innerHTML` to the query. Enter into the search box: 
 
@@ -94,13 +92,13 @@ During the rendering of the page, the image fails to load. This will raise the J
 
 ----
 
-### DOM XSS in jQuery anchor href attribute sink using location.search source
+## DOM XSS in jQuery anchor href attribute sink using location.search source
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-jquery-href-attribute-sink) contains a DOM-based cross-site scripting vulnerability in the submit feedback page. It uses the jQuery library's `$` selector function to find an anchor element, and changes its `href` attribute using data from `location.search`.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. On the Submit feedback page, change the query parameter returnPath to `/` followed by a random alphanumeric string.
 2. Right-click and inspect the element, and observe that your random string has been placed inside an `a href` attribute.
@@ -120,13 +118,13 @@ For example:
 
 ----
 
-### DOM XSS in jQuery selector sink using a hashchange event
+## DOM XSS in jQuery selector sink using a hashchange event
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-jquery-selector-hash-change-event) contains a DOM-based cross-site scripting vulnerability on the home page. It uses jQuery's `$()` selector function to auto-scroll to a given post, whose title is passed via the `location.hash` property.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Notice the vulnerable code on the home page using Burp or the browser's DevTools. 
 
@@ -158,15 +156,15 @@ A [Jquery hashchange](https://github.com/apopelo/jquery-hashchange) event tracks
 
 ----
 
-### Reflected XSS into attribute with angle brackets HTML-encoded
+## Reflected XSS into attribute with angle brackets HTML-encoded
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-attribute-angle-brackets-html-encoded) contains a reflected cross-site scripting vulnerability in the search blog functionality where angle brackets are HTML-encoded.
 
 Also see the leads from HackTricks concerning [XSS methodology](https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting#methodology) and [XSS Inside HTML tags attribute](https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting#inside-html-tags-attribute): _2. If you can escape from the attribute but not from the tag (-> is encoded or deleted), depending on the tag you could create an event that executes JS code:_
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Put a random alphanumeric string in the search box, then use Burp Suite to intercept the search request and send it to Burp Repeater.
 2. The random string has been reflected inside a quoted attribute.
@@ -191,13 +189,13 @@ The resulting HTML:
 
 ----
 
-### Stored XSS into anchor href attribute with double quotes HTML-encoded
+## Stored XSS into anchor href attribute with double quotes HTML-encoded
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-href-attribute-double-quotes-html-encoded) contains a stored cross-site scripting vulnerability in the comment functionality.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Post a comment with a random alphanumeric string in the "Website" input, then use Burp Suite to intercept the request and send it to Burp Repeater.
 2. Make a second request in the browser to view the post and use Burp Suite to intercept the request and send it to Burp Repeater.
@@ -214,13 +212,13 @@ javascript:alert(1)
 
 ----
 
-### Reflected XSS into a JavaScript string with angle brackets HTML encoded
+## Reflected XSS into a JavaScript string with angle brackets HTML encoded
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-string-angle-brackets-html-encoded) contains a reflected cross-site scripting vulnerability in the search query tracking functionality where angle brackets are encoded. The reflection occurs inside a JavaScript string. Also see the HackTricks XSS page, in the section on [Inside JavaScript code](https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting#inside-javascript-code).
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Put a random alphanumeric string in the search box, then use Burp Suite to intercept the search request and send it to Burp Repeater.
 
@@ -242,15 +240,13 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ----
 
-## Practitioner
+## DOM XSS in document.write sink using source location.search inside a select element
 
-### DOM XSS in document.write sink using source location.search inside a select element
-
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-document-write-sink-inside-select-element) contains a DOM-based cross-site scripting vulnerability in the stock checker functionality. It uses the JavaScript `document.write` function, which writes data out to the page. The document.write function is called with data from `location.search` which you can control using the website URL. The data is enclosed within a select element. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. On the product pages, notice that the dangerous JavaScript extracts a storeId parameter from the `location.search` source. It then uses `document.write` to create a new option in the select element for the stock checker functionality.
 2. Add a `storeId` query parameter to the URL and enter a random alphanumeric string as its value. Request this modified URL.
@@ -264,15 +260,15 @@ product?productId=1&storeId="></select><img%20src=1%20onerror=alert(1)>
 
 ----
 
-### DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded
+## DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-angularjs-expression) contains a DOM-based cross-site scripting vulnerability in a AngularJS expression within the search functionality.
 
 AngularJS is a popular JavaScript library, which scans the contents of HTML nodes containing the `ng-app` attribute (also known as an AngularJS directive). When a directive is added to the HTML code, you can execute JavaScript expressions within double curly braces. This technique is useful when angle brackets are being encoded. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Enter an alphanumeric string into the search box.
 2. View the page source and observe that your random string is enclosed in an `ng-app` directive.
@@ -286,13 +282,13 @@ AngularJS is a popular JavaScript library, which scans the contents of HTML node
 
 ----
 
-### Reflected DOM XSS
+## Reflected DOM XSS
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-dom-xss-reflected) contains a reflected DOM vulnerability. Reflected DOM vulnerabilities occur when the server-side application processes data from a request and echoes the data in the response. A script on the page then processes the reflected data in an unsafe way, ultimately writing it to a dangerous sink. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. In Burp, go to the Proxy tool and turn Intercept on.
 2. Go to the target website and use the search bar to search for a random test string.
@@ -316,13 +312,13 @@ An arithmetic operator (in this case the subtraction operator) is then used to s
 
 ----
 
-### Stored DOM XSS
+## Stored DOM XSS
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-dom-xss-stored) contains a stored DOM vulnerability in the blog comment functionality. In an attempt to prevent XSS, the website uses the JavaScript `replace()` function to encode angle brackets.
 
-#### Proof of Concept
+### Proof of Concept
 
 1.  Post a comment containing the following vector:
 
@@ -332,13 +328,13 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ----
 
-### Exploiting cross-site scripting to steal cookies
+## Exploiting cross-site scripting to steal cookies
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/exploiting/lab-stealing-cookies) contains a stored XSS vulnerability in the blog comments function. A simulated victim user views all comments after they are posted.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Using Burp Suite Professional, go to the Collaborator tab.
 2. Click **Copy to clipboard** to copy a unique Burp Collaborator payload to your clipboard.
@@ -358,7 +354,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 5. Take a note of the value of the victim's cookie in the POST body.
 6. Reload the main blog page, using Burp Proxy or Burp Repeater to replace your own session cookie with the one you captured in Burp Collaborator. Send the request to solve the lab. To prove that you have successfully hijacked the admin user's session, you can use the same cookie in a request to `/my-account` to load the admin user's account page.
 
-#### Exploitability
+### Exploitability
 
 To prevent the Academy platform being used to attack third parties, the firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server.
 
@@ -366,13 +362,13 @@ And there is an alternative solution to this lab that does not require Burp Coll
 
 ----
 
-### Exploiting cross-site scripting to capture passwords
+## Exploiting cross-site scripting to capture passwords
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/exploiting/lab-capturing-passwords) contains a stored XSS vulnerability in the blog comments function. A simulated victim user views all comments after they are posted.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Using Burp Suite Professional, go to the Collaborator tab.
 2. Click "Copy to clipboard" to copy a unique Burp Collaborator payload to your clipboard.
@@ -392,7 +388,7 @@ This script will make anyone who views the comment issue a POST request containi
 5. Take a note of the value of the victim's username and password in the POST body.
 6. Use the credentials to log in as the victim user.
 
-#### Exploitability
+### Exploitability
 
 To prevent the Academy platform being used to attack third parties, the firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server.
 
@@ -400,13 +396,13 @@ And there is an alternative solution to this lab that does not require Burp Coll
 
 ----
 
-### Exploiting XSS to perform CSRF
+## Exploiting XSS to perform CSRF
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/exploiting/lab-perform-csrf) contains a stored XSS vulnerability in the blog comments function.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Log in using the credentials provided. On your user account page, notice the function for updating your email address.
 2. View the source for the page, and see the following information:
@@ -436,13 +432,13 @@ This will make anyone who views the comment issue a POST request to change their
 
 ----
 
-### Reflected XSS into HTML context with most tags and attributes blocked
+## Reflected XSS into HTML context with most tags and attributes blocked
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-html-context-with-most-tags-and-attributes-blocked) contains a reflected XSS vulnerability in the search functionality but uses a web application firewall (WAF) to protect against common XSS vectors. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Inject a standard XSS vector, such as:
 
@@ -477,13 +473,13 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ----
 
-### Reflected XSS into HTML context with all tags blocked except custom ones
+## Reflected XSS into HTML context with all tags blocked except custom ones
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-html-context-with-all-standard-tags-blocked) blocks all HTML tags except custom ones. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Go to the exploit server and paste the following code, replacing `lab-id` with your lab ID:
  
@@ -499,13 +495,13 @@ This injection creates a custom tag with the ID `x`, which contains an `onfocus`
 
 ----
 
-### Reflected XSS with some SVG markup allowed
+## Reflected XSS with some SVG markup allowed
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-some-svg-markup-allowed) has a simple reflected XSS vulnerability. The site is blocking common tags but misses some SVG tags and events. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Inject a standard XSS payload:
 
@@ -544,13 +540,13 @@ https://lab-id.web-security-academy.net/?search=%22%3E%3Csvg%3E%3Canimatetransfo
 
 ----
 
-### Reflected XSS in canonical link tag
+## Reflected XSS in canonical link tag
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-canonical-link-tag) reflects user input in a canonical link tag and escapes angle brackets. _Note: The solution to this lab is only possible in Chrome._
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Visit the following URL, replacing `lab-id` with your lab ID:
  
@@ -567,13 +563,13 @@ This sets the X key as an access key for the whole page. When a user presses the
 
 ----
 
-### Reflected XSS into a JavaScript string with single quote and backslash escaped
+## Reflected XSS into a JavaScript string with single quote and backslash escaped
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-string-single-quote-backslash-escaped) contains a reflected cross-site scripting vulnerability in the search query tracking functionality. The reflection occurs inside a JavaScript string with single quotes and backslashes escaped.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Enter a random alphanumeric string in the search box, then use Burp to intercept the search request and send it to Burp Repeater.
 2. Note the random string has been reflected inside a JavaScript string.
@@ -588,13 +584,13 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ----
 
-### Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped
+## Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-string-angle-brackets-double-quotes-encoded-single-quotes-escaped) contains a reflected cross-site scripting vulnerability in the search query tracking functionality where angle brackets and double are HTML encoded and single quotes are escaped. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Enter a random alphanumeric string in the search box, then use Burp Suite to intercept the search request and send it to Burp Repeater.
 2. Note the random string has been reflected inside a JavaScript string.
@@ -610,13 +606,13 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ----
 
-### Stored XSS into onclick event with angle brackets and double quotes HTML-encoded and single quotes and backslash escaped
+## Stored XSS into onclick event with angle brackets and double quotes HTML-encoded and single quotes and backslash escaped
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-onclick-event-angle-brackets-double-quotes-html-encoded-single-quotes-backslash-escaped) contains a stored cross-site scripting vulnerability in the comment functionality. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Post a comment with a random alphanumeric string in the "Website" input, then use Burp Suite to intercept the request and send it to Burp Repeater.
 2. Make a second request in the browser to view the post and use Burp Suite to intercept the request and send it to Burp Repeater.
@@ -631,13 +627,13 @@ http://foo?&apos;-alert(1)-&apos;
 
 ----
 
-### Reflected XSS into a template literal with angle brackets, single, double quotes, backslash and backticks Unicode-escaped
+## Reflected XSS into a template literal with angle brackets, single, double quotes, backslash and backticks Unicode-escaped
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-template-literal-angle-brackets-single-double-quotes-backslash-backticks-escaped) contains a reflected cross-site scripting vulnerability in the search blog functionality. The reflection occurs inside a template string with angle brackets, single, and double quotes HTML encoded, and backticks escaped. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Enter a random alphanumeric string in the search box, then use Burp Suite to intercept the search request and send it to Burp Repeater.
 2. Note the random string has been reflected inside a JavaScript template string.
@@ -651,15 +647,13 @@ ${alert(1)}
 
 ----
 
-## Expert
+## Reflected XSS with event handlers and href attributes blocked
 
-### Reflected XSS with event handlers and href attributes blocked
-
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-event-handlers-and-href-attributes-blocked) contains a reflected XSS vulnerability with some whitelisted tags, but all events and anchor href attributes are blocked.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Visit the following URL, replacing `lab-id` with your lab ID:
 
@@ -669,13 +663,13 @@ https://lab-id.web-security-academy.net/?search=%3Csvg%3E%3Ca%3E%3Canimate+attri
 
 ----
 
-### Reflected XSS in a JavaScript URL with some characters blocked
+## Reflected XSS in a JavaScript URL with some characters blocked
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-url-some-characters-blocked) reflects the input in a JavaScript URL, but all is not as it seems. This initially seems like a trivial challenge, but the application is blocking some characters in an attempt to prevent XSS attacks. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Visit the following URL, replacing lab-id with your lab ID:
 
@@ -691,13 +685,13 @@ As `throw` is a statement, it cannot be used as an expression. Instead, we need 
 
 ----
 
-### Reflected XSS with AngularJS sandbox escape without strings
+## Reflected XSS with AngularJS sandbox escape without strings
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/client-side-template-injection/lab-angular-sandbox-escape-without-strings) uses AngularJS in an unusual way where the $eval function is not available and you will be unable to use any strings in AngularJS. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Visit the following URL, replacing `lab-id` with your lab ID:
 
@@ -709,13 +703,13 @@ The exploit uses `toString()` to create a string without using quotes. It then g
 
 ----
 
-### Reflected XSS with AngularJS sandbox escape and CSP
+## Reflected XSS with AngularJS sandbox escape and CSP
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/client-side-template-injection/lab-angular-sandbox-escape-and-csp) uses CSP and AngularJS. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Go to the exploit server and paste the following code, replacing `lab-id` with your lab ID:
 
@@ -733,13 +727,13 @@ Normally, `|` is a bitwise or operation in JavaScript, but in AngularJS it indic
 
 ----
 
-### Reflected XSS protected by very strict CSP, with dangling markup attack
+## Reflected XSS protected by very strict CSP, with dangling markup attack
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/content-security-policy/lab-very-strict-csp-with-dangling-markup-attack) is using a strict CSP that blocks outgoing requests to external websites.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Log in to the lab using the account provided above.
 2. Examine the change email function. Note there is an XSS vulnerability in the email parameter.
@@ -768,19 +762,19 @@ if(window.name) {
 15. Go back to the exploit server and paste the CSRF HTML into the body. Overwrite the script that entered earlier.
 16. Click **Store** and **Deliver exploit to victim**. The user's email will be changed to `hacker@evil-user.net`.
 
-#### Exploitability
+### Exploitability
 
 To prevent the Academy platform being used to attack third parties, our firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use the provided exploit server and/or Burp Collaborator's default public server.
 
 ----
 
-### Reflected XSS protected by CSP, with CSP bypass
+## Reflected XSS protected by CSP, with CSP bypass
 
-#### Description
+### Description
 
 The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/content-security-policy/lab-csp-bypass) uses CSP and contains a reflected XSS vulnerability. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Enter the following into the search box:
 

