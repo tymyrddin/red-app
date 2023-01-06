@@ -100,7 +100,7 @@ To solve the lab, an attacker needs to construct an HTML page on the exploit ser
 
 1. Notice the blog post page contains:
 
-```html
+```
 <a href=’#’ onclick=’returnUrl = /url=(https?:\/\/.+)/.exec(location); if(returnUrl)location.href = returnUrl[1];else location.href = “/”’>Back to Blog</a>
 ```
 

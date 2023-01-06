@@ -177,7 +177,7 @@ An attacker needs to change another user's email address. You can log in to your
 * An initial opacity of 0.1 to align the iframe actions and adjust the position values.
 * Initial `$top_value` and `$side_value` values of resp `610px` and `80px` to align the "Submit feedback" button with the "Test me" decoy action.
 
-```html
+```
 <style>
 	iframe {
 		position:relative;
@@ -222,7 +222,7 @@ An attacker needs to construct a clickjacking attack that fools the user into cl
 * Initial `$top_value1` and `$side_value1` values of resp `330px` and `50px` to align the "Delete account" button with the "Test me first" decoy action.
 * Initial `$top_value2` and `$side_value2` variables of resp. `285px` and `225px` to align the "Test me next" decoy action with the "Yes" button on the confirmation page. 
 
-```html
+```
 <style>
 	iframe {
 		position:relative;
