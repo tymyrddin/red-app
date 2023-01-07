@@ -11,7 +11,7 @@
 1. Use Burp Suite to intercept and modify a request that fetches a product image.
 2. Modify the ``filename`` parameter, giving it the value:
 
-```
+```text
 ../../../etc/passwd
 ```
 
@@ -52,7 +52,7 @@ An attacker will need to retrieve the contents of the `/etc/passwd` file.
 1. Use Burp Suite to intercept and modify a request that fetches a product image.
 2. Modify the ``filename`` parameter, giving it the value:
 
-```
+```text
 ....//....//....//etc/passwd
 ```
 
@@ -75,7 +75,7 @@ An attacker will need to retrieve the contents of the `/etc/passwd` file.
 1. Use Burp Suite to intercept and modify a request that fetches a product image.
 2. Modify the ``filename`` parameter, giving it the value:
 
-```
+```text
 ..%252f..%252f..%252fetc/passwd
 ```
 
@@ -98,7 +98,7 @@ An attacker will need to encode the payload to retrieve the contents of the `/et
 1. Use Burp Suite to intercept and modify a request that fetches a product image.
 2. Modify the ``filename`` parameter, giving it the value:
 
-```
+```text
 /var/www/images/../../../etc/passwd
 ```
 
@@ -121,7 +121,7 @@ An attacker will need to retrieve the contents of the `/etc/passwd` file.
 1. Use Burp Suite to intercept and modify a request that fetches a product image.
 2. Modify the ``filename`` parameter, giving it the value:
 
-```
+```text
 ../../../etc/passwd%00.png
 ```
 

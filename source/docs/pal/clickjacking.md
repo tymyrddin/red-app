@@ -12,7 +12,7 @@ This lab contains login functionality and a delete account button that is protec
 
 ![Clickjacking](../../_static/images/clickjacking1.png)
 
-```html
+```text
 <div id="account-content">
     <p>Your username is: wiener</p>
     <form class="login-form" name="change-email-form" action="/my-account/change-email" method="POST">
@@ -33,7 +33,7 @@ This lab contains login functionality and a delete account button that is protec
 * An initial opacity of 0.1 to align the iframe actions and adjust the position values.
 * Initial `top` and `left` values of resp `300px` and `60px`, to align the "Delete account" button with the "Test me" decoy action.
 
-```html
+```text
 <style>
     iframe {
         position:relative;
@@ -79,7 +79,7 @@ To solve the lab, an attacker needs to craft some HTML that frames the account p
 * An initial opacity of 0.1 to align the iframe actions and adjust the position values.
 * Initial `top` and `left` values of resp `400px` and `80px` - to align the "Update email" button with the "Test me" decoy action.
 
-```html
+```text
 <style>
     iframe {
         position:relative;
@@ -128,7 +128,7 @@ An attacker needs to craft some HTML that frames the account page and fools the 
 * An initial opacity of 0.1 to align the iframe actions and adjust the position values.
 * Initial `top` and `left` values of resp `385px` and `80px` - to align the "Update email" button with the "Test me" decoy action.
 
-```html
+```text
 <style>
     iframe {
         position:relative;
@@ -177,7 +177,7 @@ An attacker needs to change another user's email address. You can log in to your
 * An initial opacity of 0.1 to align the iframe actions and adjust the position values.
 * Initial `$top_value` and `$side_value` values of resp `610px` and `80px` to align the "Submit feedback" button with the "Test me" decoy action.
 
-```
+```text
 <style>
 	iframe {
 		position:relative;
@@ -222,7 +222,7 @@ An attacker needs to construct a clickjacking attack that fools the user into cl
 * Initial `$top_value1` and `$side_value1` values of resp `330px` and `50px` to align the "Delete account" button with the "Test me first" decoy action.
 * Initial `$top_value2` and `$side_value2` variables of resp. `285px` and `225px` to align the "Test me next" decoy action with the "Yes" button on the confirmation page. 
 
-```
+```text
 <style>
 	iframe {
 		position:relative;

