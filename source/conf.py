@@ -21,6 +21,7 @@ extensions = [
     'myst_parser',
     'sphinx_markdown_tables',
     'sphinx.ext.intersphinx',
+    'sphinx_copybutton',
 ]
 
 source_suffix = ['.rst', '.md']
@@ -46,7 +47,7 @@ html_theme_options = {
     'prev_next_buttons_location': 'bottom',
     'style_external_links': False,
     # Toc options
-    'collapse_navigation': False,
+    'collapse_navigation': True,
     'sticky_navigation': False,
     'navigation_depth': 3,
     'includehidden': True,
