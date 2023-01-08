@@ -10,11 +10,12 @@
 
 ## What?
 
-Hands-on.
+Reframing Portswigger lab writeups gradually towards [reports](red-bbh:docs/essentials/report), focused on PoC's.
 
 ## Why?
 
-Making the patterns stick in mind and be easily accessible.
+* A Proof of Concept (PoC) is a test run that proves the basic feasibility of an attack for one or several representative use cases.
+* Making the patterns stick in mind and be easily accessible.
 
 ## How?
 

@@ -44,14 +44,14 @@ An attacker will need to exploit the blind OS command injection vulnerability to
 
     /var/www/images/
 
-The application serves the images for the product catalog from this location. You can redirect the output from the injected command to a file in this folder, and then use the image loading URL to retrieve the contents of the file. 
+The application serves the images for the product catalog from this location. It is possible to redirect the output from the injected command to a file in this folder, and then use the image loading URL to retrieve the contents of the file. 
 
 ### Proof of Concept
 
 1. Use Burp Suite to intercept and modify the request that submits feedback.
 2. Modify the email parameter, changing it to: `email=||whoami>/var/www/images/output.txt||`
 3. Now use Burp Suite to intercept and modify the request that loads an image of a product.
-4. Modify the filename parameter, changing the value to the name of the file you specified for the output of the injected command: `filename=output.txt`
+4. Modify the filename parameter, changing the value to the name of the file specified for the output of the injected command: `filename=output.txt`
 5. Observe that the response contains the output from the injected command.
 
 ### Exploitability
@@ -66,7 +66,7 @@ An attacker will need to execute the `whoami` command and retrieve the output.
 
 [This lab](https://portswigger.net/web-security/os-command-injection/lab-blind-out-of-band) contains a blind OS command injection vulnerability in the feedback function.
 
-The application executes a shell command containing the user-supplied details. The command is executed asynchronously and has no effect on the application's response. It is not possible to redirect output into a location that you can access. However, you can trigger out-of-band interactions with an external domain.
+The application executes a shell command containing the user-supplied details. The command is executed asynchronously and has no effect on the application's response. It is not possible to redirect output into a location that is accessible. However, it is possible to trigger out-of-band interactions with an external domain.
 
 ### Proof of Concept
 
