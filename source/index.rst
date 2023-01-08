@@ -56,25 +56,25 @@ itself is vulnerable (unlikely, but one never knows).
    :glob:
    :maxdepth: 1
    :includehidden:
-   :caption: Vulnerabilities
+   :caption: Guides
 
-   docs/exploit/README.md
-   docs/exploit/xss.md
-   docs/exploit/redirects.md
-   docs/exploit/clickjacking.md
-   docs/exploit/csrf.md
-   docs/exploit/idor.md
-   docs/exploit/sqli.md
-   docs/exploit/race.md
-   docs/exploit/ssrf.md
-   docs/exploit/id.md
-   docs/exploit/xxe.md
-   docs/exploit/ssti.md
-   docs/exploit/access.md
-   docs/exploit/rce.md
-   docs/exploit/sop.md
-   docs/exploit/sso.md
-   docs/exploit/disclosure.md
+   docs/guides/README.md
+   docs/guides/xss.md
+   docs/guides/redirects.md
+   docs/guides/clickjacking.md
+   docs/guides/csrf.md
+   docs/guides/idor.md
+   docs/guides/sqli.md
+   docs/guides/race.md
+   docs/guides/ssrf.md
+   docs/guides/id.md
+   docs/guides/xxe.md
+   docs/guides/ssti.md
+   docs/guides/access.md
+   docs/guides/rce.md
+   docs/guides/sop.md
+   docs/guides/sso.md
+   docs/guides/disclosure.md
 
 .. toctree::
    :maxdepth: 1
