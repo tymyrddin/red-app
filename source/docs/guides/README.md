@@ -6,7 +6,7 @@
 
 ## What?
 
-Detecting and exploiting vulnerabilities in a web applications.
+Guides for detecting and exploiting vulnerabilities in a web applications.
 
 ## Why?
 
