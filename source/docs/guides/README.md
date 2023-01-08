@@ -10,7 +10,7 @@ Guides for detecting and exploiting vulnerabilities in a web applications.
 
 ## Why?
 
-Compromise the application’s security and report.
+Compromise the application’s security, and report.
 
 ## How?
 

@@ -4,18 +4,15 @@
 
 # Introduction
 
-| ![In Progress](../../_static/images/in-progress.png) |
-|:--:|
-| In Progress |
-
 ## What?
 
-Reframing Portswigger lab writeups gradually towards [reports](red-bbh:docs/essentials/report), focused on PoC's.
+Hands-on and reframing Portswigger lab writeups gradually towards [reports](red-bbh:docs/essentials/report), (focused on creating PoC's).
 
 ## Why?
 
 * A Proof of Concept (PoC) is a test run that proves the basic feasibility of an attack for one or several representative use cases.
 * Making the patterns stick in mind and be easily accessible.
+* Vulnerable applications and systems are great ways to test skill sets in virtual environments. This will also provide an estimate of what we can contribute in the real world.
 
 ## How?
 
