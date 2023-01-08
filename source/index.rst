@@ -105,7 +105,6 @@ itself is vulnerable (unlikely, but one never knows).
    docs/pal/oauth.md
    docs/pal/file-upload.md
    docs/pal/jwt.md
-   docs/pal/essential.md
    docs/pal/pollution.md
 
 .. toctree::

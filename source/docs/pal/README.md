@@ -40,7 +40,6 @@ Making the patterns stick in mind and be easily accessible.
 * [HTTP Host header attacks](headers.md)
 * [OAuth authentication](oauth.md)
 * [File upload vulnerabilities](file-upload.md)
-* [JWT](jwt.md)
-* [Essential skills](essential.md)
+* [Flawed handling of JSON web tokens](jwt.md)
 * [Prototype pollution](pollution.md)
 
