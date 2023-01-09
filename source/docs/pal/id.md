@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-modifying-serialized-objects) uses a serialization-based session mechanism and is vulnerable to privilege escalation as a result. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in using your own credentials. Notice that the post-login `GET /my-account` request contains a session cookie that appears to be URL and Base64-encoded.
 2. Use Burp's Inspector panel to study the request in its decoded form. Notice that the cookie is in fact a serialized PHP object. The admin attribute contains `b:0`, indicating the boolean value false. Send this request to Burp Repeater.
@@ -27,7 +27,7 @@ An attacker will need to log in to `wiener:peter`; edit the serialized object in
 
 [This lab](https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-modifying-serialized-data-types) uses a serialization-based session mechanism and is vulnerable to authentication bypass as a result. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in using your own credentials. In Burp, open the post-login `GET /my-account` request and examine the session cookie using the Inspector to reveal a serialized PHP object. Send this request to Burp Repeater.
 2. In Burp Repeater, use the Inspector panel to modify the session cookie as follows:
@@ -59,7 +59,7 @@ An attacker will need to log in to `wiener:peter`; edit the serialized object in
 
 [This lab](https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-using-application-functionality-to-exploit-insecure-deserialization) uses a serialization-based session mechanism. A certain feature invokes a dangerous method on data provided in a serialized object.
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in to your own account. On the "My account" page, notice the option to delete your account by sending a `POST` request to `/my-account/delete`.
 2. Send a request containing a session cookie to Burp Repeater.
@@ -85,7 +85,7 @@ An attacker will need to log in to `wiener:peter`; and the backup account `gregg
 
 [This lab](https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-arbitrary-object-injection-in-php) uses a serialization-based session mechanism and is vulnerable to arbitrary object injection as a result. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in to your own account and notice the session cookie contains a serialized PHP object.
 2. From the site map, notice that the website references the file `/libs/CustomTemplate.php`. Right-click on the file and select "Send to Repeater".
@@ -114,7 +114,7 @@ An attacker will need to log in to `wiener:peter`; create and inject a malicious
 
 [This lab](https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-exploiting-java-deserialization-with-apache-commons) uses a serialization-based session mechanism and loads the Apache Commons Collections library. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in to your own account and observe that the session cookie contains a serialized Java object. Send a request containing your session cookie to Burp Repeater.
 2. Download the [ysoserial](https://github.com/frohoff/ysoserial) tool and execute the following command:
@@ -139,7 +139,7 @@ Although attackers do not have source code access, they can still exploit this l
 
 [This lab](https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-exploiting-php-deserialization-with-a-pre-built-gadget-chain) has a serialization-based session mechanism that uses a signed cookie. It also uses a common PHP framework.
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in and send a request containing your session cookie to Burp Repeater. Highlight the cookie and look at the Inspector panel.
 2. Notice that the cookie contains a Base64-encoded token, signed with a SHA-1 HMAC hash.
@@ -185,7 +185,7 @@ Although attackers do not have source code access, they can still exploit this l
 
 [This lab](https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-exploiting-ruby-deserialization-using-a-documented-gadget-chain) uses a serialization-based session mechanism and the Ruby on Rails framework. There are documented exploits that enable remote code execution via a gadget chain in this framework. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in to your own account and notice that the session cookie contains a serialized ("marshaled") Ruby object. Send a request containing this session cookie to Burp Repeater.
 2. Browse the web to find the U[niversal Deserialisation Gadget for Ruby 2.x-3.x](https://devcraft.io/2021/01/07/universal-deserialisation-gadget-for-ruby-2-x-3-x.html) by vakzz on devcraft.io. Copy the final script for generating the payload.
@@ -208,7 +208,7 @@ An attacker will need to log in to `wiener:peter`; find a documented exploit and
 
 [This lab](https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-developing-a-custom-gadget-chain-for-java-deserialization) uses a serialization-based session mechanism. By constructing a suitable gadget chain, it is possible to exploit this lab's insecure deserialization to obtain the administrator's password. 
 
-### Proof of Concept
+### Proof of concept
 
 ####  Identify the vulnerability
 
@@ -310,7 +310,7 @@ An attacker will need to log in to `wiener:peter`; gain access to the source cod
 
 [This lab](https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-developing-a-custom-gadget-chain-for-php-deserialization) uses a serialization-based session mechanism. By deploying a custom gadget chain, you can exploit its insecure deserialization to achieve remote code execution. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in to your own account and notice that the session cookie contains a serialized PHP object. Notice that the website references the file `/cgi-bin/libs/CustomTemplate.php`. Obtain the source code by submitting a request using the `.php~` backup file extension.
 2. In the source code, notice that the `__wakeup()` magic method for a `CustomTemplate` will create a new Product by referencing the `default_desc_type` and `desc` from the `CustomTemplate`.
@@ -342,7 +342,7 @@ An attacker will need to log in to `wiener:peter`; and delete the `morale.txt` f
 
 [This lab](https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-using-phar-deserialization-to-deploy-a-custom-gadget-chain) does not explicitly use deserialization. However, if you combine PHAR deserialization with other advanced hacking techniques, you can still achieve remote code execution via a custom gadget chain. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Observe that the website has a feature for uploading your own avatar, which only accepts JPG images. Upload a valid JPG as your avatar. Notice that it is loaded using `GET /cgi-bin/avatar.php?avatar=wiener`.
 2. In Burp Repeater, request `GET /cgi-bin` to find an index that shows a `Blog.php` and `CustomTemplate.php` file. Obtain the source code by requesting the files using the `.php~` backup extension.

@@ -6,7 +6,7 @@
 
 [This online shop](https://portswigger.net/web-security/websockets/lab-manipulating-messages-to-exploit-vulnerabilities) has a live chat feature implemented using WebSockets. Chat messages that you submit are viewed by a support agent in real time. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Click "Live chat" and send a chat message. 
 2. In Burp Proxy, go to the WebSockets history tab, and observe that the chat message has been sent via a WebSocket message.
@@ -32,7 +32,7 @@ An attacker will need to use a WebSocket message to trigger an `alert()` popup i
 
 [This online shop](https://portswigger.net/web-security/websockets/lab-manipulating-handshake-to-exploit-vulnerabilities) has a live chat feature implemented using WebSockets. It has an aggressive but flawed XSS filter. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Click "Live chat" and send a chat message.
 2. In Burp Proxy, go to the WebSockets history tab, and observe that the chat message has been sent via a WebSocket message.
@@ -70,7 +70,7 @@ An attacker will need to use a WebSocket message to trigger an `alert()` popup i
 
 [This online shop](https://portswigger.net/web-security/websockets/cross-site-websocket-hijacking/lab) has a live chat feature implemented using WebSockets. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Click "Live chat" and send a chat message.
 2. Reload the page.

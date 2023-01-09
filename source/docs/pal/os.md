@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/os-command-injection/lab-simple) contains an OS command injection vulnerability in the product stock checker: The application executes a shell command containing user-supplied product and store IDs, and returns the raw output from the command in its response. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Use Burp Suite to intercept and modify a request that checks the stock level. 
 2. Modify the `storeID` parameter, giving it the value `1|whoami`. 
@@ -24,7 +24,7 @@ An attacker will need to execute the `whoami` command to determine the name of t
 
 [This lab](https://portswigger.net/web-security/os-command-injection/lab-blind-time-delays) contains a blind OS command injection vulnerability in the feedback function. The application executes a shell command containing the user-supplied details. The output from the command is not returned in the response. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Use Burp Suite to intercept and modify the request that submits feedback.
 2. Modify the `email` parameter, changing it to: `email=x||ping+-c+10+127.0.0.1||`
@@ -46,7 +46,7 @@ An attacker will need to exploit the blind OS command injection vulnerability to
 
 The application serves the images for the product catalog from this location. It is possible to redirect the output from the injected command to a file in this folder, and then use the image loading URL to retrieve the contents of the file. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Use Burp Suite to intercept and modify the request that submits feedback.
 2. Modify the email parameter, changing it to: `email=||whoami>/var/www/images/output.txt||`
@@ -68,7 +68,7 @@ An attacker will need to execute the `whoami` command and retrieve the output.
 
 The application executes a shell command containing the user-supplied details. The command is executed asynchronously and has no effect on the application's response. It is not possible to redirect output into a location that is accessible. However, it is possible to trigger out-of-band interactions with an external domain.
 
-### Proof of Concept
+### Proof of concept
 
 1. Use Burp Suite to intercept and modify the request that submits feedback.
 2. Modify the email parameter, changing it to: `email=x||nslookup+x.burp-collab-subdomain||`
@@ -88,7 +88,7 @@ _Note: The solution described here is sufficient simply to trigger a DNS lookup 
 
 This lab contains a blind OS command injection vulnerability in the feedback function. The application executes a shell command containing the user-supplied details. The command is executed asynchronously and has no effect on the application's response. It is not possible to redirect output into a location that you can access. However, you can trigger out-of-band interactions with an external domain.
 
-### Proof of Concept
+### Proof of concept
 
 1. Use Burp Suite Professional to intercept and modify the request that submits feedback.
 2. Go to the Collaborator tab.

@@ -4,7 +4,7 @@
 
 [This lab](https://portswigger.net/web-security/dom-based/controlling-the-web-message-source/lab-dom-xss-using-web-messages) demonstrates a simple web message vulnerability. 
 
-### Proof of Concept
+### Proof of concept
 
 1. The home page contains an `addEventListener()` call that listens for a web message. 
 
@@ -40,7 +40,7 @@ An attacker needs to use the exploit server to post a message to the target site
 
 [This lab](https://portswigger.net/web-security/dom-based/controlling-the-web-message-source/lab-dom-xss-using-web-messages-and-a-javascript-url) demonstrates a DOM-based redirection vulnerability that is triggered by web messaging.
 
-### Proof of Concept
+### Proof of concept
 
 1. Note the home page contains an `addEventListener()` call that listens for a web message. The JavaScript contains a flawed `indexOf()` check that looks for the strings `http:` or `https:` anywhere within the web message. It also contains the sink `location.href`.
 2. Go to the exploit server and add the following `iframe` to the body, remembering to replace `lab-id`:
@@ -67,7 +67,7 @@ To solve this lab, an attacker needs to construct an HTML page on the exploit se
 
 [This lab](https://portswigger.net/web-security/dom-based/controlling-the-web-message-source/lab-dom-xss-using-web-messages-and-json-parse) uses web messaging and parses the message as JSON.  
 
-### Proof of Concept
+### Proof of concept
 
 1. Note the home page contains an event listener that listens for a web message. This event listener expects a string that is parsed using `JSON.parse()`. In the JavaScript, we can see that the event listener expects a type property and that the `load-channel` case of the `switch` statement changes the `iframe` `src` attribute.
 2. Go to the exploit server and add the following `iframe` to the body field, remembering to replace `lab-id`:
@@ -96,7 +96,7 @@ To solve the lab, an attacker needs to construct an HTML page on the exploit ser
 
 [This lab](https://portswigger.net/web-security/dom-based/open-redirection/lab-dom-open-redirection) contains a DOM-based open-redirection vulnerability. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Notice the blog post page contains:
 
@@ -126,7 +126,7 @@ To solve this lab, an attacker needs to exploit this vulnerability and redirect 
 
 [This lab](https://portswigger.net/web-security/dom-based/cookie-manipulation/lab-dom-cookie-manipulation) demonstrates DOM-based client-side cookie manipulation. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Notice that the home page uses a client-side cookie called lastViewedProduct, whose value is the URL of the last product page that the user visited.
 2. Go to the exploit server and add the following iframe to the body, remembering to replace YOUR-LAB-ID with your `lab-id`:
@@ -151,7 +151,7 @@ To solve this lab, an attacker needs to inject a cookie that will cause XSS on a
 
 [This lab](https://portswigger.net/web-security/dom-based/dom-clobbering/lab-dom-xss-exploiting-dom-clobbering) contains a DOM-clobbering vulnerability. The comment functionality allows "safe" HTML.
 
-### Proof of Concept
+### Proof of concept
 
 1. Go to one of the blog posts and create a comment containing the following anchors:
 
@@ -187,7 +187,7 @@ To solve this lab, an attacker will need to construct an HTML injection that clo
 
 [This lab](https://portswigger.net/web-security/dom-based/dom-clobbering/lab-dom-clobbering-attributes-to-bypass-html-filters) uses the `HTMLJanitor` library, which is vulnerable to DOM clobbering.
 
-### Proof of Concept
+### Proof of concept
 
 1. Go to one of the blog posts and create a comment containing the following HTML:
 

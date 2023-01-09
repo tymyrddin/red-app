@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-different-responses) is vulnerable to username enumeration and password brute-force attacks. It has an account with a predictable [username](https://portswigger.net/web-security/authentication/auth-lab-usernames) and [password](https://portswigger.net/web-security/authentication/auth-lab-passwords).
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, investigate the login page and submit an invalid username and password.
 2. In Burp, go to Proxy > HTTP history and find the ``POST /login`` request. Send this to Burp Intruder.
@@ -37,7 +37,7 @@ An attacker will need to enumerate a valid username, brute-force this user's pas
 
 [This lab](https://portswigger.net/web-security/authentication/multi-factor/lab-2fa-simple-bypass)'s two-factor authentication can be bypassed. You have already obtained a valid username and password (`wiener:peter` and `carlos:montoya`), but do not have access to the user's 2FA verification code.  
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in to your own account. Your 2FA verification code will be sent to you by email. Click the **Email client** button to access your emails.
 2. Go to your account page and make a note of the URL.
@@ -57,7 +57,7 @@ An attacker will need to access Carlos's account page.
 
 [This lab](https://portswigger.net/web-security/authentication/other-mechanisms/lab-password-reset-broken-logic)'s password reset functionality is vulnerable.   
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, click the Forgot your password? link and enter your own username.
 2. Click the Email client button to view the password reset email that was sent. Click the link in the email and reset your password to whatever you want.
@@ -79,7 +79,7 @@ An attacker will need to log into `wiener:peter`, reset Carlos's password then l
 
 [This lab](https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-subtly-different-responses) is subtly vulnerable to username enumeration and password brute-force attacks. It has an account with a predictable [username](https://portswigger.net/web-security/authentication/auth-lab-usernames) and [password](https://portswigger.net/web-security/authentication/auth-lab-passwords).
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, submit an invalid username and password. Send the ``POST /login`` request to Burp Intruder and add a payload position to the ``username`` parameter.
 2. On the Payloads tab, make sure that the Simple list payload type is selected and add the list of candidate usernames.
@@ -108,7 +108,7 @@ An attacker will need to enumerate a valid username, brute-force this user's pas
 
 [This lab](https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-response-timing) is vulnerable to username enumeration using its response times. 
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, submit an invalid username and password, then send the ``POST /login`` request to Burp Repeater. Experiment with different usernames and passwords. Notice that your IP will be blocked if you make too many invalid login attempts.
 2. Identify that the ``X-Forwarded-For`` header is supported, which allows you to spoof your IP address and bypass the IP-based brute-force protection.
@@ -136,7 +136,7 @@ An attacker will need to log into `wiener:peter`, and enumerate a valid [usernam
 
 [This lab](https://portswigger.net/web-security/authentication/password-based/lab-broken-bruteforce-protection-ip-block) is vulnerable due to a logic flaw in its password brute-force protection.
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, investigate the login page. Observe that your IP is temporarily blocked if you submit 3 incorrect logins in a row. However, notice that you can reset the counter for the number of failed login attempts by logging in to your own account before this limit is reached.
 2. Enter an invalid username and password, then send the ``POST /login`` request to Burp Intruder. Create a pitchfork attack with payload positions in both the ``username`` and ``password`` parameters.
@@ -158,7 +158,7 @@ An attacker will need to log into `wiener:peter`, brute-force the carlos's [pass
 
 [This lab](https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-account-lock) is vulnerable to username enumeration. It uses account locking, but this contains a logic flaw.
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, investigate the login page and submit an invalid username and password. Send the ``POST /login`` request to Burp Intruder.
 2. Select the attack type Cluster bomb. Add a payload position to the ``username`` parameter. Add a blank payload position to the end of the request body by clicking Add § twice. The result should look something like this:
@@ -186,7 +186,7 @@ An attacker will need to enumerate a valid [username](https://portswigger.net/we
 
 [This lab](https://portswigger.net/web-security/authentication/multi-factor/lab-2fa-broken-logic)'s two-factor authentication is vulnerable due to its flawed logic. 
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, log in to your own account and investigate the 2FA verification process. Notice that in the ``POST /login2`` request, the ``verify`` parameter is used to determine which user's account is being accessed.
 2. Log out of your account.
@@ -209,7 +209,7 @@ An attacker will need to make sure a MFA-code verification code is generated for
 
 [This lab](https://portswigger.net/web-security/authentication/other-mechanisms/lab-brute-forcing-a-stay-logged-in-cookie) allows users to stay logged in even after they close their browser session. The cookie used to provide this functionality is vulnerable to brute-forcing. 
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, log in to your own account with the Stay logged in option selected. Notice that this sets a ``stay-logged-in`` cookie.
 2. Examine this cookie in the Inspector panel and notice that it is Base64-encoded. Its decoded value is ``wiener:51dc30ddc473d43a6011e9ebba6ca770``. Study the length and character set of this string and notice that it could be an MD5 hash. Given that the plaintext is your username, you can make an educated guess that this may be a hash of your password. Hash your password using MD5 to confirm that this is the case. We now know that the cookie is constructed as follows:
@@ -244,7 +244,7 @@ An attacker can log in to `wiener:peter` and brute-force Carlos's cookie to gain
 
 [This lab](https://portswigger.net/web-security/authentication/other-mechanisms/lab-offline-password-cracking) stores the user's password hash in a cookie. The lab also contains an XSS vulnerability in the comment functionality.
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, use your own account to investigate the "Stay logged in" functionality. Notice that the ``stay-logged-in`` cookie is Base64 encoded.
 2. In the Proxy > HTTP history tab, go to the Response to your login request and highlight the ``stay-logged-in`` cookie, to see that it is constructed as follows:
@@ -283,7 +283,7 @@ An attacker will need to obtain Carlos's `stay-logged-in` cookie and use it to c
 
 [This lab](https://portswigger.net/web-security/authentication/other-mechanisms/lab-password-reset-poisoning-via-middleware) is vulnerable to password reset poisoning. The user carlos will carelessly click on any links in emails that he receives.
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, investigate the password reset functionality. Observe that a link containing a unique reset token is sent via email.
 2. Send the ``POST /forgot-password`` request to Burp Repeater. Notice that the ``X-Forwarded-Host`` header is supported and you can use it to point the dynamically generated reset link to an arbitrary domain.
@@ -312,7 +312,7 @@ An attacker can log in to `wiener:peter`. Any emails sent to this account can be
 
 [This lab](https://portswigger.net/web-security/authentication/other-mechanisms/lab-password-brute-force-via-password-change)'s password change functionality makes it vulnerable to brute-force attacks. 
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, log in and experiment with the password change functionality. Observe that the username is submitted as hidden input in the request.
 2. Notice the behavior when you enter the wrong current password. If the two entries for the new password match, the account is locked. However, if you enter two different new passwords, an error message simply states `Current password is incorrect`. If you enter a valid current password, but two different new passwords, the message says `New passwords do not match`. We can use this message to enumerate correct passwords.
@@ -341,7 +341,7 @@ An attacker will need to log in using `wiener:peter`, and use the [list of candi
 
 [This lab](https://portswigger.net/web-security/authentication/password-based/lab-broken-brute-force-protection-multiple-credentials-per-request) is vulnerable due to a logic flaw in its brute-force protection. 
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, investigate the login page. Notice that the `POST /login` request submits the login credentials in JSON format. Send this request to Burp Repeater.
 2. In Burp Repeater, replace the single string value of the password with an array of strings containing all candidate passwords. For example:
@@ -372,7 +372,7 @@ An attacker will need to brute-force Carlos's password, then access his account 
 
 [This lab](https://portswigger.net/web-security/authentication/multi-factor/lab-2fa-bypass-using-a-brute-force-attack)'s two-factor authentication is vulnerable to brute-forcing.  
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, log in and experiment with the password change functionality. Observe that the username is submitted as hidden input in the request.
 2. Notice the behavior when you enter the wrong current password. If the two entries for the new password match, the account is locked. However, if you enter two different new passwords, an error message simply states ``Current password is incorrect``. If you enter a valid current password, but two different new passwords, the message says ``New passwords do not match``. We can use this message to enumerate correct passwords.

@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/access-control/lab-unprotected-admin-functionality) has an unprotected admin panel. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Go to the lab and view ``robots.txt`` by appending ``/robots.txt`` to the lab URL. Notice that the ``Disallow`` line discloses the path to the admin panel.
 2. In the URL bar, replace ``/robots.txt`` with ``/administrator-panel`` to load the admin panel.
@@ -24,7 +24,7 @@ An attacker will need to delete the user `carlos`.
 
 [This lab](https://portswigger.net/web-security/access-control/lab-unprotected-admin-functionality-with-unpredictable-url) has an unprotected admin panel. It's located at an unpredictable location, but the location is disclosed somewhere in the application. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Review the lab home page's source using Burp Suite or your web browser's developer tools.
 2. Observe that it contains some JavaScript that discloses the URL of the admin panel.
@@ -42,7 +42,7 @@ An attacker will need to access the admin panel, and use it to delete the user c
 
 [This lab](https://portswigger.net/web-security/access-control/lab-user-role-controlled-by-request-parameter) has an admin panel at `/admin`, which identifies administrators using a forgeable cookie. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Browse to ``/admin`` and observe that you can't access the admin panel.
 2. Browse to the login page.
@@ -63,7 +63,7 @@ An attacker will need to access the admin panel, and use it to delete the user c
 
 [This lab](https://portswigger.net/web-security/access-control/lab-user-role-can-be-modified-in-user-profile) has an admin panel at `/admin`. It's only accessible to logged-in users with a `roleid` of `2`. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in using the supplied credentials and access your account page.
 2. Use the provided feature to update the email address associated with your account.
@@ -84,7 +84,7 @@ An attacker will need to access the admin panel, and use it to delete the user c
 
 [This lab](https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter) has a horizontal privilege escalation vulnerability on the user account page. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in using the supplied credentials and go to your account page.
 2. Note that the URL contains your username in the "id" parameter.
@@ -104,7 +104,7 @@ An attacker will need to obtain the API key for the user carlos and submit it as
 
 [This lab](https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-unpredictable-user-ids) has a horizontal privilege escalation vulnerability on the user account page, but identifies users with GUIDs. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Find a blog post by ``carlos``.
 2. Click on ``carlos`` and observe that the URL contains his user ID. Make a note of this ID.
@@ -124,7 +124,7 @@ An attacker will need to log in with `wiener:peter`, find the GUID for `carlos`,
 
 [This lab](https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-data-leakage-in-redirect) contains an access control vulnerability where sensitive information is leaked in the body of a redirect response.
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in using the supplied credentials and access your account page.
 2. Send the request to Burp Repeater.
@@ -144,7 +144,7 @@ An attacker will need to log in with `wiener:peter`, obtain the API key for the 
 
 [This lab](https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-password-disclosure) has user account page that contains the current user's existing password, prefilled in a masked input. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in using the supplied credentials and access the user account page.
 2. Change the "id" parameter in the URL to ``administrator``.
@@ -163,7 +163,7 @@ An attacker will need to log in with `wiener:peter`, retrieve the administrator'
 
 [This lab](https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references) stores user chat logs directly on the server's file system, and retrieves them using static URLs. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Select the **Live chat** tab.
 2. Send a message and then select **View transcript**.
@@ -183,7 +183,7 @@ An attacker will need to find the password for the user `carlos`, and log into t
 
 [This website](https://portswigger.net/web-security/access-control/lab-url-based-access-control-can-be-circumvented) has an unauthenticated admin panel at `/admin`, but a front-end system has been configured to block external access to that path. However, the back-end application is built on a framework that supports the `X-Original-URL` header.
 
-### Proof of Concept
+### Proof of concept
 
 1. Try to load ``/admin`` and observe that you get blocked. Notice that the response is very plain, suggesting it may originate from a front-end system.
 2. Send the request to Burp Repeater. Change the URL in the request line to / and add the HTTP header ``X-Original-URL: /invalid``. Observe that the application returns a "not found" response. This indicates that the back-end system is processing the URL from the ``X-Original-URL`` header.
@@ -202,7 +202,7 @@ An attacker will need to access the admin panel and delete the user carlos.
 
 [This lab](https://portswigger.net/web-security/access-control/lab-method-based-access-control-can-be-circumvented) implements access controls based partly on the HTTP method of requests. You can familiarize yourself with the admin panel by logging in using the credentials `administrator:admin`. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in using the admin credentials.
 2. Browse to the admin panel, promote ``carlos``, and send the HTTP request to Burp Repeater.
@@ -224,7 +224,7 @@ An attacker will need to log in using the credentials `wiener:peter` and exploit
 
 [This lab](https://portswigger.net/web-security/access-control/lab-multi-step-process-with-no-access-control-on-one-step) has an admin panel with a flawed multi-step process for changing a user's role. _You can familiarise yourself with the admin panel by logging in using the credentials `administrator:admin`._ 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in using the admin credentials.
 2. Browse to the admin panel, promote ``carlos``, and send the confirmation HTTP request to Burp Repeater.
@@ -243,7 +243,7 @@ An attacker will need to log in using the credentials `wiener:peter` and exploit
 
 [This lab](https://portswigger.net/web-security/access-control/lab-referer-based-access-control) controls access to certain admin functionality based on the Referer header. _You can familiarise yourself with the admin panel by logging in using the credentials `administrator:admin`._
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in using the admin credentials.
 2. Browse to the admin panel, promote ``carlos``, and send the HTTP request to Burp Repeater.

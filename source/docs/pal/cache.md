@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-with-an-unkeyed-header) is vulnerable to web cache poisoning because it handles input from an unkeyed header in an unsafe way. An unsuspecting user regularly visits the site's home page.
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, load the website's home page
 2. In Burp, go to "Proxy" > "HTTP history" and study the requests and responses that you generated. Find the GET request for the home page and send it to Burp Repeater.
@@ -44,7 +44,7 @@ An attacker will need to poison the cache with a response that executes `alert(d
 
 [This lab](https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-with-an-unkeyed-cookie) is vulnerable to web cache poisoning because cookies aren't included in the cache key. An unsuspecting user regularly visits the site's home page.
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, load the website's home page.
 2. In Burp, go to "Proxy" > "HTTP history" and study the requests and responses that you generated. Notice that the first response you received sets the cookie ``fehost=prod-cache-01``.
@@ -73,7 +73,7 @@ An attacker will need to poison the cache with a response that executes `alert(1
 
 [This lab](https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-with-multiple-headers) contains a web cache poisoning vulnerability that is only exploitable when you use multiple headers to craft a malicious request. A user visits the home page roughly once a minute.
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, load the website's home page.
 2. Go to "Proxy" > "HTTP history" and study the requests and responses that you generated. Find the ``GET`` request for the JavaScript file ``/resources/js/tracking.js`` and send it to Burp Repeater.
@@ -112,7 +112,7 @@ An attacker will need to poison the cache with a response that executes `alert(d
 
 [This lab](https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-targeted-using-an-unknown-header) is vulnerable to web cache poisoning. A victim user will view any comments that you post.
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, load the website's home page.
 2. In Burp, go to "Proxy" > "HTTP history" and study the requests and responses that you generated. Find the ``GET`` request for the home page.
@@ -159,7 +159,7 @@ An attacker will need to poison the cache with a response that executes `alert(d
 
 [This lab](https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-unkeyed-query) is vulnerable to web cache poisoning because the query string is unkeyed. A user regularly visits this site's home page using Chrome. 
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, load the website's home page. In Burp, go to "Proxy" > "HTTP history". Find the ``GET`` request for the home page. Notice that this page is a potential cache oracle. Send the request to Burp Repeater.
 2. Add arbitrary query parameters to the request. Observe that you can still get a cache hit even if you change the query parameters. This indicates that they are not included in the cache key.
@@ -188,7 +188,7 @@ An attacker will need to poison the home page with a response that executes aler
 
 [This lab](https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-unkeyed-param) is vulnerable to web cache poisoning because it excludes a certain parameter from the cache key. A user regularly visits this site's home page using Chrome. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Observe that the home page is a suitable cache oracle. Notice that you get a cache miss whenever you change the query string. This indicates that it is part of the cache key. Also notice that the query string is reflected in the response.
 2. Add a cache-buster query parameter.
@@ -215,7 +215,7 @@ An attacker will need to poison the cache with a response that executes `alert(1
 
 [This lab](https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-param-cloaking) is vulnerable to web cache poisoning because it excludes a certain parameter from the cache key. There is also inconsistent parameter parsing between the cache and the back-end. A user regularly visits this site's home page using Chrome. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Identify that the ``utm_content`` parameter is supported. Observe that it is also excluded from the cache key.
 2. Notice that if you use a semicolon (;) to append another parameter to utm_content, the cache treats this as a single parameter. This means that the extra parameter is also excluded from the cache key. Alternatively, with Param Miner loaded, right-click on the request and select "Bulk scan" > "Rails parameter cloaking scan" to identify the vulnerability automatically.
@@ -253,7 +253,7 @@ An attacker will need to use the parameter cloaking technique to poison the cach
 
 [This lab](https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-fat-get) is vulnerable to web cache poisoning. It accepts `GET` requests that have a body, but does not include the body in the cache key. A user regularly visits this site's home page using Chrome. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Observe that every page imports the script ``/js/geolocate.js``, executing the callback function ``setCountryCookie()``. Send the request ``GET /js/geolocate.js?callback=setCountryCookie`` to Burp Repeater.
 2. Notice that you can control the name of the function that is called in the response by passing in a duplicate ``callback`` parameter via the request body. Also notice that the cache key is still derived from the original ``callback`` parameter in the request line:
@@ -284,7 +284,7 @@ An attacker will need to poison the cache with a response that executes `alert(1
 
 [This lab](https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-normalization) contains an XSS vulnerability that is not directly exploitable due to browser URL-encoding. 
 
-### Proof of Concept
+### Proof of concept
 
 1. In Burp Repeater, browse to any non-existent path, such as ``GET /random``. Notice that the path you requested is reflected in the error message.
 2. Add a suitable reflected XSS payload to the request line:
@@ -309,7 +309,7 @@ An attacker will need to take advantage of the cache's normalization process to 
 
 [This lab](https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-to-exploit-a-dom-vulnerability-via-a-cache-with-strict-cacheability-criteria) contains a DOM-based vulnerability that can be exploited as part of a web cache poisoning attack. A user visits the home page roughly once a minute. The cache used by this lab has stricter criteria for deciding which responses are cacheable, so a study of the cache behaviour is necessary. 
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, open the website's home page.
 2. In Burp, go to **Proxy -> "HTTP history** and study the requests and responses that you generated. Find the `GET` request for the home page and send it to Burp Repeater.
@@ -357,7 +357,7 @@ An attacker will need to poison the cache with a response that executes `alert(d
 
 [This lab](https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-combining-vulnerabilities) is susceptible to web cache poisoning, but only if you construct a complex exploit chain. A user visits the home page roughly once a minute and their language is set to English. 
 
-### Proof of Concept
+### Proof of concept
 
 1. With Burp running, load the website's home page.
 2. Use [Param Miner](https://portswigger.net/web-security/web-cache-poisoning#param-miner) to identify that the `X-Forwarded-Host` and `X-Original-URL` headers are supported.
@@ -422,7 +422,7 @@ An attacker will need to poison the cache with multiple malicious responses simu
 
 [This lab](https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-cache-key-injection) contains multiple independent vulnerabilities, including cache key injection. A user regularly visits this site's home page using Chrome. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Observe that the redirect at `/login` excludes the parameter `utm_content` from the cache key using a flawed regex. This allows appending arbitrary unkeyed content to the lang parameter:
 
@@ -458,7 +458,7 @@ An attacker will need to combine the vulnerabilities to execute `alert(1)` in th
 
 [This lab](https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-internal) is vulnerable to web cache poisoning. It uses multiple layers of caching. A user regularly visits this site's home page using Chrome.
 
-### Proof of Concept
+### Proof of concept
 
 1. Notice that the home page is a suitable cache oracle and send the `GET /` request to Burp Repeater.
 2. Observe that any changes to the query string are always reflected in the response. This indicates that the external cache includes this in the cache key. Use Param Miner to add a dynamic cache-buster query parameter. This will allow you to bypass the external cache.

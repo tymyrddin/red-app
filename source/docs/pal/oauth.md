@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/oauth/lab-oauth-authentication-bypass-via-oauth-implicit-flow) uses an `OAuth` service to allow users to log in with their social media account. Flawed validation by the client application makes it possible for an attacker to log in to other users' accounts without knowing their password.
 
-### Proof of Concept
+### Proof of concept
 
 1. While proxying traffic through Burp, click "My account" and complete the OAuth login process. Afterwards, you will be redirected back to the blog website.
 2. In Burp, go to "Proxy" > "HTTP history" and study the requests and responses that make up the OAuth flow. This starts from the authorization request ``GET /auth?client_id=[...]``.
@@ -26,7 +26,7 @@ An attacker will need to log in to `wiener:peter`; and then log in to Carlos's a
 
 [This lab](https://portswigger.net/web-security/oauth/lab-oauth-forced-oauth-profile-linking) gives you the option to attach a social media profile to your account so that you can log in via OAuth instead of using the normal username and password. Due to the insecure implementation of the OAuth flow by the client application, an attacker can manipulate this functionality to obtain access to other users' accounts. 
 
-### Proof of Concept
+### Proof of concept
 
 1. While proxying traffic through Burp, click "My account". You are taken to a normal login page, but notice that there is an option to log in using your social media profile instead. For now, just log in to the blog website directly using the classic login form.
 2. Notice that you have the option to attach your social media profile to your existing account.
@@ -60,7 +60,7 @@ The admin user will open anything sent from the exploit server, and always has a
 
 [This lab](https://portswigger.net/web-security/oauth/lab-oauth-account-hijacking-via-redirect-uri) uses an `OAuth` service to allow users to log in with their social media account. A misconfiguration by the OAuth provider makes it possible for an attacker to steal authorization codes associated with other users' accounts.
 
-### Proof of Concept
+### Proof of concept
 
 1. While proxying traffic through Burp, click "My account" and complete the OAuth login process. Afterwards, you will be redirected back to the blog website.
 2. Log out and then log back in again. Observe that you are logged in instantly this time. As you still had an active session with the OAuth service, you didn't need to enter your credentials again to authenticate yourself.
@@ -98,7 +98,7 @@ The admin user will open anything sent from the exploit server, and always has a
 
 [This lab](https://portswigger.net/web-security/oauth/lab-oauth-stealing-oauth-access-tokens-via-an-open-redirect) uses an `OAuth` service to allow users to log in with their social media account. Flawed validation by the `OAuth` service makes it possible for an attacker to leak access tokens to arbitrary pages on the client application. 
 
-### Proof of Concept
+### Proof of concept
 
 1. While proxying traffic through Burp, click "My account" and complete the OAuth login process. Afterwards, you will be redirected back to the blog website.
 2. Study the resulting requests and responses. Notice that the blog website makes an API call to the userinfo endpoint at ``/me`` and then uses the data it fetches to log the user in. Send the ``GET /me`` request to Burp Repeater.
@@ -160,7 +160,7 @@ An attacker will need to log in to `wiener:peter`; and then identify an open red
 
 [This lab](https://portswigger.net/web-security/oauth/openid/lab-oauth-ssrf-via-openid-dynamic-client-registration) allows client applications to dynamically register themselves with the `OAuth` service via a dedicated registration endpoint. Some client-specific data is used in an unsafe way by the `OAuth` service, which exposes a potential vector for SSRF. 
 
-### Proof of Concept
+### Proof of concept
 
 1. While proxying traffic through Burp, log in to your own account. Browse to ``https://YOUR-LAB-OAUTH-SERVER.web-security-academy.net/.well-known/openid-configuration`` to access the configuration file. Notice that the client registration endpoint is located at ``/reg``.
 2. In Burp Repeater, create a suitable ``POST`` request to register your own client application with the OAuth service. You must at least provide a ``redirect_uris`` array containing an arbitrary whitelist of callback URIs for your fake application. For example:
@@ -222,7 +222,7 @@ _Note: To prevent the Academy platform being used to attack third parties, the f
 
 [This lab](https://portswigger.net/web-security/oauth/lab-oauth-stealing-oauth-access-tokens-via-a-proxy-page) uses an `OAuth` service to allow users to log in with their social media account. Flawed validation by the `OAuth` service makes it possible for an attacker to leak access tokens to arbitrary pages on the client application. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Study the `OAuth` flow while proxying traffic through Burp. Using the same method as in the previous lab, identify that the `redirect_uri` is vulnerable to directory traversal. This enables you to redirect access tokens to arbitrary pages on the blog website.
 2. Using Burp, audit the other pages on the blog website. Observe that the comment form is included as an `iframe` on each blog post. Look closer at the `/post/comment/comment-form` page in Burp and notice that it uses the `postMessage()` method to send the `window.location.href` property to its parent window. Crucially, it allows messages to be posted to any origin (`*`).

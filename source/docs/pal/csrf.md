@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/csrf/lab-no-defenses)'s email change functionality is vulnerable to CSRF.  
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in and intercept updating email (which is vulnerable):
 
@@ -46,7 +46,7 @@ An attacker needs to craft some HTML that uses a CSRF attack to change the viewe
 
 [This lab](https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-validation-depends-on-request-method)'s email change functionality is vulnerable to CSRF. It attempts to block CSRF attacks, but only applies defenses to certain types of requests. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Open Burp's browser and log in to your account. Submit the "Update email" form, and find the resulting request in your Proxy history.
 2. Send the request to Burp Repeater and observe that if you change the value of the csrf parameter then the request is rejected.
@@ -80,7 +80,7 @@ An attacker needs to use the exploit server to host an HTML page that uses a CSR
 
 [This lab](https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-validation-depends-on-token-being-present)'s email change functionality is vulnerable to CSRF. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Open Burp's browser and log in to your account. Submit the "Update email" form, and find the resulting request in your Proxy history.
 2. Send the request to Burp Repeater and observe that if you change the value of the csrf parameter then the request is rejected.
@@ -114,7 +114,7 @@ An attacker needs to use the exploit server to host an HTML page that uses a CSR
 
 [This lab](https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-not-tied-to-user-session)'s email change functionality is vulnerable to CSRF. It uses tokens to try to prevent CSRF attacks, but they aren't integrated into the site's session handling system.  
 
-### Proof of Concept
+### Proof of concept
 
 1. Open Burp's browser and log in to your account. Submit the "Update email" form, and intercept the resulting request.
 2. Make a note of the value of the CSRF token, then drop the request.
@@ -135,7 +135,7 @@ An attacker needs to use the exploit server to host an HTML page that uses a CSR
 
 [This lab](https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-tied-to-non-session-cookie)'s email change functionality is vulnerable to CSRF. It uses tokens to try to prevent CSRF attacks, but they aren't fully integrated into the site's session handling system. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Open Burp's browser and log in to your account. Submit the "Update email" form, and find the resulting request in your Proxy history.
 2. Send the request to Burp Repeater and observe that changing the session cookie logs you out, but changing the `csrfKey` cookie merely results in the CSRF token being rejected. This suggests that the `csrfKey` cookie may not be strictly tied to the session.
@@ -170,7 +170,7 @@ An attacker needs to use the exploit server to host an HTML page that uses a CSR
 
 [This lab](https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-duplicated-in-cookie)'s email change functionality is vulnerable to CSRF. It attempts to use the insecure "double submit" CSRF prevention technique. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Open Burp's browser and log in to your account. Submit the "Update email" form, and find the resulting request in your Proxy history.
 2. Send the request to Burp Repeater and observe that the value of the csrf body parameter is simply being validated by comparing it with the csrf cookie.
@@ -202,7 +202,7 @@ An attacker needs to use the exploit server to host an HTML page that uses a CSR
 
 [This lab](https://portswigger.net/web-security/csrf/bypassing-referer-based-defenses/lab-referer-validation-depends-on-header-being-present)'s email change functionality is vulnerable to CSRF. It attempts to block cross domain requests but has an insecure fallback. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Open Burp's browser and log in to your account. Submit the "Update email" form, and find the resulting request in your Proxy history.
 2. Send the request to Burp Repeater and observe that if you change the domain in the Referer HTTP header then the request is rejected.
@@ -227,7 +227,7 @@ An attacker needs to use the exploit server to host an HTML page that uses a CSR
 
 [This lab](https://portswigger.net/web-security/csrf/bypassing-referer-based-defenses/lab-referer-validation-broken)'s email change functionality is vulnerable to CSRF. It attempts to detect and block cross domain requests, but the detection mechanism can be bypassed.
 
-### Proof of Concept
+### Proof of concept
 
 1. Open Burp's browser and log in to your account. Submit the "Update email" form, and find the resulting request in your Proxy history.
 2. Send the request to Burp Repeater. Observe that if you change the domain in the Referer HTTP header, the request is rejected.

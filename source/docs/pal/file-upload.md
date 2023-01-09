@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/file-upload/lab-file-upload-remote-code-execution-via-web-shell-upload) contains a vulnerable image upload function. It doesn't perform any validation on the files users upload before storing them on the server's filesystem. 
 
-### Proof of Concept
+### Proof of concept
 
 1. While proxying traffic through Burp, log in to your account and notice the option for uploading an avatar image.
 2. Upload an arbitrary image, then return to your account page. Notice that a preview of your avatar is now displayed on the page.
@@ -40,7 +40,7 @@ An attacker will need to log in to `wiener:peter`; upload a basic PHP web shell 
 
 [This lab](https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-content-type-restriction-bypass) contains a vulnerable image upload function. It attempts to prevent users from uploading unexpected file types, but relies on checking user-controllable input to verify this. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in and upload an image as your avatar, then go back to your account page. 
 2. In Burp, go to **Proxy > HTTP history** and notice that your image was fetched using a ``GET`` request to ``/files/avatars/<YOUR-IMAGE>``. Send this request to Burp Repeater. 
@@ -69,7 +69,7 @@ An attacker will need to log in to `wiener:peter`; upload a basic PHP web shell 
 
 [This lab](https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-path-traversal) contains a vulnerable image upload function. The server is configured to prevent execution of user-supplied files, but this restriction can be bypassed by exploiting a secondary vulnerability. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in and upload an image as your avatar, then go back to your account page.
 2. In Burp, go to Proxy > HTTP history and notice that your image was fetched using a GET request to `/files/avatars/<YOUR-IMAGE>`. Send this request to Burp Repeater.
@@ -112,7 +112,7 @@ An attacker will need to log in to `wiener:peter`; upload a basic PHP web shell 
 
 [This lab](https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-extension-blacklist-bypass) contains a vulnerable image upload function. Certain file extensions are blacklisted, but this defense can be bypassed due to a fundamental flaw in the configuration of this blacklist. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in and upload an image as your avatar, then go back to your account page.
 2. In Burp, go to **Proxy -> HTTP history** and notice that your image was fetched using a ``GET`` request to ``/files/avatars/<YOUR-IMAGE>``. Send this request to Burp Repeater.
@@ -147,7 +147,7 @@ An attacker will need to log in to `wiener:peter`; upload a basic PHP web shell,
 
 [This lab](https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-obfuscated-file-extension) contains a vulnerable image upload function. Certain file extensions are blacklisted, but this defense can be bypassed using a classic obfuscation technique. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in and upload an image as your avatar, then go back to your account page.
 2. In Burp, go to **Proxy > HTTP history** and notice that your image was fetched using a ``GET`` request to ``/files/avatars/<YOUR-IMAGE>``.
@@ -177,7 +177,7 @@ An attacker will need to log in to `wiener:peter`; upload a basic PHP web shell,
 
 [This lab](https://portswigger.net/web-security/file-upload/lab-file-upload-remote-code-execution-via-polyglot-web-shell-upload) contains a vulnerable image upload function. Although it checks the contents of the file to verify that it is a genuine image, it is still possible to upload and execute server-side code. 
 
-### Proof of Concept
+### Proof of concept
 
 1. On your system, create a file called ``exploit.php`` containing a script for fetching the contents of Carlos's secret. For example:
 
@@ -210,7 +210,7 @@ An attacker will need to log in to `wiener:peter`; upload a basic PHP web shell,
 
 [This lab](https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-race-condition) contains a vulnerable image upload function. Although it performs robust validation on any files that are uploaded, it is possible to bypass this validation entirely by exploiting a race condition in the way it processes them. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in and upload an image as your avatar, then go back to your account page.
 2. In Burp, go to **Proxy -> HTTP history** and notice that your image was fetched using a `GET` request to `/files/avatars/<YOUR-IMAGE>`.

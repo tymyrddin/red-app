@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/request-smuggling/lab-basic-te-cl) involves a front-end and back-end server, and the back-end server doesn't support chunked encoding. The front-end server rejects requests that aren't using the GET or POST method.
 
-### Proof of Concept
+### Proof of concept
 
 1. Using Burp Repeater, issue the following request twice:
 
@@ -39,7 +39,7 @@ The HTTP Request Smuggler Burp extension was designed to help. Install it via th
 
 [This lab](https://portswigger.net/web-security/request-smuggling/lab-obfuscating-te-header) involves a front-end and back-end server, and the two servers handle duplicate HTTP request headers in different ways. The front-end server rejects requests that aren't using the GET or POST method. 
 
-### Proof of Concept
+### Proof of concept
 
 1. In Burp Suite, go to the Repeater menu and ensure that the "Update Content-Length" option is unchecked.
 
@@ -75,7 +75,7 @@ An attacker will need to smuggle a request to the back-end server, so that the n
 
 [This lab](https://portswigger.net/web-security/request-smuggling/finding/lab-confirming-cl-te-via-differential-responses) involves a front-end and back-end server, and the front-end server doesn't support chunked encoding.
 
-### Proof of Concept
+### Proof of concept
 
 1. In Burp Suite, go to the Repeater menu and ensure that the "Update Content-Length" option is unchecked.
 
@@ -112,7 +112,7 @@ An attacker will need to smuggle a request to the back-end server, so that a sub
 
 [This lab](https://portswigger.net/web-security/request-smuggling/finding/lab-confirming-cl-te-via-differential-responses) involves a front-end and back-end server, and the back-end server doesn't support chunked encoding.
 
-### Proof of Concept
+### Proof of concept
 
 1. Using Burp Repeater, issue the following request twice:
 
@@ -143,7 +143,7 @@ An attacker will need to smuggle a request to the back-end server, so that a sub
 
 [This lab](https://portswigger.net/web-security/request-smuggling/finding/lab-confirming-te-cl-via-differential-responses) involves a front-end and back-end server, and the front-end server doesn't support chunked encoding. There's an admin panel at /admin, but the front-end server blocks access to it.
 
-### Proof of Concept
+### Proof of concept
 
 1. Using Burp Repeater, issue the following request twice:
 
@@ -177,7 +177,7 @@ An attacker will need to smuggle a request to the back-end server, so that a sub
 
 [This lab](https://portswigger.net/web-security/request-smuggling/exploiting/lab-bypass-front-end-controls-cl-te) involves a front-end and back-end server, and the front-end server doesn't support chunked encoding. There's an admin panel at `/admin`, but the front-end server blocks access to it.
 
-### Proof of Concept
+### Proof of concept
 
 1. Try to visit ``/admin`` and observe that the request is blocked.
 2. Using Burp Repeater, issue the following request twice:
@@ -264,7 +264,7 @@ An attacker will need to smuggle a request to the back-end server that accesses 
 
 [This lab](https://portswigger.net/web-security/request-smuggling/exploiting/lab-bypass-front-end-controls-te-cl) involves a front-end and back-end server, and the back-end server doesn't support chunked encoding. There's an admin panel at `/admin`, but the front-end server blocks access to it.
 
-### Proof of Concept
+### Proof of concept
 
 1. Try to visit ``/admin`` and observe that the request is blocked.
 2. In Burp Suite, go to the Repeater menu and ensure that the "Update Content-Length" option is unchecked.
@@ -338,7 +338,7 @@ An attacker will need to smuggle a request to the back-end server that accesses 
 
 There's an admin panel at `/admin`, but it's only accessible to people with the IP address `127.0.0.1`. The front-end server adds an HTTP header to incoming requests containing their IP address. It's similar to the `X-Forwarded-For` header but has a different name. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Browse to ``/admin`` and observe that the admin panel can only be loaded from ``127.0.0.1``.
 2. Use the site's search function and observe that it reflects the value of the ``search`` parameter.
@@ -414,7 +414,7 @@ An attacker will need to smuggle a request to the back-end server that reveals t
 
 [This lab](https://portswigger.net/web-security/request-smuggling/exploiting/lab-capture-other-users-requests) involves a front-end and back-end server, and the front-end server doesn't support chunked encoding.
 
-### Proof of Concept
+### Proof of concept
 
 1. Visit a blog post and post a comment.
 2. Send the ``comment-post`` request to Burp Repeater, shuffle the body parameters so the ``comment`` parameter occurs last, and make sure it still works.
@@ -452,7 +452,7 @@ An attacker will need to smuggle a request to the back-end server that causes th
 
 [This lab](https://portswigger.net/web-security/request-smuggling/exploiting/lab-deliver-reflected-xss) involves a front-end and back-end server, and the front-end server doesn't support chunked encoding. The application is also vulnerable to reflected XSS via the User-Agent header.
 
-### Proof of Concept
+### Proof of concept
 
 1. Visit a blog post, and send the request to Burp Repeater.
 2. Observe that the comment form contains your ``User-Agent`` header in a hidden input.
@@ -493,7 +493,7 @@ An attacker will need to smuggle a request to the back-end server that causes th
 
 [This lab](https://portswigger.net/web-security/request-smuggling/advanced/response-queue-poisoning/lab-request-smuggling-h2-response-queue-poisoning-via-te-request-smuggling) is vulnerable to request smuggling because the front-end server downgrades HTTP/2 requests even if they have an ambiguous length.
 
-### Proof of Concept
+### Proof of concept
 
 1. Using Burp Repeater, try smuggling an arbitrary prefix in the body of an HTTP/2 request using chunked encoding as follows. Remember to expand the Inspector's Request Attributes section and change the protocol to HTTP/2 before sending the request.
 
@@ -551,7 +551,7 @@ An attacker will need to delete the user `carlos` by using response queue poison
 
 [This lab](https://portswigger.net/web-security/request-smuggling/advanced/lab-request-smuggling-h2-cl-request-smuggling) is vulnerable to request smuggling because the front-end server downgrades HTTP/2 requests even if they have an ambiguous length. 
 
-### Proof of Concept
+### Proof of concept
 
 1. From the Repeater menu, enable the **Allow HTTP/2 ALPN override** option and disable the **Update Content-Length** option.
 2. Using Burp Repeater, try smuggling an arbitrary prefix in the body of an HTTP/2 request by including a `Content-Length: 0` header as follows. Remember to expand the Inspector's Request Attributes section and change the protocol to HTTP/2 before sending the request.
@@ -615,7 +615,7 @@ _Note: This lab supports HTTP/2 but doesn't advertise this via ALPN. To send HTT
 
 [This lab](https://portswigger.net/web-security/request-smuggling/advanced/lab-request-smuggling-h2-request-smuggling-via-crlf-injection) is vulnerable to request smuggling because the front-end server downgrades HTTP/2 requests and fails to adequately sanitize incoming headers.
 
-### Proof of Concept
+### Proof of concept
 
 1. In Burp's browser, use the lab's search function a couple of times and observe that the website records your recent search history. Send the most recent POST / request to Burp Repeater and remove your session cookie before resending the request. Notice that your search history is reset, confirming that it's tied to your session cookie.
 2. Expand the Inspector's Request Attributes section and change the protocol to HTTP/2.
@@ -674,7 +674,7 @@ An attacker will need to use an HTTP/2-exclusive request smuggling vector to gai
 
 [This lab](https://portswigger.net/web-security/request-smuggling/advanced/lab-request-smuggling-h2-request-splitting-via-crlf-injection) is vulnerable to request smuggling because the front-end server downgrades HTTP/2 requests and fails to adequately sanitize incoming headers. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Send a request for `GET /` to Burp Repeater. Expand the Inspector's Request Attributes section and change the protocol to HTTP/2.
 2. Change the path of the request to a non-existent endpoint, such as `/x`. This means that your request will always get a 404 response. Once you have poisoned the response queue, this will make it easier to recognize any other users' responses that you have successfully captured.
@@ -725,7 +725,7 @@ The connection to the back-end is reset every 10 requests. If the connection get
 
 [This lab](https://portswigger.net/web-security/request-smuggling/browser/cl-0/lab-cl-0-request-smuggling) is vulnerable to CL.0 request smuggling attacks. The back-end server ignores the Content-Length header on requests to some endpoints. 
 
-### Proof of Concept
+### Proof of concept
 
 #### Probe for vulnerable endpoints
 
@@ -783,7 +783,7 @@ An attacker will need to identify a vulnerable endpoint, smuggle a request to th
 
 [This lab](https://portswigger.net/web-security/request-smuggling/exploiting/lab-perform-web-cache-poisoning) involves a front-end and back-end server, and the front-end server doesn't support chunked encoding. The front-end server is configured to cache certain responses.
 
-### Proof of Concept
+### Proof of concept
 
 1. Open a blog post, click "Next post", and try smuggling the resulting request with a different Host header:
 
@@ -852,7 +852,7 @@ An attacker will need to perform a request smuggling attack that causes the cach
 
 [This lab](https://portswigger.net/web-security/request-smuggling/exploiting/lab-perform-web-cache-deception) involves a front-end and back-end server, and the front-end server doesn't support chunked encoding. The front-end server is caching static resources. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Log in to your account and access the user account page.
 2. Observe that the response doesn't have any anti-caching headers.
@@ -893,7 +893,7 @@ Manually fixing length fields in request smuggling attacks can be tricky. The [H
 
 The front-end server doesn't reuse the connection to the back-end, so isn't vulnerable to classic request smuggling attacks. However, it is still vulnerable to request tunnelling. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Send the `GET /` request to Burp Repeater. Expand the Inspector's Request Attributes section and change the protocol to HTTP/2.
 2. Using the Inspector, append an arbitrary header to the end of the request and try smuggling a Host header in its name as follows:
@@ -981,7 +981,7 @@ _Note: This lab supports HTTP/2 but doesn't advertise this via ALPN. To send HTT
 
 The front-end server doesn't reuse the connection to the back-end, so isn't vulnerable to classic request smuggling attacks. However, it is still vulnerable to request tunnelling. 
 
-### Proof of Concept
+### Proof of concept
 
 1. Send a request for `GET /` to Burp Repeater. Expand the Inspector's Request Attributes section and change the protocol to HTTP/2.
 2. Using the Inspector, try smuggling an arbitrary header in the :path pseudo-header, making sure to preserve a valid request line for the downgraded request as follows:
@@ -1057,7 +1057,7 @@ _Note: This lab supports HTTP/2 but doesn't advertise this via ALPN. To send HTT
 
 [This lab](https://portswigger.net/web-security/request-smuggling/browser/client-side-desync/lab-client-side-desync) is vulnerable to client-side desync attacks because the server ignores the `Content-Length` header on requests to some endpoints. This can be exploited to induce a victim's browser to disclose its session cookie. See [Browser-Powered Desync Attacks: A New Frontier in HTTP Request Smuggling: CSD](https://portswigger.net/research/browser-powered-desync-attacks#csd).
 
-### Proof of Concept
+### Proof of concept
 
 #### Identify a vulnerable endpoint
 
@@ -1205,7 +1205,7 @@ An attacker will need to identify a client-side desync vector in Burp, then conf
 
 [This lab](https://portswigger.net/web-security/request-smuggling/browser/client-side-desync/lab-browser-cache-poisoning-via-client-side-desync) is vulnerable to client-side desync attacks. You can exploit this to induce a victim's browser to poison its own cache. See [Browser-Powered Desync Attacks: A New Frontier in HTTP Request Smuggling: Cisco](https://portswigger.net/research/browser-powered-desync-attacks#cisco).
 
-### Proof of Concept
+### Proof of concept
 
 #### Identify the desync vector
 
@@ -1423,7 +1423,7 @@ When testing the attack in the browser, make sure to clear cached images and fil
 
 [This lab](https://portswigger.net/web-security/request-smuggling/browser/pause-based-desync/lab-server-side-pause-based-request-smuggling) is vulnerable to pause-based server-side request smuggling. The front-end server streams requests to the back-end, and the back-end server does not close the connection after a timeout on some endpoints. See [Browser-Powered Desync Attacks: A New Frontier in HTTP Request Smuggling: Pause](https://portswigger.net/research/browser-powered-desync-attacks#pause).
 
-### Proof of Concept
+### Proof of concept
 
 #### Identify a desync vector
 
