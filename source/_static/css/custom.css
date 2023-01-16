@@ -1,3 +1,10 @@
+.wy-body-for-nav {
+  background-image: url('uu.png');
+  background-repeat: repeat-y;
+  background-attachment: fixed;
+  background-position: right top;
+}
+
 h1 {
   color: #DD0000;
 }
