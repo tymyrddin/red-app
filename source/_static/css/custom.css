@@ -1,7 +1,5 @@
 .wy-body-for-nav {
-  background-image: url('uu.png');
-  background-repeat: repeat-y;
-  background-position: right top;
+  background-color: #333;
 }
 
 h1 {
