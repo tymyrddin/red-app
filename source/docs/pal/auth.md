@@ -315,7 +315,7 @@ An attacker can log in to `wiener:peter`. Any emails sent to this account can be
 ### Proof of concept
 
 1. With Burp running, log in and experiment with the password change functionality. Observe that the username is submitted as hidden input in the request.
-2. Notice the behavior when you enter the wrong current password. If the two entries for the new password match, the account is locked. However, if you enter two different new passwords, an error message simply states `Current password is incorrect`. If you enter a valid current password, but two different new passwords, the message says `New passwords do not match`. We can use this message to enumerate correct passwords.
+2. Notice the behaviour when you enter the wrong current password. If the two entries for the new password match, the account is locked. However, if you enter two different new passwords, an error message simply states `Current password is incorrect`. If you enter a valid current password, but two different new passwords, the message says `New passwords do not match`. We can use this message to enumerate correct passwords.
 3. Enter your correct current password and two new passwords that do not match. Send this `POST /my-account/change-password` request to Burp Intruder.
 4. In Burp Intruder, change the username parameter to carlos and add a payload position to the current-password parameter. Make sure that the new password parameters are set to two different values. For example:
 
@@ -375,7 +375,7 @@ An attacker will need to brute-force Carlos's password, then access his account 
 ### Proof of concept
 
 1. With Burp running, log in and experiment with the password change functionality. Observe that the username is submitted as hidden input in the request.
-2. Notice the behavior when you enter the wrong current password. If the two entries for the new password match, the account is locked. However, if you enter two different new passwords, an error message simply states ``Current password is incorrect``. If you enter a valid current password, but two different new passwords, the message says ``New passwords do not match``. We can use this message to enumerate correct passwords.
+2. Notice the behaviour when you enter the wrong current password. If the two entries for the new password match, the account is locked. However, if you enter two different new passwords, an error message simply states ``Current password is incorrect``. If you enter a valid current password, but two different new passwords, the message says ``New passwords do not match``. We can use this message to enumerate correct passwords.
 3. Enter your correct current password and two new passwords that do not match. Send this ``POST /my-account/change-password`` request to Burp Intruder.
 4. In Burp Intruder, change the ``username`` parameter to ``carlos`` and add a payload position to the ``current-password`` parameter. Make sure that the new password parameters are set to two different values. For example:
 

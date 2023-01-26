@@ -221,7 +221,7 @@ An attacker will need to poison the cache with a response that executes `alert(1
 2. Notice that if you use a semicolon (;) to append another parameter to utm_content, the cache treats this as a single parameter. This means that the extra parameter is also excluded from the cache key. Alternatively, with Param Miner loaded, right-click on the request and select "Bulk scan" > "Rails parameter cloaking scan" to identify the vulnerability automatically.
 3. Observe that every page imports the script ``/js/geolocate.js``, executing the callback function ``setCountryCookie()``. Send the request ``GET /js/geolocate.js?callback=setCountryCookie`` to Burp Repeater.
 4. Notice that you can control the name of the function that is called on the returned data by editing the ``callback`` parameter. However, you can't poison the cache for other users in this way because the parameter is keyed.
-5. Study the cache behavior. Observe that if you add duplicate ``callback`` parameters, only the final one is reflected in the response, but both are still keyed. However, if you append the second ``callback`` parameter to the ``utm_content`` parameter using a semicolon, it is excluded from the cache key and still overwrites the callback function in the response:
+5. Study the cache behaviour. Observe that if you add duplicate ``callback`` parameters, only the final one is reflected in the response, but both are still keyed. However, if you append the second ``callback`` parameter to the ``utm_content`` parameter using a semicolon, it is excluded from the cache key and still overwrites the callback function in the response:
 
 ```text
 GET /js/geolocate.js?callback=setCountryCookie&utm_content=foo;callback=arbitraryFunction

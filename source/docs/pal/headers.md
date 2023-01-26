@@ -54,7 +54,7 @@ An attacker will need to access the admin panel and delete Carlos's account.
 
 ### Proof of concept
 
-1. Send the ``GET /`` request that received a 200 response to Burp Repeater and study the lab's behavior. Observe that the website validates the Host header. After tampering with it, you are unable to still access the home page.
+1. Send the ``GET /`` request that received a 200 response to Burp Repeater and study the lab's behaviour. Observe that the website validates the Host header. After tampering with it, you are unable to still access the home page.
 2. In the original response, notice the verbose caching headers, which tell you when you get a cache hit and how old the cached response is. Add an arbitrary query parameter to your requests to serve as a cache buster, for example, ``GET /?cb=123``. You can simply change this parameter each time you want a fresh response from the back-end server.
 3. Notice that if you add a second Host header with an arbitrary value, this appears to be ignored when validating and routing your request. Crucially, notice that the arbitrary value of your second Host header is reflected in an absolute URL used to import a script from ``/resources/js/tracking.js``.
 4. Remove the second Host header and send the request again using the same cache buster. Notice that you still receive the same cached response containing your injected value.
