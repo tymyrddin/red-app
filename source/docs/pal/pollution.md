@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/prototype-pollution/finding/lab-prototype-pollution-dom-xss-via-client-side-prototype-pollution) is vulnerable to DOM XSS via client-side prototype pollution.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 #### Find a prototype pollution source
 
@@ -58,7 +58,7 @@ This lab can be solved manually in a browser, or by using [DOM Invader](https://
 
 [This lab](https://portswigger.net/web-security/prototype-pollution/finding/lab-prototype-pollution-dom-xss-via-an-alternative-prototype-pollution-vector) is vulnerable to DOM XSS via client-side prototype pollution.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Load the lab in Burp's built-in browser.
 2. Enable [DOM Invader](https://portswigger.net/burp/documentation/desktop/tools/dom-invader) and enable the prototype pollution option.
@@ -86,7 +86,7 @@ This lab can be solved manually in a browser, or by using [DOM Invader](https://
 
 [This lab](https://portswigger.net/web-security/prototype-pollution/finding/lab-prototype-pollution-client-side-prototype-pollution-in-third-party-libraries) is vulnerable to DOM XSS via client-side prototype pollution. This is due to a gadget in a third-party library, which is easy to miss due to the minified source code. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Load the lab in Burp's built-in browser.
 2. Enable [DOM Invader](https://portswigger.net/burp/documentation/desktop/tools/dom-invader) and enable the prototype pollution option.
@@ -123,7 +123,7 @@ Although it's technically possible to solve this lab manually, using [DOM Invade
 
 [This lab](https://portswigger.net/web-security/prototype-pollution/browser-apis/lab-prototype-pollution-client-side-prototype-pollution-via-browser-apis) is vulnerable to DOM XSS via client-side prototype pollution. The website's developers have noticed a potential gadget and attempted to patch it. However, you can bypass the measures they've taken. Also see [Widespread prototype pollution gadgets](https://portswigger.net/research/widespread-prototype-pollution-gadgets).
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Load the lab in Burp's built-in browser.
 2. Enable [DOM Invader](https://portswigger.net/burp/documentation/desktop/tools/dom-invader) and enable the prototype pollution option.
@@ -146,7 +146,7 @@ An attacker will need to find a source that you can use to add arbitrary propert
 
 [This lab](https://portswigger.net/web-security/prototype-pollution/preventing/lab-prototype-pollution-client-side-prototype-pollution-via-flawed-sanitization) is vulnerable to DOM XSS via client-side prototype pollution. Although the developers have implemented measures to prevent prototype pollution, these can be easily bypassed.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 #### Find a prototype pollution source
 

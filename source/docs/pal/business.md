@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-excessive-trust-in-client-side-controls) doesn't adequately validate user input. You can exploit a logic flaw in its purchasing workflow to buy items for an unintended price.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. With Burp running, log in and attempt to buy the leather jacket. The order is rejected because you don't have enough store credit.
 2. In Burp, go to "Proxy" > "HTTP history" and study the order process. Notice that when you add an item to your cart, the corresponding request contains a ``price`` parameter. Send the ``POST /cart`` request to Burp Repeater.
@@ -26,7 +26,7 @@ An attacker will need to log in to `wiener:peter`; and buy a "Lightweight l33t l
 
 [This lab](https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-high-level) doesn't adequately validate user input. You can exploit a logic flaw in its purchasing workflow to buy items for an unintended price. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. With Burp running, log in and add a cheap item to your cart.
 2. In Burp, go to "Proxy" > "HTTP history" and study the corresponding HTTP messages. Notice that the quantity is determined by a parameter in the ``POST /cart`` request.
@@ -49,7 +49,7 @@ An attacker will need to log in to `wiener:peter`; and buy a "Lightweight l33t l
 
 [This lab](https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-inconsistent-security-controls)'s flawed logic allows arbitrary users to access administrative functionality that should only be available to company employees.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Open the lab then go to the "Target" > "Site map" tab in Burp. Right-click on the lab domain and select "Engagement tools" > "Discover content" to open the content discovery tool.
 2. Click "Session is not running" to start the content discovery. After a short while, look at the "Site map" tab in the dialog. Notice that it discovered the path ``/admin``.
@@ -78,7 +78,7 @@ An attacker will need to access the admin panel and delete Carlos.
 
 [This lab](https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-flawed-enforcement-of-business-rules)  has a logic flaw in its purchasing workflow. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Log in and notice that there is a coupon code, ``NEWCUST5``.
 2. At the bottom of the page, sign up to the newsletter. You receive another coupon code, ``SIGNUP30``.
@@ -99,7 +99,7 @@ An attacker will need to log in to `wiener:peter`; and buy a "Lightweight l33t l
 
 [This lab](https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-low-level) doesn't adequately validate user input. You can exploit a logic flaw in its purchasing workflow to buy items for an unintended price.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. With Burp running, log in and attempt to buy the leather jacket. The order is rejected because you don't have enough store credit. In the proxy history, study the order process. Send the ``POST /cart`` request to Burp Repeater.
 2. In Burp Repeater, notice that you can only add a 2-digit quantity with each request. Send the request to Burp Intruder.
@@ -125,7 +125,7 @@ An attacker will need to log in to `wiener:peter`; and buy a "Lightweight l33t l
 
 [This lab](https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-inconsistent-handling-of-exceptional-input) doesn't adequately validate user input. You can exploit a logic flaw in its account registration process to gain access to administrative functionality. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. While proxying traffic through Burp, open the lab and go to the "Target" > "Site map" tab. Right-click on the lab domain and select "Engagement tools" > "Discover content" to open the content discovery tool.
 2. Click "Session is not running" to start the content discovery. After a short while, look at the "Site map" tab in the dialog. Notice that it discovered the path ``/admin``.
@@ -166,7 +166,7 @@ An attacker will need to access the admin panel and delete Carlos.
 
 [This lab](https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-weak-isolation-on-dual-use-endpoint) makes a flawed assumption about the user's privilege level based on their input. As a result, you can exploit the logic of its account management features to gain access to arbitrary users' accounts. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. With Burp running, log in and access your account page.
 2. Change your password.
@@ -188,7 +188,7 @@ An attacker will need to log in to `wiener:peter`; access the administrator acco
 
 [This lab](https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-insufficient-workflow-validation) makes flawed assumptions about the sequence of events in the purchasing workflow. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. With Burp running, log in and buy any item that you can afford with your store credit.
 2. Study the proxy history. Observe that when you place an order, the ``POST /cart/checkout`` request redirects you to an order confirmation page. Send ``GET /cart/order-confirmation?order-confirmation=true`` to Burp Repeater.
@@ -207,7 +207,7 @@ An attacker will need to log in to `wiener:peter`; and buy a "Lightweight l33t l
 
 [This lab](https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-authentication-bypass-via-flawed-state-machine) makes flawed assumptions about the sequence of events in the login process.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. With Burp running, complete the login process and notice that you need to select your role before you are taken to the home page.
 2. Use the content discovery tool to identify the ``/admin`` path.
@@ -228,7 +228,7 @@ An attacker will need to log in to `wiener:peter`; exploit this flaw to bypass t
 
 [This lab](https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-infinite-money) has a logic flaw in its purchasing workflow.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. With Burp running, log in and sign up for the newsletter to obtain a coupon code, ``SIGNUP30``. Notice that you can buy $10 gift cards and redeem them from the "My account" page.
 2. Add a gift card to your basket and proceed to the checkout. Apply the coupon code to get a 30% discount. Complete the order and copy the gift card code to your clipboard.
@@ -269,7 +269,7 @@ An attacker will need to log in to `wiener:peter`; and buy a "Lightweight l33t l
 
 [This lab](https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-authentication-bypass-via-encryption-oracle) contains a logic flaw that exposes an encryption oracle to users.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Log in with the "Stay logged in" option enabled and post a comment. Study the corresponding requests and responses using Burp's manual testing tools. Observe that the `stay-logged-in` cookie is encrypted.
 2. Notice that when you try and submit a comment using an invalid email address, the response sets an encrypted notification cookie before redirecting you to the blog post.

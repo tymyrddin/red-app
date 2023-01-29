@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-in-error-messages)'s verbose error messages reveal that it is using a vulnerable version of a third-party framework.  
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. With Burp running, open one of the product pages.
 2. In Burp, go to "Proxy" > "HTTP history" and notice that the ``GET`` request for product pages contains a ``productID`` parameter. Send the ``GET /product?productId=1`` request to Burp Repeater. Note that your ``productId`` might be different depending on which product page you loaded.
@@ -27,7 +27,7 @@ An attacker will need to obtain and submit the version number of this framework.
 
 [This lab](https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-on-debug-page) contains a debug page that discloses sensitive information about the application.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. With Burp running, browse to the home page.
 2. Go to the "Target" > "Site Map" tab. Right-click on the top-level entry for the lab and select "Engagement tools" > "Find comments". Notice that the home page contains an HTML comment that contains a link called "Debug". This points to ``/cgi-bin/phpinfo.php``.
@@ -47,7 +47,7 @@ An attacker will need to obtain and submit the `SECRET_KEY` environment variable
 
 [This lab](https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-via-backup-files) leaks its source code via backup files in a hidden directory.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Browse to ``/robots.txt`` and notice that it reveals the existence of a ``/backup`` directory. Browse to ``/backup`` to find the file ``ProductTemplate.java.bak``. Alternatively, right-click on the lab in the site map and go to "Engagement tools" > "Discover content". Then, launch a content discovery session to discover the ``/backup`` directory and its contents.
 2. Browse to ``/backup/ProductTemplate.java.bak`` to access the source code.
@@ -66,7 +66,7 @@ An attacker will need to identify and submit the database password, which is har
 
 [This lab](https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-authentication-bypass)'s administration interface has an authentication bypass vulnerability, but it is impractical to exploit without knowledge of a custom HTTP header used by the front-end. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. In Burp Repeater, browse to ``GET /admin``. The response discloses that the admin panel is only accessible if logged in as an administrator, or if requested from a local IP.
 2. Send the request again, but this time use the `TRACE` method:
@@ -87,7 +87,7 @@ An attacker will need to log in to `wiener:peter`; obtain the header name then u
 
 [This lab](https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-in-version-control-history) discloses sensitive information via its version control history. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Open the lab and browse to ``/.git`` to reveal the lab's Git version control data.
 2. Download a copy of this entire directory. For non-Windows users, the easiest way to do this is using the command ``wget -r https://your-lab-id.web-security-academy.net/.git``. Windows users will need to find an alternative method, or install a UNIX-like environment, such as Cygwin, in order to use this command.

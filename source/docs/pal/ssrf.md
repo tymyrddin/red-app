@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost) has a stock check feature which fetches data from an internal system.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Browse to ``/admin`` and observe that you can't directly access the admin page.
 2. Visit a product, click "Check stock", intercept the request in Burp Suite, and send it to Burp Repeater.
@@ -32,7 +32,7 @@ An attacker will need to change the stock check URL to access the admin interfac
 
 [This lab](https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-backend-system) has a stock check feature which fetches data from an internal system.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Visit a product, click "Check stock", intercept the request in Burp Suite, and send it to Burp Intruder.
 2. Click "Clear §", change the ``stockApi`` parameter to ``http://192.168.0.1:8080/admin`` then highlight the final octet of the IP address (the number 1), click "Add §".
@@ -53,7 +53,7 @@ An attacker will need to use the stock check functionality to scan the internal 
 
 [This lab](https://portswigger.net/web-security/ssrf/lab-ssrf-with-blacklist-filter) has a stock check feature which fetches data from an internal system.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Visit a product, click "Check stock", intercept the request in Burp Suite, and send it to Burp Repeater.
 2. Change the URL in the ``stockApi`` parameter to ``http://127.0.0.1/`` and observe that the request is blocked.
@@ -73,7 +73,7 @@ An attacker will need to change the stock check URL to access the admin interfac
 
 [This lab](https://portswigger.net/web-security/ssrf/lab-ssrf-filter-bypass-via-open-redirection) has a stock check feature which fetches data from an internal system.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Visit a product, click "Check stock", intercept the request in Burp Suite, and send it to Burp Repeater.
 2. Try tampering with the ``stockApi`` parameter and observe that it isn't possible to make the server issue the request directly to a different host.
@@ -103,7 +103,7 @@ An attacker will need to change the stock check URL to access the admin interfac
 
 [This site](https://portswigger.net/web-security/ssrf/blind/lab-out-of-band-detection) uses analytics software which fetches the URL specified in the Referer header when a product page is loaded.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. In Burp Suite Professional, go to the Burp menu and launch the Burp Collaborator client.
 2. Click "Copy to clipboard" to copy a unique Burp Collaborator payload to your clipboard. Leave the Burp Collaborator client window open.
@@ -124,7 +124,7 @@ An attacker will need to use the analytics functionality to cause an HTTP reques
 
 [This lab](https://portswigger.net/web-security/ssrf/lab-ssrf-with-whitelist-filter) has a stock check feature which fetches data from an internal system.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Visit a product, click "Check stock", intercept the request in Burp Suite, and send it to Burp Repeater.
 2. Change the URL in the `stockApi` parameter to `http://127.0.0.1/` and observe that the application is parsing the URL, extracting the hostname, and validating it against a whitelist.
@@ -149,7 +149,7 @@ An attacker will need to change the stock check URL to access the admin interfac
 
 [This site](https://portswigger.net/web-security/ssrf/blind/lab-shellshock-exploitation) uses analytics software which fetches the URL specified in the Referer header when a product page is loaded.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. In Burp Suite Professional, install the "Collaborator Everywhere" extension from the BApp Store.
 2. Add the domain of the lab to Burp Suite's target scope, so that Collaborator Everywhere will target it.

@@ -8,7 +8,7 @@ As with many high-severity vulnerabilities, experimenting with server-side templ
 
 [This lab](https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-basic) is vulnerable to server-side template injection due to the unsafe construction of an ERB template.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Notice that when you try to view more details about the first product, a GET request uses the message parameter to render "``Unfortunately this product is out of stock``" on the home page.
 2. In the ERB documentation, discover that the syntax ``<%= someExpression %>`` is used to evaluate an expression and render the result on the page.
@@ -50,7 +50,7 @@ An attacker will need to review the ERB documentation to find out how to execute
 
 [This lab](https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-basic-code-context) is vulnerable to server-side template injection due to the way it unsafely uses a Tornado template. To solve the lab, review the Tornado documentation to discover how to execute arbitrary code, then delete the morale.txt file from Carlos's home directory.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. While proxying traffic through Burp, log in and post a comment on one of the blog posts.
 2. Notice that on the "My account" page, you can select whether you want the site to use your full name, first name, or nickname. When you submit your choice, a ``POST`` request sets the value of the parameter ``blog-post-author-display`` to either ``user.name``, ``user.first_name``, or ``user.nickname``. When you load the page containing your comment, the name above your comment is updated based on the current value of this parameter.
@@ -97,7 +97,7 @@ An attacker will need to review the Tornado documentation to discover how to exe
 
 [This lab](https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-using-documentation) is vulnerable to server-side template injection. To solve the lab, identify the template engine and use the documentation to work out how to execute arbitrary code, then delete the morale.txt file from Carlos's home directory.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Log in and edit one of the product description templates. Notice that this template engine uses the syntax ``${someExpression}`` to render the result of an expression on the page. Either enter your own expression or change one of the existing ones to refer to an object that doesn't exist, such as ``${foobar}``, and save the template. The error message in the output shows that the Freemarker template engine is being used.
 2. Study the Freemarker documentation and find that appendix contains an FAQs section with the question "Can I allow users to upload templates and what are the security implications?". The answer describes how the ``new()`` built-in can be dangerous.
@@ -125,7 +125,7 @@ An attacker will need to identify the template engine and use the documentation 
 
 [This lab](https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-in-an-unknown-language-with-a-documented-exploit) is vulnerable to server-side template injection.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Notice that when you try to view more details about the first product, a ``GET`` request uses the ``message`` parameter to render "``Unfortunately this product is out of stock``" on the home page.
 2. Experiment by injecting a fuzz string containing template syntax from various different template languages, such as ``${{<%[%'"}}%\``, into the ``message`` parameter. Notice that when you submit invalid syntax, an error message is shown in the output. This identifies that the website is using Handlebars.
@@ -174,7 +174,7 @@ An attacker will need to identify the template engine and find a documented expl
 
 [This lab](https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-with-information-disclosure-via-user-supplied-objects) is vulnerable to server-side template injection due to the way an object is being passed into the template. This vulnerability can be exploited to access sensitive data. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Log in and edit one of the product description templates.
 2. Change one of the template expressions to something invalid, such as a fuzz string ``${{<%[%'"}}%\``, and save the template. The error message in the output hints that the Django framework is being used.
@@ -208,7 +208,7 @@ An attacker will need to steal and submit the framework's secret key. An account
 
 [This lab](https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-in-a-sandboxed-environment) uses the Freemarker template engine. It is vulnerable to server-side template injection due to its poorly implemented sandbox.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Log in and edit one of the product description templates. Notice that you have access to the product object.
 2. Load the JavaDoc for the Object class to find methods that should be available on all objects. Confirm that you can execute `${object.getClass()}` using the product object.
@@ -234,7 +234,7 @@ An attacker will need to break out of the sandbox to read the file my_password.t
 
  This lab is vulnerable to server-side template injection. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. While proxying traffic through Burp, log in and post a comment on one of the blogs.
 2. Go to the "My account" page. Notice that the functionality for setting a preferred name is vulnerable to server-side template injection, as we saw in a previous lab. You should also have noticed that you have access to the user object.

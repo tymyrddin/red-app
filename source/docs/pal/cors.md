@@ -6,7 +6,7 @@
 
 The Academy website for [this lab](https://portswigger.net/web-security/cors/lab-basic-origin-reflection-attack) has an insecure CORS configuration in that it trusts all origins. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Start Burp, foxyproxy, and with intercept off, log in to the target site and access your account page.
 
@@ -76,7 +76,7 @@ An attacker can directly forge a request from any trusted origin. Apply protecti
 
 [This website](https://portswigger.net/web-security/cors/lab-null-origin-whitelisted-attack) has an insecure CORS configuration in that it trusts the `null` origin.  
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Start Burp, foxyproxy, and with intercept off, log in to the target site and access your account page.
 2. In Burp, review the **HTTPhistory**. The API key is retrieved via an AJAX request to `/accountDetails`, and the response contains the `Access-Control-Allow-Credentials` header suggesting that it may support CORS.
@@ -114,7 +114,7 @@ To solve the lab, an attacker needs to craft some JavaScript that uses CORS to r
 
 The website of [this lab](https://portswigger.net/web-security/cors/lab-breaking-https-attack) has an insecure CORS configuration in that it trusts all subdomains regardless of the protocol.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Start Burp, foxyproxy, and with intercept off, log in to the target site and access your account page.
 2. In Burp, review the history. The API key is retrieved via an AJAX request to `/accountDetails`, and the response contains the `Access-Control-Allow-Credentials` header suggesting that it may support CORS.
@@ -146,7 +146,7 @@ _If an on-path attack (MitM) between server and victim was possible, a connectio
 
 The website of [this lab](https://portswigger.net/web-security/cors/lab-internal-network-pivot-attack) has an insecure CORS configuration in that it trusts all internal network origins, and requires multiple steps to complete. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Scan the local network for the endpoint. Replace `$collaboratorPayload` with your own Collaborator payload or exploit server URL. Enter the following code into the exploit server. Click **Store**, then **Deliver exploit to victim**. Inspect the log or the Collaborator interaction and look at the code parameter sent to it.
 

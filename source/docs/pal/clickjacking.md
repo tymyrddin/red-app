@@ -6,7 +6,7 @@
 
 This lab contains login functionality and a delete account button that is protected by a CSRF token. A user will click on elements that display the word "click" on a decoy website. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Log in and view `my_account`:
 
@@ -71,7 +71,7 @@ To solve the lab, an attacker needs to craft some HTML that frames the account p
 
 [This lab](https://portswigger.net/web-security/clickjacking/lab-prefilled-form-input) extends the above `Basic clickjacking with CSRF token protection` lab (above). The goal of the lab is to change the email address of the user by prepopulating a form using a URL parameter and enticing the user to inadvertently click on an "Update email" button. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Log in to the account on the target website.
 2. Create payload:
@@ -119,7 +119,7 @@ An attacker needs to craft some HTML that frames the account page and fools the 
 
 [This lab](https://portswigger.net/web-security/clickjacking/lab-frame-buster-script) is protected by a frame buster which prevents the website from being framed. Can you get around the frame buster and conduct a clickjacking attack that changes the users email address? To solve the lab, craft some HTML that frames the account page and fools the user into changing their email address by clicking on "Click me". 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Log in to the account on the target website.
 2. Create payload:
@@ -168,7 +168,7 @@ An attacker needs to change another user's email address. You can log in to your
 
 [This lab](https://portswigger.net/web-security/clickjacking/lab-exploiting-to-trigger-dom-based-xss) contains an XSS vulnerability that is triggered by a click. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Log in to the account on the target website.
 2. Create payload:
@@ -212,7 +212,7 @@ An attacker needs to construct a clickjacking attack that fools the user into cl
 
 [This lab](https://portswigger.net/web-security/clickjacking/lab-multistep) has some account functionality that is protected by a CSRF token and also has a confirmation dialog to protect against clickjacking.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Log in to the account on the target website.
 2. Create payload:

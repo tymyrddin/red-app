@@ -12,11 +12,11 @@ Cross-site request forgery (CSRF) is a client-side technique used to attack othe
 
 ## Steps
 
-1. Look for state-changing actions on the application and keep a note on their locations and functionality.
+1. Look for relevant state-changing actions on the application and keep a note on their locations and functionality.
 2. Check these functionalities for CSRF protection. If you can not find any protections, you might have found a vulnerability.
 3. There are a lot of anti-CSRF protections, and most of them are included in the most-used web technologies. Avoid reinventing the wheel. If any CSRF protection mechanisms are present, try to bypass the protection.
 4. Confirm the vulnerability by crafting a malicious HTML page and visiting that page to see if the action has executed.
-5. Think of strategies for delivering your payload to end users.
+5. Think of strategies for delivering the payload to end users.
 6. Draft the CSRF report
 
 ## Look for state-changing actions

@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/host-header/exploiting/password-reset-poisoning/lab-host-header-basic-password-reset-poisoning) is vulnerable to password reset poisoning. The user carlos will carelessly click on any links in emails that he receives.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Go to the login page and notice the "Forgot your password?" functionality. Request a password reset for your own account.
 2. Go to the exploit server and open the email client. Observe that you have received an email containing a link to reset your password. Notice that the URL contains the query parameter ``temp-forgot-password-token``.
@@ -31,7 +31,7 @@ Any emails sent to `wiener:peter` can be read via the email client on the exploi
 
 [This lab](https://portswigger.net/web-security/host-header/exploiting/lab-host-header-authentication-bypass) makes an assumption about the privilege level of the user based on the HTTP Host header.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Send the ``GET /`` request that received a 200 response to Burp Repeater. Notice that you can change the Host header to an arbitrary value and still successfully access the home page.
 2. Browse to ``/robots.txt`` and observe that there is an admin panel at ``/admin``.
@@ -52,7 +52,7 @@ An attacker will need to access the admin panel and delete Carlos's account.
 
 [This lab](https://portswigger.net/web-security/host-header/exploiting/lab-host-header-web-cache-poisoning-via-ambiguous-requests) is vulnerable to web cache poisoning due to discrepancies in how the cache and the back-end application handle ambiguous requests. An unsuspecting user regularly visits the site's home page.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Send the ``GET /`` request that received a 200 response to Burp Repeater and study the lab's behaviour. Observe that the website validates the Host header. After tampering with it, you are unable to still access the home page.
 2. In the original response, notice the verbose caching headers, which tell you when you get a cache hit and how old the cached response is. Add an arbitrary query parameter to your requests to serve as a cache buster, for example, ``GET /?cb=123``. You can simply change this parameter each time you want a fresh response from the back-end server.
@@ -82,7 +82,7 @@ An attacker will need to poison the cache so the home page executes `alert(docum
 
 [This lab](https://portswigger.net/web-security/host-header/exploiting/lab-host-header-routing-based-ssrf) is vulnerable to routing-based SSRF via the Host header. This can be exploited to access an insecure intranet admin panel located on an internal IP address. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Send the `GET /` request that received a 200 response to Burp Repeater.
 2. In Burp Repeater, select the Host header value, right-click and select "Insert Collaborator payload" to replace it with a Collaborator domain name. Send the request.
@@ -127,7 +127,7 @@ An attacker will need to access the internal admin panel located in the `192.168
 
 [This lab](https://portswigger.net/web-security/host-header/exploiting/lab-host-header-ssrf-via-flawed-request-parsing) is vulnerable to routing-based SSRF due to its flawed parsing of the request's intended host. This can be exploited to access an insecure intranet admin panel located at an internal IP address. 
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Send the `GET /` request that received a 200 response to Burp Repeater and study the lab's behaviour. Observe that the website validates the Host header and blocks any requests in which it has been modified.
 2. Observe that you can also access the home page by supplying an absolute URL in the request line as follows:
@@ -169,7 +169,7 @@ An attacker will need to access the internal admin panel located in the `192.168
 
 [This lab](https://portswigger.net/web-security/host-header/exploiting/lab-host-header-host-validation-bypass-via-connection-state-attack) is vulnerable to routing-based SSRF via the Host header. Although the front-end server may initially appear to perform robust validation of the Host header, it makes assumptions about all requests on a connection based on the first request it receives. Also see [Browser-Powered Desync Attacks: A New Frontier in HTTP Request Smuggling: Connection state attacks](https://portswigger.net/research/browser-powered-desync-attacks#state).
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Send the `GET /` request to Burp Repeater.
 2. Make the following adjustments:
@@ -213,7 +213,7 @@ An attacker will need to exploit the lab's behaviour to access an internal admin
 
 [This lab](https://portswigger.net/web-security/host-header/exploiting/password-reset-poisoning/lab-host-header-password-reset-poisoning-via-dangling-markup) is vulnerable to password reset poisoning via dangling markup.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Go to the login page and request a password reset for your own account.
 2. Go to the exploit server and open the email client to find the password reset email. Observe that the link in the email simply points to the generic login page and the URL does not contain a `password reset` token. Instead, a new password is sent directly in the email body text.

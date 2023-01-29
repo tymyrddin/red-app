@@ -6,7 +6,7 @@
 
 [This lab](https://portswigger.net/web-security/xxe/lab-exploiting-xxe-to-retrieve-files) has a "Check stock" feature that parses XML input and returns any unexpected values in the response.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Visit a product page, click "Check stock", and intercept the resulting POST request in Burp Suite.
 2. Insert the following external entity definition in between the XML declaration and the `stockCheck` element:
@@ -31,7 +31,7 @@ An attacker needs to inject an XML external entity to retrieve the contents of t
 
 The lab server is running a (simulated) EC2 metadata endpoint at the default URL, which is `http://169.254.169.254/`. This endpoint can be used to retrieve data about the instance, some of which might be sensitive.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Visit a product page, click "Check stock", and intercept the resulting POST request in Burp Suite.
 2. Insert the following external entity definition in between the XML declaration and the ``stockCheck`` element:
@@ -57,7 +57,7 @@ An attacker needs to exploit the XXE vulnerability to perform an SSRF attack tha
 
 You can detect the blind XXE vulnerability by triggering out-of-band interactions with an external domain.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Visit a product page, click "Check stock" and intercept the resulting POST request in Burp Suite Professional.
 2. Go to the Burp menu, and launch the Burp Collaborator client.
@@ -88,7 +88,7 @@ An attacker needs to use an external entity to make the XML parser issue a DNS l
 
 [This lab](https://portswigger.net/web-security/xxe/blind/lab-xxe-with-out-of-band-interaction-using-parameter-entities) has a "Check stock" feature that parses XML input, but does not display any unexpected values, and blocks requests containing regular external entities.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Visit a product page, click "Check stock" and intercept the resulting POST request in Burp Suite Professional.
 2. Go to the Burp menu, and launch the Burp Collaborator client.
@@ -113,7 +113,7 @@ An attacker needs to use a parameter entity to make the XML parser issue a DNS l
 
 [This lab](https://portswigger.net/web-security/xxe/blind/lab-xxe-with-out-of-band-exfiltration) has a "Check stock" feature that parses XML input but does not display the result.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Using Burp Suite Professional, go to the Burp menu, and launch the Burp Collaborator client.
 2. Click "Copy to clipboard" to copy a unique Burp Collaborator payload to your clipboard. Leave the Burp Collaborator client window open.
@@ -149,7 +149,7 @@ An attacker needs to exfiltrate the contents of the `/etc/hostname` file. A **ma
 
 [This lab](https://portswigger.net/web-security/xxe/blind/lab-xxe-with-data-retrieval-via-error-messages) has a "Check stock" feature that parses XML input but does not display the result.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Click "Go to exploit server" and save the following malicious DTD file on your server:
 
@@ -184,7 +184,7 @@ An attacker needs to use an external DTD to trigger an error message that displa
 
 This lab has a "Check stock" feature that embeds the user input inside a server-side XML document that is subsequently parsed. Because you don't control the entire XML document you can't define a DTD to launch a classic XXE attack.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Visit a product page, click "Check stock", and intercept the resulting POST request in Burp Suite.
 2. Set the value of the ``productId`` parameter to:
@@ -205,7 +205,7 @@ An attacker needs to inject an `XInclude` statement to retrieve the contents of 
 
 [This lab](https://portswigger.net/web-security/xxe/lab-xxe-via-file-upload) lets users attach avatars to comments and uses the `Apache Batik` library to process avatar image files.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Create a local SVG image with the following content:
 
@@ -232,7 +232,7 @@ An attacker needs to upload an image that displays the contents of the /etc/host
 
 [This lab](https://portswigger.net/web-security/xxe/blind/lab-xxe-trigger-error-message-by-repurposing-local-dtd) has a "Check stock" feature that parses XML input but does not display the result.
 
-### Proof of concept
+### Reproduction and proof of concept
 
 1. Visit a product page, click "Check stock", and intercept the resulting POST request in Burp Suite.
 2. Insert the following parameter entity definition in between the XML declaration and the `stockCheck` element:
