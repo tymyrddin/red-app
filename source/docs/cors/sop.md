@@ -50,7 +50,7 @@ An SOP-bypass bug often means that attackers can read private information or exe
 
 Many researchers will simply report CORS misconfigurations without showing the impact of the vulnerability. Consider the impact of the issue before sending the report.
 
-# Mitigations
+## Mitigations
 
 * Origins specified in the `Access-Control-Allow-Origin` header should only be sites that are trusted. 
 * Dynamically reflecting origins from cross-origin requests without validation is exploitable and to be avoided.
