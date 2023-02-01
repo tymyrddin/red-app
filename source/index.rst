@@ -213,6 +213,7 @@ itself is vulnerable (unlikely, but one never knows).
    :caption: HTTP request smuggling
 
    docs/smuggling/README.md
+   docs/smuggling/smuggling.md
    docs/smuggling/1.md
    docs/smuggling/2.md
    docs/smuggling/3.md

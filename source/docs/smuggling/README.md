@@ -10,10 +10,11 @@ HTTP request smuggling is a technique for interfering with the way a web site pr
 
 ## Why?
 
-Request smuggling vulnerabilities are often critical in nature, allowing an attacker to bypass security controls, gain unauthorised access to sensitive data, and directly compromise other application users. 
+Request smuggling vulnerabilities are often critical in nature, and can be exploited to bypass security controls, gain unauthorised access to sensitive data, directly compromise other application users, to conduct phishing attacks, cache poisoning, cross-site scripting (XSS), and more.  More information regarding exploiting this vulnerability was published by James Kettle during BlackHAT USA 2019, titled [HTTP Desync Attacks: Request Smuggling Reborn](https://portswigger.net/research/http-desync-attacks-request-smuggling-reborn).
 
 ## How?
 
+* [HTTP Request smuggling techniques](smuggling.md)
 * [HTTP request smuggling, basic CL.TE vulnerability](1.md)
 * [HTTP request smuggling, basic TE.CL vulnerability](2.md)
 * [HTTP request smuggling, obfuscating the TE header](3.md)
