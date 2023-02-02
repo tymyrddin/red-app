@@ -2,7 +2,7 @@
 
 HTTP request smuggling vulnerabilities occur when the frontend and the backend interpret the boundary of an HTTP request differently causing de-synchronisation between them. This is due to numerous frontend and backend libraries deviating from RFC specifications when dealing with both the `Content-Length` and the `Transfer-Encoding` header. HTTP request bodies can be framed according to these two headers and deviations from the specification occur. As a result, part of a request gets appended or smuggled, to the next one which allows the response of the smuggled request to be provided to another user.
 
-* The body can vary from application to application, framework to framework, and the `Content-Length` and `Transfer-Encoding: chunked` headers are applicable to `HTTP/1.1` and partially to `HTTP/1.0`, but **not** to `HTTP/2`.
+* The body can vary from application to application, framework to framework, and the `Content-Length` and `Transfer-Encoding: chunked` headers are applicable to `HTTP/1.1` and partially to `HTTP/1.0`, but **not** to `HTTP/2`. That written, other forms of smuggling are possible with the latter.
 * HTTP 1.1 allows for sending both `Content-Length` (`CL`) and `Transfer-Encoding` (`TE`) headers in the same request, but when both are sent, `TE` takes precedence.
 * A **Parent Smuggled Request** is a request that has both the headers to trick the servers.
 * A **Child Smuggled Request** is an ideal request hidden inside the parent-smuggled request. It is called ideal because it only has one of the headers.

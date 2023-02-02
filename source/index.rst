@@ -4,16 +4,9 @@ A canopy of apple-blossom
 TL/DR: Many web applications can still easily be exploited to gain unauthorised access to sensitive data and web
 servers. Threats include SQL Injection, Code Injection, XSS, and Cookie poisoning.
 
-And if not for that and shared hosting is used, there may be access via a vulnerable neighbour. Or maybe the server
-itself is vulnerable (unlikely, but one never knows).
+These pages contain writeups of Portswigger Labs, and notes on techniques.
 
 ----
-
-.. image:: _static/images/burp-books.png
-  :alt: Useful books
-
-----
-
 
 .. toctree::
    :maxdepth: 1
@@ -477,6 +470,13 @@ itself is vulnerable (unlikely, but one never knows).
 
    docs/ctf/README.md
    docs/ctf/picklerick.md
+
+----
+
+.. image:: _static/images/burp-books.png
+  :alt: Useful books
+
+----
 
 .. toctree::
    :caption: Links
