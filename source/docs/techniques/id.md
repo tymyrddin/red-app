@@ -1,8 +1,8 @@
-# Insecure deserialisation vulnerabilities
+# Insecure deserialisation
 
 Serialization is the process by which some bit of data in a programming language gets converted into a format that allows it to be saved in a database or transferred over a network. Deserialisation refers to the opposite process, whereby the program reads the serialized object from a file or the network and converts it back into an object.
 
-Insecure deserialisation is a type of vulnerability that arises when an attacker can manipulate the serialized object to cause unintended consequences in the program. This can lead to authentication bypasses or even [RCE](../os/rce.md).
+Insecure deserialisation is a type of vulnerability that arises when an attacker can manipulate the serialized object to cause unintended consequences in the program. This can lead to authentication bypasses or even [RCE](rce.md).
 
 ## Steps
 
@@ -29,7 +29,7 @@ Once you’ve found a user-supplied serialized object, you need to determine the
 
 ## Escalation
 
-Insecure deserialisation bugs often result in [remote code execution](../os/rce.md), granting the attacker a wide range of capabilities with which to impact the application. And even when RCE is not possible, you might be able to achieve an authentication bypass or otherwise interfere with the logic flow of the application.
+Insecure deserialisation bugs often result in [remote code execution](rce.md), granting the attacker a wide range of capabilities with which to impact the application. And even when RCE is not possible, you might be able to achieve an authentication bypass or otherwise interfere with the logic flow of the application.
 
 The impact of insecure deserialization can be limited when the vulnerability relies on an obscure point of entry, or requires a certain level of application privilege to exploit, or if the vulnerable function is not available to unauthenticated users.
 

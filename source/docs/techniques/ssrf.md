@@ -1,4 +1,4 @@
-# Server-side request forgery (SSRF) techniques
+# Server-side request forgery (SSRF)
 
 A server-side request forgery (SSRF) attack involves forcing some server-side application to make HTTP requests to a 
 domain of our choosing. This can sometimes grant access to internal resources or unprotected admin panels.
@@ -65,7 +65,7 @@ Use this URL in an endpoint vulnerable to SSRF:
 
     https://public.example.com/proxy?url=http://169.254.169.254/latest/meta-data/
 
-These API endpoints are accessible by default unless network admins specifically block or disable them. The information these services reveal is often extremely sensitive and could allow attackers to escalate SSRFs to serious information leaks and even [RCE](../os/rce.md).
+These API endpoints are accessible by default unless network admins specifically block or disable them. The information these services reveal is often extremely sensitive and could allow attackers to escalate SSRFs to serious information leaks and even [RCE](rce.md).
 
 ### Google Cloud metadata
 

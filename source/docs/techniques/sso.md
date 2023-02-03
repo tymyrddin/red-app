@@ -1,4 +1,4 @@
-# Single-sign-on security issues (SSO)
+# Single-sign-on security (SSO)
 
 Cookie sharing, SAML, and OAuth are the three most common ways of implementing SSO. Each mechanism has unique strengths and weaknesses, and developers choose different approaches depending on their needs.
 
@@ -26,7 +26,7 @@ Cookie sharing, SAML, and OAuth are the three most common ways of implementing S
 ## OAuth token theft
 
 1. Determine whether the website is using `OAuth`.
-2. Look for [open redirect vulnerabilities](../xss/redirects.md).
+2. Look for [open redirect vulnerabilities](redirects.md).
 3. Try to exfiltrate the OAuth tokens by using one of the open redirects found.
 
 ## Escalation

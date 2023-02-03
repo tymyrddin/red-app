@@ -14,7 +14,7 @@ Template engines are designed to generate web pages by combining fixed templates
 
 ## How?
 
-* [Template injection (SSTI) techniques](ssti.md)
+* [Template injection (SSTI) techniques](../techniques/ssti.md)
 * [Basic server-side template injection](1.md)
 * [Basic server-side template injection (code context)](2.md)
 * [Server-side template injection using documentation](3.md)

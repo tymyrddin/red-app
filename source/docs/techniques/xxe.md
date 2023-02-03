@@ -1,4 +1,4 @@
-# XML external entity (XXE) injection techniques
+# XML external entity (XXE) injection
 
 * We can modify XML documents and define the document using a DTD. If an entity is declared within a DTD it is called as internal entity.
 

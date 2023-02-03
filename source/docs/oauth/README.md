@@ -14,7 +14,7 @@ OAuth 2.0 is highly interesting for attackers because it is both extremely commo
 
 ## How?
 
-* [Single-sign-on security issues (SSO)](sso.md)
+* [Single-sign-on security issues (SSO)](../techniques/sso.md)
 * [Authentication bypass via OAuth implicit flow](1.md)
 * [Forced OAuth profile linking](2.md)
 * [OAuth account hijacking via redirect_uri](3.md)

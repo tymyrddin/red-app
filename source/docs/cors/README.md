@@ -14,7 +14,7 @@ It also provides potential for cross-domain attacks, if a website's CORS policy 
 
 ## How?
 
-* [Same-origin policy (SOP) vulnerabilities](sop.md)
+* [Same-origin policy (SOP) vulnerabilities](../techniques/sop.md)
 * [CORS vulnerability with basic origin reflection](1.md)
 * [CORS vulnerability with trusted null origin](2.md)
 * [CORS vulnerability with trusted insecure protocols](3.md)

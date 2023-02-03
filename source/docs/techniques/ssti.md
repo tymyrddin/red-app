@@ -1,6 +1,6 @@
-# Template injection (SSTI) techniques
+# Template injection (SSTI)
 
-Template engines are a type of software used to determine the appearance of a web page. Developers often overlook attacks that target these engines, called server-side template injections (SSTIs), yet they can lead to severe consequences, like [remote code execution](../os/rce.md). They have become more common in the past few years.
+Template engines are a type of software used to determine the appearance of a web page. Developers often overlook attacks that target these engines, called server-side template injections (SSTIs), yet they can lead to severe consequences, like [remote code execution](rce.md). They have become more common in the past few years.
 
 * This bug is critical. The impact could be an RCE attack, not just in the affected server, but in other hosts on the same network.
 * An SSTI found in an application exposes the application, web server, and network.
@@ -20,7 +20,7 @@ Template engines are a type of software used to determine the appearance of a we
 
 Look for locations where you can submit user input to the application. These include URL paths, parameters, fragments, HTTP request headers and body, file uploads, and more.
 
-Templates are typically used to dynamically generate web pages from stored data or user input. For example, applications often use template engines to generate customized email or home pages based on the user’s information. So to look for template injections, look for endpoints that accept user input that will eventually be displayed back to the user. Since these endpoints typically coincide with the endpoints for possible XXS attacks, you can use the [XSS strategies](../xss/xss.md) to identify candidates for template injection. Document these input locations for further testing.
+Templates are typically used to dynamically generate web pages from stored data or user input. For example, applications often use template engines to generate customized email or home pages based on the user’s information. So to look for template injections, look for endpoints that accept user input that will eventually be displayed back to the user. Since these endpoints typically coincide with the endpoints for possible XXS attacks, you can use the [XSS strategies](xss.md) to identify candidates for template injection. Document these input locations for further testing.
 
 ## Detect template injection by submitting test payloads
 

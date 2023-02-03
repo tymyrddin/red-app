@@ -14,7 +14,7 @@ Very often, an attacker can leverage an OS command injection vulnerability to co
 
 ## How?
 
-* [Remote code execution (RCE)](rce.md)
+* [Remote code execution (RCE)](../techniques/rce.md)
 * [OS command injection, simple case](1.md)
 * [Blind OS command injection with time delays](2.md)
 * [Blind OS command injection with output redirection](3.md)

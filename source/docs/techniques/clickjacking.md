@@ -1,4 +1,4 @@
-# Clickjacking techniques
+# Clickjacking
 
 Clickjacking is a technique where a user clicks on a malicious link without realising. This is usually done with a transparent layer on the original site that uses JavaScript or CSS, but if you have control of a subdomain that is trusted by the user, an attacker can socially engineer users to click on the malicious link.
 

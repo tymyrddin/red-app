@@ -14,8 +14,8 @@ An XSS vulnerability occurs when attackers can execute custom scripts on a victi
 
 ## How?
 
-* [Cross-site scripting (XSS) techniques](xss.md)
-* [Open redirection techniques](redirects.md)
+* [Cross-site scripting (XSS) techniques](../techniques/xss.md)
+* [Open redirection techniques](../techniques/redirects.md)
 * [Reflected XSS into HTML context with nothing encoded](1.md)
 * [Stored XSS into HTML context with nothing encoded](2.md)
 * [DOM XSS in document.write sink using source location.search](3.md)

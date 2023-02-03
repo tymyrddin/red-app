@@ -14,7 +14,7 @@ SQL injection (SQLi) is a web security vulnerability that allows an attacker to 
 
 ## How?
 
-* [SQL injection techniques](sqli.md)
+* [SQL injection techniques](../techniques/sqli.md)
 * [SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](1.md)
 * [SQL injection vulnerability allowing login bypass](2.md)
 * [SQL injection UNION attack, determining the number of columns returned by the query](3.md)

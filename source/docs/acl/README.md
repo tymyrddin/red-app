@@ -18,8 +18,8 @@ Broken access controls are a commonly encountered and often critical security vu
 
 ## How?
 
-* [Application logic errors and broken access control vulnerabilities](access.md)
-* [Insecure direct object references (IDOR)](idor.md)
+* [Application logic errors and broken access control vulnerabilities](../techniques/access.md)
+* [Insecure direct object references (IDOR)](../techniques/idor.md)
 * [Unprotected admin functionality](1.md)
 * [Unprotected admin functionality with unpredictable URL](2.md)
 * [User role controlled by request parameter](3.md)

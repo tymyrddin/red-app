@@ -16,7 +16,7 @@ Occasionally, sensitive information might be carelessly leaked to users who are 
 
 ## How?
 
-* [Information disclosure techniques](disclosure.md)
+* [Information disclosure techniques](../techniques/disclosure.md)
 * [Information disclosure in error messages](1.md)
 * [Information disclosure on debug page](2.md)
 * [Source code disclosure via backup files](3.md)

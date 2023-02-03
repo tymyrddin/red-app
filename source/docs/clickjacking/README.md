@@ -14,7 +14,7 @@ The goal of a clickjacking attack is to trick unsuspecting website visitors into
 
 ## How?
 
-* [Clickjacking techniques](clickjacking.md)
+* [Clickjacking techniques](../techniques/clickjacking.md)
 * [Basic clickjacking with CSRF token protection](1.md)
 * [Clickjacking with form input data prefilled from a URL parameter](2.md)
 * [Clickjacking with a frame buster script](3.md)

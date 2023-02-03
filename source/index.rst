@@ -45,13 +45,36 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    docs/enum/binaries.md
 
 .. toctree::
+   :glob:
+   :maxdepth: 1
+   :includehidden:
+   :caption: Notes on techniques
+
+   docs/techniques/README.md
+   docs/techniques/xss.md
+   docs/techniques/redirects.md
+   docs/techniques/clickjacking.md
+   docs/techniques/csrf.md
+   docs/techniques/idor.md
+   docs/techniques/sqli.md
+   docs/techniques/race.md
+   docs/techniques/ssrf.md
+   docs/techniques/id.md
+   docs/techniques/xxe.md
+   docs/techniques/smuggling.md
+   docs/techniques/ssti.md
+   docs/techniques/access.md
+   docs/techniques/rce.md
+   docs/techniques/sop.md
+   docs/techniques/sso.md
+   docs/techniques/disclosure.md
+
+.. toctree::
    :maxdepth: 1
    :includehidden:
    :caption: XSS
 
    docs/xss/README.md
-   docs/xss/redirects.md
-   docs/xss/xss.md
    docs/xss/1.md
    docs/xss/2.md
    docs/xss/3.md
@@ -89,7 +112,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    :caption: SQLi
 
    docs/sqli/README.md
-   docs/sqli/sqli.md
    docs/sqli/1.md
    docs/sqli/2.md
    docs/sqli/3.md
@@ -114,7 +136,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    :caption: CSRF
 
    docs/csrf/README.md
-   docs/csrf/csrf.md
    docs/csrf/1.md
    docs/csrf/2.md
    docs/csrf/3.md
@@ -134,7 +155,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    :caption: Clickjacking
 
    docs/clickjacking/README.md
-   docs/clickjacking/clickjacking.md
    docs/clickjacking/1.md
    docs/clickjacking/2.md
    docs/clickjacking/3.md
@@ -161,7 +181,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    :caption: CORS
 
    docs/cors/README.md
-   docs/cors/sop.md
    docs/cors/1.md
    docs/cors/2.md
    docs/cors/3.md
@@ -173,7 +192,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    :caption: XXE
 
    docs/xxe/README.md
-   docs/xxe/xxe.md
    docs/xxe/1.md
    docs/xxe/2.md
    docs/xxe/3.md
@@ -190,7 +208,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    :caption: SSRF
 
    docs/ssrf/README.md
-   docs/ssrf/ssrf.md
    docs/ssrf/1.md
    docs/ssrf/2.md
    docs/ssrf/3.md
@@ -205,7 +222,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    :caption: HTTP request smuggling
 
    docs/smuggling/README.md
-   docs/smuggling/smuggling.md
    docs/smuggling/1.md
    docs/smuggling/2.md
    docs/smuggling/3.md
@@ -235,7 +251,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    :caption: OS command injection
 
    docs/os/README.md
-   docs/os/rce.md
    docs/os/1.md
    docs/os/2.md
    docs/os/3.md
@@ -248,7 +263,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    :caption: SSTI
 
    docs/ssti/README.md
-   docs/ssti/ssti.md
    docs/ssti/1.md
    docs/ssti/2.md
    docs/ssti/3.md
@@ -276,8 +290,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    :caption: Access control vulnerabilities
 
    docs/acl/README.md
-   docs/acl/access.md
-   docs/acl/idor.md
    docs/acl/1.md
    docs/acl/2.md
    docs/acl/3.md
@@ -349,7 +361,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    :caption: Insecure deserialisation
 
    docs/deserialisation/README.md
-   docs/deserialisation/id.md
    docs/deserialisation/1.md
    docs/deserialisation/2.md
    docs/deserialisation/3.md
@@ -367,7 +378,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    :caption: Information disclosure
 
    docs/id/README.md
-   docs/id/disclosure.md
    docs/id/1.md
    docs/id/2.md
    docs/id/3.md
@@ -412,7 +422,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    :caption: OAuth authentication
 
    docs/oauth/README.md
-   docs/oauth/sso.md
    docs/oauth/1.md
    docs/oauth/2.md
    docs/oauth/3.md
@@ -433,7 +442,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    docs/upload/5.md
    docs/upload/6.md
    docs/upload/7.md
-   docs/upload/race.md
 
 .. toctree::
    :maxdepth: 1

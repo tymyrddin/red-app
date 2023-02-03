@@ -14,7 +14,7 @@ Request smuggling vulnerabilities are often critical in nature, and can be explo
 
 ## How?
 
-* [HTTP Request smuggling techniques](smuggling.md)
+* [HTTP Request smuggling techniques](../techniques/smuggling.md)
 * [HTTP request smuggling, basic CL.TE vulnerability](1.md)
 * [HTTP request smuggling, basic TE.CL vulnerability](2.md)
 * [HTTP request smuggling, obfuscating the TE header](3.md)

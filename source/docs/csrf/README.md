@@ -16,7 +16,7 @@ Using CSRF, attackers can send HTTP requests that pretend to come from the victi
 
 ## How?
 
-* [Cross-site request forgery (CSRF) techniques](csrf.md)
+* [Cross-site request forgery (CSRF) techniques](../techniques/csrf.md)
 * [CSRF vulnerability with no defenses](1.md)
 * [CSRF where token validation depends on request method](2.md)
 * [CSRF where token validation depends on token being present](3.md)

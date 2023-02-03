@@ -21,6 +21,6 @@ File upload functions can be used as a powerful vector for a number of high-seve
 * [Web shell upload via obfuscated file extension](5.md)
 * [Remote code execution via polyglot web shell upload](6.md)
 * [Web shell upload via race condition](7.md)
-* [Race conditions](race.md)
+* [Race conditions](../techniques/race.md)
 
 

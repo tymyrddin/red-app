@@ -14,7 +14,7 @@ This potentially enables an attacker to manipulate serialised objects in order t
 
 ## How?
 
-* [Insecure deserialisation vulnerabilities](id.md)
+* [Insecure deserialisation vulnerabilities](../techniques/id.md)
 * [Modifying serialised objects](1.md)
 * [Modifying serialised data types](2.md)
 * [Using application functionality to exploit insecure deserialisation](3.md)

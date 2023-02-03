@@ -14,7 +14,7 @@ In a typical SSRF attack, the attacker might cause the server to make a connecti
 
 ## How?
 
-* [Server-side request forgery (SSRF) techniques](ssrf.md)
+* [Server-side request forgery (SSRF) techniques](../techniques/ssrf.md)
 * [Basic SSRF against the local server](1.md)
 * [Basic SSRF against another back-end system](2.md)
 * [SSRF with blacklist-based input filter](3.md)

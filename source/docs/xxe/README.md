@@ -14,7 +14,7 @@ XXEs can be very impactful bugs, as they can lead to confidential information di
 
 ## How?
 
-* [XML external entity (XXE) injection techniques](xxe.md)
+* [XML external entity (XXE) injection techniques](../techniques/xxe.md)
 * [Exploiting XXE using external entities to retrieve files](1.md)
 * [Exploiting XXE to perform SSRF attacks](2.md)
 * [Blind XXE with out-of-band interaction](3.md)

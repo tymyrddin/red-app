@@ -1,4 +1,4 @@
-# Same-origin policy (SOP) vulnerabilities
+# Same-origin policy (SOP)
 
 Websites often loosen the same-origin policy (SOP) to have more flexibility. These controlled and intended SOP bypasses can have adverse effects, as attackers can sometimes exploit misconfigurations in these techniques. These exploits can cause private information leaks and lead to more vulnerabilities, such as authentication bypass, account takeover, and large data breaches.
 

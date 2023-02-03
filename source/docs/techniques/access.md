@@ -1,4 +1,4 @@
-# Application logic errors and broken access control vulnerabilities
+# Application logic errors and broken access control
 
 Application logic errors and broken access control vulnerabilities are a different beast. These are not about patterns. Developers take decisions in the code, and after processing them, they have a result. When they do that, they think about just the possible options they have from design.
 
@@ -34,7 +34,7 @@ Use your creativity to think of ways to bypass access control or otherwise inter
 
 Escalating application logic errors and broken access control depends entirely on the nature of the flaw you find. But a general rule of thumb is that you can try to combine the application logic error or broken access control with other vulnerabilities to increase their impact.
 
-A broken access control that gives you access to the admin panel with a console or application deployment capabilities can lead to [remote code execution](../os/rce.md). 
+A broken access control that gives you access to the admin panel with a console or application deployment capabilities can lead to [remote code execution](rce.md). 
 
 If you can find the configuration files of a web application, you can search for CVEs for the software versions in use to further compromise the application. 
 

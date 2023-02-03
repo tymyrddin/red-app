@@ -1,4 +1,4 @@
-# SQL injection techniques
+# SQL injection
 
 * SQL injection vulnerabilities occur due to a lack of input validation.
 * To identify a SQL injection bug, enter special characters to generate an error or unexpected behaviour.

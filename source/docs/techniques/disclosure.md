@@ -1,4 +1,4 @@
-# Information disclosure techniques
+# Information disclosure
 
 Information disclosure occurs when an application fails to properly protect sensitive information, giving users access to information they should not have available to them.
 
@@ -32,7 +32,7 @@ On a site like Pastebin, shared text files are public by default. If developers 
 
 ## Reconstruct source code from an exposed .git directory
 
-Another way of finding sensitive files is to reconstruct source code from an exposed `.git` directory. When attacking an application, obtaining its source code can be extremely helpful for constructing an exploit. This is because some bugs, like [SQL injections](../sqli/sqli.md), are way easier to find through static code analysis than black-box testing.
+Another way of finding sensitive files is to reconstruct source code from an exposed `.git` directory. When attacking an application, obtaining its source code can be extremely helpful for constructing an exploit. This is because some bugs, like [SQL injections](sqli.md), are way easier to find through static code analysis than black-box testing.
 
 ## Find Information in public files
 
@@ -46,7 +46,7 @@ After you’ve found a sensitive file or a piece of sensitive data, determine it
 
 If you have found credentials such as a password or an API key, validate that they’re currently in use by accessing the target’s system with them. If the sensitive files or credentials are valid and current, consider how one can compromise the application’s security with them.
 
-If the impact of the information you found isn’t particularly critical, you can explore ways to escalate the vulnerability by chaining it with other security issues. For example, if you can leak internal IP addresses within the target’s network, you can use them to pivot into the network during an [SSRF](../ssrf/ssrf.md) exploit. Alternatively, if you can pinpoint the exact software version numbers the application is running, see if any CVEs are related to the software version that can help you achieve [RCE](../os/rce.md).
+If the impact of the information you found isn’t particularly critical, you can explore ways to escalate the vulnerability by chaining it with other security issues. For example, if you can leak internal IP addresses within the target’s network, you can use them to pivot into the network during an [SSRF](ssrf.md) exploit. Alternatively, if you can pinpoint the exact software version numbers the application is running, see if any CVEs are related to the software version that can help you achieve [RCE](rce.md).
 
 ## Resources
 

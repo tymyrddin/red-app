@@ -1,4 +1,4 @@
-# Cross-site scripting (XSS) techniques
+# Cross-site scripting (XSS)
 
 * An XSS vulnerability is an input validation error. 
 * All the input data in an application could be susceptible to XSS or other input validation vulnerabilities. It is important to review not just the fields in forms, but all the inputs, including the application control flow parameters.
