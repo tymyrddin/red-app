@@ -30,13 +30,24 @@ Once you have found a race condition, you will need to provide proof of the vuln
 
 ## Escalation
 
-The severity of race conditions depends on the impacted functionality. When determining the impact of a specific race condition, pay attention to how much an attacker can potentially gain in terms of monetary reward or social influence.
+Race condition vulnerabilities can have a significant impact on the functionality and security of an application. When determining the impact of a specific race condition, pay attention to how much an attacker can potentially gain in terms of monetary reward or social influence.
 
 If a race condition is found on a critical functionality like cash withdrawal, fund transfer, or credit card payment, the vulnerability could lead to infinite financial gain for the attacker. Prove the impact of a race condition and articulate what attackers will be able to achieve.
+
+## Portswigger lab writeups
+
+* [Web shell upload via race condition](../upload/7.md)
+
+## Remediation
+
+The simplest ways to eliminate race conditions are to remove the potential for parallel processing within an application or to ensure that different threads of execution do not share resources.
+
+This may not be an option and it can negatively impact program performance. Two options for fixing the issue are the use of thread-safe programming and randomisation. 
 
 ## Resources
 
 * [Portswigger Lab: Web shell upload via race condition](https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-race-condition)
+* [How to Prevent Race Conditions in Web Applications](https://www.kroll.com/en/insights/publications/cyber/race-condition-web-applications)
 * [Bug Bounty Bootcamp](https://nostarch.com/bug-bounty-bootcamp)
 * [Bug Bounty Hunting Essentials](https://www.packtpub.com/product/bug-bounty-hunting-essentials/9781788626897)
 * [Bug Bounty Hunting for Web Security](https://link.springer.com/book/10.1007/978-1-4842-5391-5)

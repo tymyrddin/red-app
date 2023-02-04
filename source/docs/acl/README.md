@@ -31,7 +31,7 @@ Broken access controls are a commonly encountered and often critical security vu
 * [Insecure direct object references](9.md)
 * [URL-based access control can be circumvented](10.md)
 * [Method-based access control can be circumvented](11.md)
-* [Multi-step process with no access control on one step](12.md)
+* [Multistep process with no access control on one step](12.md)
 * [Referer-based access control](13.md)
 
 

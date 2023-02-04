@@ -27,12 +27,36 @@ set up a callback listener for your tests.
 
 ## Escalation
 
-What you can achieve with an XXE vulnerability depends on the permissions given to the XML parser. Generally, you can use XXEs to access and exfiltrate system files, source code, and directory listings on the local machine. You can also use XXEs to perform SSRF attacks to port-scan the target’s network, read files on the network, and access resources that are hidden behind a firewall. And, attackers sometimes use XXEs to launch DoS attacks.
+What can be achieved with an XXE vulnerability depends on the permissions given to the XML parser. Generally, XXEs can be used to access and exfiltrate system files, source code, and directory listings on the local machine. You can also use XXEs to perform [SSRF attacks](ssrf.md) to port-scan the target’s network, read files on the network, and access resources that are hidden behind a firewall. And, attackers sometimes use XXEs to launch DoS attacks.
+
+* Disclosing local files containing sensitive data, like passwords, using file: schemes or relative paths in the system identifier.
+* XXE attacks rely on the application that processes the XML document. A trusted application can be used to move to different internal systems.
+* If the XML processor library is vulnerable to client-side memory corruption, it may be possible to dereference a malicious URI to allow [arbitrary code execution](rce.md) under the application account.
+* Some XML attacks might allow actors to access local resources that do not stop returning data. If too many processes or threads are not released, it can negatively impact application availability.
+
+## Portswigger lab writeups
+
+* [Exploiting XXE using external entities to retrieve files](../xxe/1.md)
+* [Exploiting XXE to perform SSRF attacks](../xxe/2.md)
+* [Blind XXE with out-of-band interaction](../xxe/3.md)
+* [Blind XXE with out-of-band interaction via XML parameter entities](../xxe/4.md)
+* [Exploiting blind XXE to exfiltrate data using a malicious external DTD](../xxe/5.md)
+* [Exploiting blind XXE to retrieve data via error messages](../xxe/6.md)
+* [Exploiting XInclude to retrieve files](../xxe/7.md)
+* [Exploiting XXE via image file upload](../xxe/8.md)
+* [Exploiting XXE to retrieve data by repurposing a local DTD](../xxe/9.md)
+
+## Remediation
+
+* Manual XXE Prevention: Prevent vulnerabilities in entities outside XML by configuring the XML parser to disallow custom DTDs. Applications rarely require DTD, because there are very few functional trade-offs. Every parser in each programming language comes with its own requirements for setting this parameter. A project containing several analyses might require manually configuring each solver correctly.
+* If you cannot disable DTDs, mitigate this risk by disabling the external entity functionality.
+* Implement some application server instrumentation using runtime application self protection (RASP) to add personalised protection for applications and interactive application security testing (IAST) to find vulnerabilities during execution.
 
 ## Resources
 
 * [Portswigger: XML external entity (XXE) injection](https://portswigger.net/web-security/xxe)
 * [OWASP: XML External Entity (XXE) Processing](https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing)
+* [OWASP: XML External Entity Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html)
 * [Bug Bounty Bootcamp](https://nostarch.com/bug-bounty-bootcamp)
 * [Bug Bounty Hunting Essentials](https://www.packtpub.com/product/bug-bounty-hunting-essentials/9781788626897)
 * [Bug Bounty Hunting for Web Security](https://link.springer.com/book/10.1007/978-1-4842-5391-5)

@@ -164,7 +164,13 @@ The filter won’t recognize those broken tags as legitimate, but once the filte
 
 ## Escalation
 
-The impact of XSS varies. The type of XSS determines the number of users who could be affected. 
+XSS attacks can result in:
+
+* Hijacking a user’s session, using credentials to access other sites or redirect the user to unintended websites.
+* Altering website pages or inserting sections into a web page.
+* Executing scripts to extract sensitive information from cookies or databases.
+
+The impact varies. The type of XSS determines the number of users who could be affected. 
 
 * Stored XSS on a public forum can realistically attack anyone who visits that forum page, so stored XSS is considered the most severe. 
 * Reflected or DOM XSS can affect only users who click the malicious link.
@@ -176,12 +182,52 @@ The identities of the affected users matter too. If a stored XSS vulnerability i
 * In an application holding sensitive data, such as banking transactions, emails, or healthcare records, the impact will usually be serious.
 * If the compromised user has elevated privileges within the application, then the impact will generally be critical, allowing the attacker to take full control of the vulnerable application and compromise all users and their data.
 
+## Portswigger lab writeups
+
+* [Open redirection techniques](../xss/../techniques/redirects.md)
+* [Reflected XSS into HTML context with nothing encoded](../xss/1.md)
+* [Stored XSS into HTML context with nothing encoded](../xss/2.md)
+* [DOM XSS in document.write sink using source location.search](../xss/3.md)
+* [DOM XSS in innerHTML sink using source location.search](../xss/4.md)
+* [DOM XSS in jQuery anchor href attribute sink using location.search source](../xss/5.md)
+* [DOM XSS in jQuery selector sink using a hashchange event](../xss/6.md)
+* [Reflected XSS into attribute with angle brackets HTML-encoded](../xss/7.md)
+* [Stored XSS into anchor href attribute with double quotes HTML-encoded](../xss/8.md)
+* [Reflected XSS into a JavaScript string with angle brackets HTML encoded](../xss/9.md)
+* [DOM XSS in document.write sink using source location.search inside a select element](../xss/10.md)
+* [DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded](../xss/11.md)
+* [Reflected DOM XSS](../xss/12.md)
+* [Stored DOM XSS](../xss/13.md)
+* [Exploiting cross-site scripting to steal cookies](../xss/14.md)
+* [Exploiting cross-site scripting to capture passwords](../xss/15.md)
+* [Exploiting XSS to perform CSRF](../xss/16.md)
+* [Reflected XSS into HTML context with most tags and attributes blocked](../xss/17.md)
+* [Reflected XSS into HTML context with all tags blocked except custom ones](../xss/18.md)
+* [Reflected XSS with some SVG markup allowed](../xss/19.md)
+* [Reflected XSS in canonical link tag](../xss/20.md)
+* [Reflected XSS into a JavaScript string with single quote and backslash escaped](../xss/21.md)
+* [Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped](../xss/22.md)
+* [Stored XSS into onclick event with angle brackets and double quotes HTML-encoded and single quotes and backslash escaped](../xss/23.md)
+* [Reflected XSS into a template literal with angle brackets, single, double quotes, backslash and backticks Unicode-escaped](../xss/24.md)
+* [Reflected XSS with event handlers and href attributes blocked](../xss/25.md)
+* [Reflected XSS in a JavaScript URL with some characters blocked](../xss/26.md)
+* [Reflected XSS with AngularJS sandbox escape without strings](../xss/27.md)
+* [Reflected XSS with AngularJS sandbox escape and CSP](../xss/28.md)
+* [Reflected XSS protected by very strict CSP, with dangling markup attack](../xss/29.md)
+* [Reflected XSS protected by CSP, with CSP bypass](../xss/30.md)
+
+## Remediation
+
+* Make sure all developers, website designers, and QA teams are aware of the methods hackers use to exploit vulnerabilities and provide guidelines and best practices for coding. This includes proper escaping/encoding techniques for the application environment (JavaScript, HTML, etc.).
+* Sanitise input: Whether for internal web pages or public websites, never trust the validity of user input data. Screen and validate any data fields, especially if it will be included as HTML output.
+* Use or implement software that scans code for vulnerabilities, including cross-site scripting.
+* Content Security Policy: Use Content Security Policy (CSP) to define what a website can do. XSS can be blocked entirely (by blocking all in-line scripts) or be reduced to much lower risk.
+
 ## Resources
 
 * [Portswigger: Cross-site scripting](https://portswigger.net/web-security/cross-site-scripting)
 * [OWASP: Cross Site Scripting (XSS)](https://owasp.org/www-community/attacks/xss/)
-* [Firefox developer tools](https://firefox-dev.tools/)
-* [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
+* [OWASP: Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
 * [XSS Filter Evasion Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html)
 * [Portswigger XSS cheatsheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet/)
 * [Bug Bounty Bootcamp](https://nostarch.com/bug-bounty-bootcamp)

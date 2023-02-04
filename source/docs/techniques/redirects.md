@@ -168,7 +168,13 @@ This URL will pass even well-implemented URL validators, because the URL is tech
 
 Open redirects can also be used to steal credentials and OAuth tokens. When a page redirects to another site, browsers will often include the originating URL as a referer HTTP request header. When the originating URL contains sensitive information (authentication tokens), attackers can induce an open redirect to steal the tokens via the referer header.
 
-## Mitigations
+## Portswigger lab writeups
+
+* [DOM-based open redirection](../dom/4.md)
+* [DOM XSS using web messages and a JavaScript URL](../dom/2.md)
+* [SSRF with filter bypass via open redirection vulnerability](../ssrf/4.md)
+
+## Remediation
 
 Avoid dynamically setting redirection targets using data that originated from any untrusted source. 
 

@@ -42,14 +42,26 @@ Allowlists are generally the hardest to bypass, because they are, by default, st
 
 Since applications often need to fetch resources from a variety of internet sources, most SSRF protection mechanisms come in the form of a blocklist. If you’re faced with a blocklist, there are many ways of tricking the server.
 
-* Fooling it with redirects
-* Using IPv6 addresses
-* Tricking the server with DNS
-* Switching out the encoding
+* Fooling it with [redirects](redirects.md).
+* Using IPv6 addresses.
+* Tricking the server with DNS.
+* Switching out the encoding.
 
 ## Escalation
 
-What you can achieve with an SSRF usually depends on the internal services found on the network. Depending on the situation, you could use SSRF to scan the network for reachable hosts, port-scan internal machines to fingerprint internal services, collect instance metadata, bypass access controls, exfiltrate confidential data, and even execute code on reachable machines.
+SSRF can be anywhere from harmless to catastrophic. This depends on a number of factors like the visibility of the response and which internal hosts are accessible.
+
+What may be possible with an SSRF depends on the internal services found on the network. SSRF can maybe be used to scan the network for reachable hosts, port-scan internal machines to fingerprint internal services, collect instance metadata, bypass access controls, exfiltrate confidential data, and even execute code on reachable machines. At its absolute worst, SSRF vulnerabilities could result in a full compromise of cloud environments, with internal administrative dashboards being exposed and internal hosts being exploited.
+
+## Portswigger lab writeups
+
+* [Basic SSRF against the local server](../ssrf/1.md)
+* [Basic SSRF against another back-end system](../ssrf/2.md)
+* [SSRF with blacklist-based input filter](../ssrf/3.md)
+* [SSRF with filter bypass via open redirection vulnerability](../ssrf/4.md)
+* [Blind SSRF with out-of-band detection](../ssrf/5.md)
+* [SSRF with whitelist-based input filter](../ssrf/6.md)
+* [Blind SSRF with Shellshock exploitation](../ssrf/7.md)
 
 ### Scan the network
 
@@ -80,12 +92,21 @@ These headers offer protection against SSRFs because most often during an SSRF, 
 
 Because blind SSRFs don’t return a response or error message, their exploitation is often limited to network mapping, port scanning, and service discovery. And because you can’t extract information directly from the target server, this exploitation relies heavily on inference. Yet by analysing HTTP status codes and server response times, we can often achieve results similar to regular SSRF.
 
-Use what you’ve found by scanning the network, identifying services, and pulling instance metadata to execute attacks that have impact. Notably, you may be able to bypass access controls, leak confidential information, and execute code.
+Use what you’ve found by scanning the network, identifying services, and pulling instance metadata to execute attacks that have impact. It may be possible to [bypass access controls](access.md), [leak confidential information](disclosure.md), and [execute code](rce.md).
+
+## Remediation
+
+* In some cases, it is not necessary to take user input to define the location of a server-side request. It is better to leave it out to be on the safe side and generate the request URLs with static values on the server side.
+* It is common to apply regular expressions and simple blacklists to user input, in order to mitigate SSRF and similar attacks. Blacklists are an ineffective method of security control. Attackers can easily discover ways to get around them. If the hosts that need to be accessed are a finite set, implement an allowlist. When a user sends a request, check that the URL or domain from that request corresponds to one in the allowlist, if it doesn't, drop the request.
+* Response handling: On no account should the raw response body received from the request initiated by the server be transferred to the client.
+* Disable unused URL schemas: Deny attackers the ability to utilize the application to carry out requests via potentially harmful schemas, including `dict://`, `file:///`, and `gopher://`.
+* Services like Redis, MongoDB, Elasticsearch, and Memcached do not demand verification by default. Using SSRF vulnerabilities, it may be possible to gain access to certain services without verification. To enforce web application security, allow verification whenever possible, including for local network services.
 
 ## Resources
 
 * [Portswigger: Server-side request forgery (SSRF)](https://portswigger.net/web-security/ssrf)
 * [OWASP: Testing for Server-Side Request Forgery](https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/07-Input_Validation_Testing/19-Testing_for_Server-Side_Request_Forgery)
+* [OWASP: Server-Side Request Forgery Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html)
 * [Instance metadata categories](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-categories.html)
 * [EC2 API endpoints](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
 * [Fetch Metadata Request Headers](https://www.w3.org/TR/fetch-metadata/)

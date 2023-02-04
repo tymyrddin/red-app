@@ -121,3 +121,8 @@ chmod +x ~/.local/share/applications/firefox_dev.desktop
 ```
 
 11. To access Firebug, right-click on a website and select `Inspect Element`.
+
+## Other useful developer tools
+
+* [Firefox developer tools](https://firefox-dev.tools/)
+* [Chrome DevTools](https://developer.chrome.com/docs/devtools/)

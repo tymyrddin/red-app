@@ -69,6 +69,14 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    docs/techniques/sso.md
    docs/techniques/disclosure.md
 
+----
+
+Portswigger lab writeups
+------------------------------------------
+
+.. image:: _static/images/burp-books.png
+  :alt: Useful books
+
 .. toctree::
    :maxdepth: 1
    :includehidden:
@@ -470,6 +478,8 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    docs/pollution/4.md
    docs/pollution/5.md
 
+----
+
 .. toctree::
    :maxdepth: 1
    :includehidden:
@@ -477,11 +487,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
 
    docs/ctf/README.md
    docs/ctf/picklerick.md
-
-----
-
-.. image:: _static/images/burp-books.png
-  :alt: Useful books
 
 ----
 

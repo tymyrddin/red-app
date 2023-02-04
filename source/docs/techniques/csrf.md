@@ -127,13 +127,13 @@ This way, you can show companies how attackers can realistically attack many use
 
 While the majority of CSRFs are low-severity issues, sometimes a CSRF on a critical endpoint can lead to severe consequences. Escalate CSRFs into severe security issues to maximise their impact.
 
-CSRF can sometimes cause information leaks as a side effect. Applications often send or disclose information according to user preferences. If you can change these settings via CSRF, you can pave the way for sensitive information disclosures.
+CSRF can sometimes cause [information leaks](disclosure.md) as a side effect. Applications often send or disclose information according to user preferences. If you can change these settings via CSRF, you can pave the way for sensitive information disclosures.
 
-Self-XSS is a kind of XSS attack that requires the victim to input the XSS payload. These vulnerabilities are almost always considered a nonissue because they’re too difficult to exploit; doing so requires a lot of action from the victim’s part, and thus you’re unlikely to succeed. But, when you combine CSRF with self-XSS, you can often turn the self-XSS into stored XSS.
+[Self-XSS](xss.md) is a kind of XSS attack that requires the victim to input the XSS payload. These vulnerabilities are almost always considered a nonissue because they’re too difficult to exploit; doing so requires a lot of action from the victim’s part, and thus you’re unlikely to succeed. But, when you combine CSRF with self-XSS, you can often turn the self-XSS into stored XSS.
 
 Account takeovers are possible when a CSRF vulnerability exists in critical functionality, like the code that creates a password, changes the password, changes the email address, or resets the password.
 
-As an example, assume that in addition to signing up by using an email address and password, example.com also allows users to sign up via their social media accounts. If a user chooses this option, they’re not required to create a password, as they can simply log in via their linked account. But to give users another option, those who’ve signed up via social media can set a new password via the following request:
+As an example, assume that in addition to signing up by using an email address and password, `example.com` also allows users to sign up via their social media accounts. If a user chooses this option, they’re not required to create a password, and they can log in via their linked account. To give users another option, those who’ve signed up via social media can set a new password via the following request:
 
     POST /set_password
     Host: example.com
@@ -143,6 +143,29 @@ As an example, assume that in addition to signing up by using an email address a
     password=XXXXX&csrf_token=871caef0757a4ac9691aceb9aad8b65b
 
 The user signed up via their social media account, and does not need to provide an old password to set the new password, so if CSRF protection fails on this endpoint, an attacker would have the ability to set a password for anyone who signed up via their social media account and has not yet done so.
+
+## Portswigger lab writeups
+
+* [CSRF vulnerability with no defenses](../csrf/1.md)
+* [CSRF where token validation depends on request method](../csrf/2.md)
+* [CSRF where token validation depends on token being present](../csrf/3.md)
+* [CSRF where token is not tied to user session](../csrf/4.md)
+* [CSRF where token is tied to non-session cookie](../csrf/5.md)
+* [CSRF where token is duplicated in cookie](../csrf/6.md)
+* [SameSite Lax bypass via method override](../csrf/7.md)
+* [SameSite Strict bypass via client-side redirect](../csrf/8.md)
+* [SameSite Strict bypass via sibling domain](../csrf/9.md)
+* [SameSite Lax bypass via cookie refresh](../csrf/10.md)
+* [CSRF where Referer validation depends on header being present](../csrf/11.md)
+* [CSRF with broken Referer validation](../csrf/12.md)
+
+## Remediation
+
+* The most common mitigation methods is to generate unique random tokens for every session request or ID. These are subsequently checked and verified by the server. Session requests having either duplicate tokens or missing values are blocked. Alternatively, a request that does not match its session ID token is prevented from reaching an application. Consideration must be given to the user experience when going to that level of tokenization since users who have multiple tabs will find that requests on outdated tabs no longer validate, and using the back button will break the session flow.
+* Double submission of cookies is another well-known method to block CSRF. Similar to using unique tokens, random tokens are assigned to both a cookie and a request parameter. The server then verifies that the tokens match before granting access to the application.
+* Anti-CSRF token protection is the best safeguard against CSRF attacks, but for example, web applications that have a vulnerability to [cross-site scripting (XSS) attacks](xss.md), it may be possible to execute a script that exposes the new form token which defeats the protection offered by the CSRF token.
+
+All in all, tokens can be exposed at a number of points, including in browser history, HTTP log files, network appliances logging the first line of an HTTP request and referrer headers, if the protected site links to an external URL. These potential weak spots make tokens a less than full-proof solution. To provide the most effective web application security, consider and evaluate all vulnerabilities. 
 
 ## Resources
 

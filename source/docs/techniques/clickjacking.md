@@ -52,7 +52,15 @@ Websites often serve pages without clickjacking protection. As long as the page 
 
 Focus on the application’s most critical functionalities to achieve maximum business impact. You can also combine multiple clickjacking vulnerabilities or chain clickjacking with other bugs to pave the way to more severe security issues.
 
-## Mitigations
+## Portswigger lab writeups
+
+* [Basic clickjacking with CSRF token protection](../clickjacking/1.md)
+* [Clickjacking with form input data prefilled from a URL parameter](../clickjacking/2.md)
+* [Clickjacking with a frame buster script](../clickjacking/3.md)
+* [Exploiting clickjacking vulnerability to trigger DOM-based XSS](../clickjacking/4.md)
+* [Multistep clickjacking](../clickjacking/5.md)
+
+## Remediation
 
 Frame busting scripts are busted: It is often easy for an attacker to circumvent these protections.
 

@@ -36,7 +36,13 @@ templates like Jinja2.
 
 Once you’ve confirmed the template injection vulnerability, determine the template engine in use to figure out how to best exploit that vulnerability. To escalate the attack, you will have to write your payload with a programming language that the particular template engine expects.
 
+## Automation
+
+[tplmap](https://github.com/epinna/tplmap/) can scan for template injections, determine the template engine in use, and construct exploits. While this tool does not support every template engine, it does provide a good starting point for the most popular ones.
+
 ## Escalation
+
+The impact of server-side template injection vulnerabilities is generally critical, resulting in [remote code execution](rce.md) by taking full control of the back-end server. Even without the code execution, the attacker may be able to [read sensitive data on the server](disclosure.md). There are also rare cases where an SSTI vulnerability is not critical, depending on the template engine.
 
 Once you’ve determined the template engine in use, you can escalate the vulnerability found. Most of the time, you can use the `7*7 payload`:
 
@@ -47,11 +53,23 @@ But if you can show that the template injection can be used to accomplish more t
 
 The method of escalating the attack will depend on the template engine you are targeting. To learn more about it, read the official documentation of the template engine and the accompanying programming language. 
 
-Being able to execute system commands is extremely valuable for the attacker because it might allow them to read sensitive system files like customer data and source code files, update system configurations, escalate their privileges on the system, and attack other machines on the network.
+Being able to [execute system commands](rce.md) might allow for [reading sensitive system files](disclosure.md) like customer data and source code files, update system configurations, escalate their privileges on the system, and attack other machines on the network.
 
-## Automation
+## Portswigger lab writeups
 
-[tplmap](https://github.com/epinna/tplmap/) can scan for template injections, determine the template engine in use, and construct exploits. While this tool does not support every template engine, it does provide a good starting point for the most popular ones.
+* [Basic server-side template injection](../ssti/1.md)
+* [Basic server-side template injection (code context)](../ssti/2.md)
+* [Server-side template injection using documentation](../ssti/3.md)
+* [Server-side template injection in an unknown language with a documented exploit](../ssti/4.md)
+* [Server-side template injection with information disclosure via user-supplied objects](../ssti/5.md)
+* [Server-side template injection in a sandboxed environment](../ssti/6.md)
+* [Server-side template injection with a custom exploit](../ssti/7.md)
+
+## Remediation
+
+* Remediation for SSTI vulnerabilities depend on the different template engines in use.
+* Do not create templates from user-controlled input. User input should be passed to the template using template parameters. Sanitise the input before passing it into the templates by removing unwanted and risky characters before parsing the data. This minimises the vulnerabilities for any malicious probing of your templates.
+* If allowing risky characters is a requirement to render attributes of a template, assume that malicious code execution is inevitable, and use a sandbox within a safe environment. With the template environment in a docker container, you can use docker security to craft a secure environment that limits malicious activities.
 
 ## Resources
 

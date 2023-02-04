@@ -18,10 +18,10 @@ Cookie sharing, SAML, and OAuth are the three most common ways of implementing S
 
 ## SAML vulnerabilities
 
-1. Locate the `SAML` response
-2. Analyse the response fields
-3. Bypass the signature
-4. Re-encode the message
+1. Locate the `SAML` response.
+2. Analyse the response fields.
+3. Bypass the signature.
+4. Re-encode the message.
 
 ## OAuth token theft
 
@@ -41,11 +41,23 @@ You can escalate account takeovers by writing a script to automate the takeover 
 
 And, you can try to leak data, execute sensitive actions, or take over the application by using the accounts taken over.
 
+## Portswigger lab writeups
+
+* [Authentication bypass via OAuth implicit flow](../oauth/1.md)
+* [Forced OAuth profile linking](../oauth/2.md)
+* [OAuth account hijacking via redirect_uri](../oauth/3.md)
+* [Stealing OAuth access tokens via an open redirect](../oauth/4.md)
+* [SSRF via OpenID dynamic client registration](../oauth/5.md)
+* [Stealing OAuth access tokens via a proxy page](../oauth/6.md)
+
+## Remediation
+
+* Have SAML messages contain a timestamp of when the request was issued, when it expires or both. If the SAML message never expires or if the expiration is not honoured, there is a greater risk of a message falling into the hands of an attacker. Check the message for timestamps with an assertion. Pause the request until after the expiration has passed and then allow the request through to the SP. Also make sure the expiration window is reasonable, like 1-5 minutes.
+* Message Replay: Assertions are to contain a unique `ID` that is only accepted once by the application. Test scenarios: Missing Signature, Invalid Signature, SAML from Different Recipient, Signature Wrapping, and XXE.
+
 ## Resources
 
 * [Daily Swig: Vulnerabilities in Single Sign-On services could be abused to bypass authentication controls](https://portswigger.net/daily-swig/vulnerabilities-in-single-sign-on-services-could-be-abused-to-bypass-authentication-controls)
 * [Bug Bounty Bootcamp](https://nostarch.com/bug-bounty-bootcamp)
 * [Bug Bounty Hunting Essentials](https://www.packtpub.com/product/bug-bounty-hunting-essentials/9781788626897)
 * [Bug Bounty Hunting for Web Security](https://link.springer.com/book/10.1007/978-1-4842-5391-5)
-
-

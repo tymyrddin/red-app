@@ -7,6 +7,8 @@ Insecure direct object references (IDOR) occur when a developer uses an identifi
 * The Burp extension [Autorize](https://github.com/Quitten/Autorize/) scans for authorization issues by accessing higher-privileged accounts with lower-privileged accounts.
 * The Burp extensions [Auto Repeater](https://github.com/nccgroup/AutoRepeater/) and [AuthMatrix](https://github.com/SecurityInnovation/AuthMatrix/) allow you to automate the process of switching out cookies, headers, and parameters.
 
+For any serious security researcher, seeing an exposed internal identifier is an immediate invitation to test IDOR vulnerabilities, especially as they are a solid source of bug bounty payouts. To identify a potentially insecure object reference, you need to have some idea of how a specific application or website works, how it processes HTTP requests, and what information it should and should not reveal in its HTTP responses. Especially for more advanced vulnerabilities that involve passing data through APIs, detecting IDORs can be tricky.
+
 ## Steps
 
 1. Create two accounts for each application role and designate one as the attacker account and the other as the victim account.
@@ -30,7 +32,7 @@ It might also be possible that the application leaks IDs via another API endpoin
 
 In modern web applications, you will commonly encounter scenarios in which the application uses cookies instead of IDs to identify the resources a user can access. And, for the convenience of the developers, for backward compatibility, or just because developers forgot to remove a test feature, some applications will feature an additional way of retrieving resources, using object IDs. If no IDs exist in the application-generated request, try adding one to the request: Append `id`, `user_id`, `message_id`, or other object references to the URL query, or the `POST` body parameters, and see if it makes a difference to the application’s behaviour.
 
-If one HTTP request method doesn’t work, you can try plenty of others instead: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, etc. Applications often enable multiple request methods on the same endpoint but fail to implement the same access control for each method.
+If one HTTP request method does not work, you can try plenty of others instead: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, etc. Applications often enable multiple request methods on the same endpoint but fail to implement the same access control for each method.
 
 Switching the file type of the requested file sometimes leads the server to process the authorisation differently. Applications might be flexible about how the user can identify information: they could allow users to either use IDs to reference a file or use the filename directly. But applications often fail to implement the same access controls for each method of reference.
 
@@ -48,10 +50,22 @@ For non-state-changing (read-based) IDORs, look for functionalities that handle 
 
 You can also combine IDORs with other vulnerabilities to increase their impact. For example, a write-based IDOR can be combined with self-XSS to form a [stored XSS](xss.md). An IDOR on a password reset endpoint combined with username enumeration can lead to a mass account takeover. Or a write IDOR on an admin account may even lead to [RCE](rce.md).
 
+## Portswigger lab writeups
+
+* [Insecure direct object references](../acl/9.md)
+
+## Remediation
+
+* Replace the insecure direct object references with indirect object references that are then internally mapped to actual objects. This could mean using a temporary per-session reference map populated only with values valid for a specific user and associated with random, non-sequential keys.
+* Using secure (salted) hashes instead of actual object references is another way to make it harder for attackers to tamper with user-controllable values.
+
+These mitigations hide internal implementation details but do not address the underlying [access control issues](access.md). A better approach to eliminating IDOR vulnerabilities is to ensure proper session management and object-level user access control checks. Even if an attacker manages to discover an internal object reference and manipulate it, they will not obtain unauthorised access.
+
 ## Resources
 
 * [Portswigger: Insecure direct object references (IDOR)](https://portswigger.net/web-security/access-control/idor)
 * [OWASP: Testing for Insecure Direct Object References](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/04-Testing_for_Insecure_Direct_Object_References)
+* [OWASP Insecure Direct Object Reference Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.html)
 * [HackTricks: IDOR](https://book.hacktricks.xyz/pentesting-web/idor)
 * [Bug Bounty Bootcamp](https://nostarch.com/bug-bounty-bootcamp)
 * [Bug Bounty Hunting Essentials](https://www.packtpub.com/product/bug-bounty-hunting-essentials/9781788626897)

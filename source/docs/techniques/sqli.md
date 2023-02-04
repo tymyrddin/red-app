@@ -12,7 +12,7 @@
 2. Insert test payloads into these locations to discover whether they’re vulnerable to SQL injections. If the endpoint isn’t vulnerable to classic SQL injections, try inferential techniques instead.
 3. Once you’ve confirmed that the endpoint is vulnerable to SQL injections, use different SQL injection queries to leak information from the database.
 4. Escalate the issue. Figure out what data you can leak from the endpoint and whether you can achieve an authentication bypass. Be careful not to execute any actions that would damage the integrity of the target’s database, such as deleting user data or modifying the structure of the database.
-5. Draft up an report with an example payload that the security team can use to duplicate your results. Because SQL injections are quite technical to exploit most of the time, it’s a good idea to spend some time crafting an easy-to-understand proof of concept.
+5. Draft up a report with an example payload that the security team can use to duplicate your results. Because SQL injections are quite technical to exploit most of the time, it’s a good idea to spend some time crafting an easy-to-understand proof of concept.
 
 ## Look for classic SQL injections
 
@@ -62,23 +62,54 @@ You can also automate the hunting process by using the tool [NoSQLMap](https://g
 
 ## Escalation
 
-Attackers most often use SQL injections to extract information from the database. Successfully collecting data from a SQL injection is a technical task that can sometimes be complicated.
+The vulnerability is one of the oldest, most widespread and most critical of web application vulnerabilities. It may be used to neglect a web application’s certification and authorisation mechanisms and recover the contents of an entire database. SQL injection can also be used to add, alter and remove accounts in a database, affecting data integrity:
 
-Another way to escalate SQL injections is to attempt to gain a web shell on the server.
+* It may be possible to execute any malicious SQL inquiry or command through the web application and recover all the data saved in the database, including customer/client information, personally identifiable information (PII) such as names associated with social security numbers and credit card details, and credentials to access administrator accounts and private areas of the gateway, such as an administrator portal. 
+* By using an SQL injection, it is also possible to remove tables from the database.
+* Depending on the server setup and software being used, by using an SQL injection vulnerability, it may be possible to write to a file or accomplish [operating system commands](rce.md). With such increased privileges this might result in a total server compromise.
+* It is very hard to determine the impact of an exploited SQL injection. Attackers most often use SQL injections to extract information from the database. Successfully collecting data from a SQL injection is a technical task that can sometimes be complicated. If the hackers are skilled, it is hard to identify the attack until the data is available to the public and another reputation is going down the drain.
 
-## Mitigations
+## Portswigger lab writeups
 
-Most instances of SQL injection can be prevented by using parameterized queries (prepared statements) instead of string concatenation within the query. 
+* [SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](../sqli/1.md)
+* [SQL injection vulnerability allowing login bypass](../sqli/2.md)
+* [SQL injection UNION attack, determining the number of columns returned by the query](../sqli/3.md)
+* [SQL injection UNION attack, finding a column containing text](../sqli/4.md)
+* [SQL injection UNION attack, retrieving data from other tables](../sqli/5.md)
+* [SQL injection UNION attack, retrieving multiple values in a single column](../sqli/6.md)
+* [SQL injection attack, querying the database type and version on Oracle](../sqli/7.md)
+* [SQL injection attack, querying the database type and version on MySQL and Microsoft](../sqli/8.md)
+* [SQL injection attack, listing the database contents on non-Oracle databases](../sqli/9.md)
+* [SQL injection attack, listing the database contents on Oracle](../sqli/10.md)
+* [Blind SQL injection with conditional responses](../sqli/11.md)
+* [Blind SQL injection with conditional errors](../sqli/12.md)
+* [Blind SQL injection with time delays](../sqli/13.md)
+* [Blind SQL injection with time delays and information retrieval](../sqli/14.md)
+* [Blind SQL injection with out-of-band interaction](../sqli/15.md)
+* [Blind SQL injection with out-of-band data exfiltration](../sqli/16.md)
+* [SQL injection with filter bypass via XML encoding](../sqli/17.md)
 
-Parameterized queries can be used for any situation where untrusted input appears as data within the query, including the `WHERE` clause and values in an `INSERT` or `UPDATE` statement. They can not be used to handle untrusted input in other parts of the query, such as table or column names, or the `ORDER BY` clause. Application functionality that places untrusted data into those parts of the query will need to take a different approach, such as white-listing permitted input values, or using different logic to deliver the required behaviour.
+## Remediation
 
-For a parameterized query to be effective in preventing SQL injection, the string that is used in the query must always be a hard-coded constant, and must never contain any variable data from any origin. Do not be tempted to decide case-by-case whether an item of data is trusted, and continue using string concatenation within the query for cases that are considered safe. It is all too easy to make mistakes about the possible origin of data, or for changes in other code to violate assumptions about what data is tainted. 
+There are several effective ways to prevent SQLI attacks from taking place, as well as protecting against them, should they occur.
+
+* Most instances of SQL injection can be prevented by using parameterised queries (prepared statements) instead of string concatenation within the query (see notes below). While input validation should always be considered best practice, it is rarely a foolproof solution. The reality is that often it is simply not feasible to map out all legal and illegal inputs. 
+* Best practices in web application development and SQL injection testing as an integrated step in development will provide better protection from SQL injection vulnerability. Automating static (SAST) and dynamic (DAST) analysis tools into the development pipeline is an effective way to get this additional level of testing.
+* Implement a web application firewall (WAF) that can detect and filter out SQL injection attacks. Modern web application firewalls are also often integrated with other security solutions. From these, a WAF can receive additional information that further increase its security capabilities.
+* Implementing an intrusion detection system can help spot user behaviours attempting to exploit vulnerabilities in applications.
+
+### Notes on parameterised queries
+
+Parameterised queries can be used for any situation where untrusted input appears as data within the query, including the `WHERE` clause and values in an `INSERT` or `UPDATE` statement. They can not be used to handle untrusted input in other parts of the query, such as table or column names, or the `ORDER BY` clause. Application functionality that places untrusted data into those parts of the query will need to take a different approach, such as white-listing permitted input values, or using different logic to deliver the required behaviour.
+
+For a parameterised query to be effective in preventing SQL injection, the string that is used in the query must always be a hard-coded constant, and must never contain any variable data from any origin. Do not be tempted to decide case-by-case whether an item of data is trusted, and continue using string concatenation within the query for cases that are considered safe. It is all too easy to make mistakes about the possible origin of data, or for changes in other code to violate assumptions about what data is tainted.
 
 ## Resources
 
 * [Portswigger: SQL injection](https://portswigger.net/web-security/sql-injection)
 * [OWASP: Testing for SQL Injection](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection)
 * [HackTricks: SQL injection](https://book.hacktricks.xyz/pentesting-web/sql-injection)
+* [Snyk DAST/SAST tools to detect issues](https://snyk.io/)
 * [Bug Bounty Bootcamp](https://nostarch.com/bug-bounty-bootcamp)
 * [Bug Bounty Hunting Essentials](https://www.packtpub.com/product/bug-bounty-hunting-essentials/9781788626897)
 * [Bug Bounty Hunting for Web Security](https://link.springer.com/book/10.1007/978-1-4842-5391-5)

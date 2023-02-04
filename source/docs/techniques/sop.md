@@ -50,7 +50,14 @@ An SOP-bypass bug often means that attackers can read private information or exe
 
 Many researchers will simply report CORS misconfigurations without showing the impact of the vulnerability. Consider the impact of the issue before sending the report.
 
-## Mitigations
+## Portswigger lab writeups
+
+* [CORS vulnerability with basic origin reflection](../cors/1.md)
+* [CORS vulnerability with trusted null origin](../cors/2.md)
+* [CORS vulnerability with trusted insecure protocols](../cors/3.md)
+* [CORS vulnerability with internal network pivot attack](../cors/4.md)
+
+## Remediation
 
 * Origins specified in the `Access-Control-Allow-Origin` header should only be sites that are trusted. 
 * Dynamically reflecting origins from cross-origin requests without validation is exploitable and to be avoided.
@@ -71,4 +78,3 @@ Many researchers will simply report CORS misconfigurations without showing the i
 * [Bug Bounty Hunting for Web Security](https://link.springer.com/book/10.1007/978-1-4842-5391-5)
 * [Think Outside the Scope: Advanced CORS Exploitation Techniques](https://infosecwriteups.com/think-outside-the-scope-advanced-cors-exploitation-techniques-dad019c68397)
 * [PayLoadsAllTheThings: CORS miscinfiguration](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/CORS%20Misconfiguration/README.md)
-

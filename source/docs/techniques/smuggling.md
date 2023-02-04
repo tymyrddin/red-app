@@ -16,15 +16,38 @@ Send malformed requests to check for:
 * `TE:TE`: Frontend and backend servers correctly prioritise the Transfer-Encoding header, but the header can be obfuscated to trick one of the servers.
 * `TE:CL` : The frontend server prioritises the `Transfer-Encoding` weakness, while the backend server prioritises the `Content-Length` weakness, making it possible to declare the length of the first chunk up to and including the malicious request. The second chunk is declared as having `0` length, so the frontend server assumes the request is complete. It passes the request to the backend server, which receives and processes it.
 
-## Impact
-
-When an attacker succeeds in performing a request smuggling attack,it can allow the attacker to:
+## Escalation
 
 * Gain access to protected resources, such as admin consoles
 * Gain access to sensitive data
 * Hijack sessions of web users
-* Launch cross-site scripting (XSS) attacks without requiring any action from the user
-* Perform credential hijacking
+* Launch [cross-site scripting (XSS) attacks](xss.md) without requiring any action from the user
+* Credential hijacking
+
+## Portswigger lab writeups
+
+* [HTTP request smuggling, basic CL.TE vulnerability](../smuggling/1.md)
+* [HTTP request smuggling, basic TE.CL vulnerability](../smuggling/2.md)
+* [HTTP request smuggling, obfuscating the TE header](../smuggling/3.md)
+* [HTTP request smuggling, confirming a CL.TE vulnerability via differential responses](../smuggling/4.md)
+* [HTTP request smuggling, confirming a TE.CL vulnerability via differential responses](../smuggling/5.md)
+* [Exploiting HTTP request smuggling to bypass front-end security controls, CL.TE vulnerability](../smuggling/6.md)
+* [Exploiting HTTP request smuggling to bypass front-end security controls, TE.CL vulnerability](../smuggling/7.md)
+* [Exploiting HTTP request smuggling to reveal front-end request rewriting](../smuggling/8.md)
+* [Exploiting HTTP request smuggling to capture other users’ requests](../smuggling/9.md)
+* [Exploiting HTTP request smuggling to deliver reflected XSS](../smuggling/10.md)
+* [Response queue poisoning via H2.TE request smuggling](../smuggling/11.md)
+* [H2.CL request smuggling](../smuggling/12.md)
+* [HTTP/2 request smuggling via CRLF injection](../smuggling/13.md)
+* [HTTP/2 request splitting via CRLF injection](../smuggling/14.md)
+* [CL.0 request smuggling](../smuggling/15.md)
+* [Exploiting HTTP request smuggling to perform web cache poisoning](../smuggling/16.md)
+* [Exploiting HTTP request smuggling to perform web cache deception](../smuggling/17.md)
+* [Bypassing access controls via HTTP/2 request tunnelling](../smuggling/18.md)
+* [Web cache poisoning via HTTP/2 request tunnelling](../smuggling/19.md)
+* [Client-side desync](../smuggling/20.md)
+* [Browser cache poisoning via client-side desync](../smuggling/21.md)
+* [Server-side pause-based request smuggling](../smuggling/22.md)
 
 ## Remediation
 
@@ -34,7 +57,13 @@ The responsibility of remediation falls onto a backend maintainer as much as a f
 * If possible, disable connection reuse on the backend server. This can completely prevent HTTP request smuggling.
 * Disable vulnerable optimisations: If it is not possible to change backend configurations, disable any performance optimisations that use the `Transfer-Encoding` or `Content-Length` header. 
 * If possible, avoid the use of load balancers, content delivery networks (CDNs), or reverse proxies.
-* Use HTTP/2, making sure that frontend and backend servers only communicate using the HTTP/2 protocol. This is no guarantee, but makes the attacks harder to perform.
+* Use `HTTP/2`, making sure that frontend and backend servers only communicate using the `HTTP/2` protocol. This is still no guarantee. Prevent it being downgraded.
 * Configure the frontend server to normalise ambiguous requests to prevent malicious requests being passed to the backend server.
 * HTTP logs should only be available to administrative users, to avoid exposing unintended parts of an HTTP request to potential attackers.
 * Use a web application firewall (WAF) which can identify and blocks or sanitise HTTP traffic. Check whether any changes to the WAF configuration are required to safeguard against an HTTP request smuggling vulnerability.
+
+## Resources
+
+* [Portswigger: HTTP request smuggling](https://portswigger.net/web-security/request-smuggling)
+* [Snyk: Demystifying HTTP request smuggling](https://snyk.io/blog/demystifying-http-request-smuggling/)
+* [OWASP: Testing for HTTP Splitting Smuggling](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/15-Testing_for_HTTP_Splitting_Smuggling)

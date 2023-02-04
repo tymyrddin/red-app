@@ -48,6 +48,22 @@ If you have found credentials such as a password or an API key, validate that th
 
 If the impact of the information you found isn’t particularly critical, you can explore ways to escalate the vulnerability by chaining it with other security issues. For example, if you can leak internal IP addresses within the target’s network, you can use them to pivot into the network during an [SSRF](ssrf.md) exploit. Alternatively, if you can pinpoint the exact software version numbers the application is running, see if any CVEs are related to the software version that can help you achieve [RCE](rce.md).
 
+## Portswigger lab writeups
+
+* [Information disclosure in error messages](../id/1.md)
+* [Information disclosure on debug page](../id/2.md)
+* [Source code disclosure via backup files](../id/3.md)
+* [Authentication bypass via information disclosure](../id/4.md)
+* [Information disclosure in version control history](../id/5.md)
+
+## Remediation
+
+* Make sure that everyone involved in producing the web application is aware of what information is considered sensitive. Sometimes seemingly harmless information can be much more useful to an attacker than people realise. 
+* Audit any code for potential information disclosure as part of the build processes. It should be relatively easy to automate some associated tasks, such as stripping developer comments.
+* Use generic error messages as much as possible. Do not provide attackers with clues about application behaviour unnecessarily.
+* Double-check that debugging and diagnostic features are disabled in the production environment.
+* Make sure you fully understand the configuration settings, and security implications, of any third-party technology used. Take the time to investigate and disable any features and settings that are not needed.
+
 ## Resources
 
 * [Portswigger: Information disclosure vulnerabilities](https://portswigger.net/web-security/information-disclosure)
