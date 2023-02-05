@@ -14,6 +14,7 @@ In some cases, an attacker might be able to write to arbitrary files on the serv
 
 ## How?
 
+* [Directory traversal](../techniques/traversal.md)
 * [File path traversal, simple case](1.md)
 * [File path traversal, traversal sequences blocked with absolute path bypass](2.md)
 * [File path traversal, traversal sequences stripped non-recursively](3.md)

@@ -63,6 +63,7 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    docs/techniques/xxe.md
    docs/techniques/smuggling.md
    docs/techniques/ssti.md
+   docs/techniques/traversal.md
    docs/techniques/access.md
    docs/techniques/rce.md
    docs/techniques/sop.md
