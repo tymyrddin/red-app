@@ -16,6 +16,7 @@ Finding WebSockets security vulnerabilities generally involves manipulating them
 
 ## How?
 
+* [Websocket vulnerabilities](../techniques/sockets.md)
 * [Manipulating WebSocket messages to exploit vulnerabilities](1.md)
 * [Manipulating the WebSocket handshake to exploit vulnerabilities](2.md)
 * [Cross-site WebSocket hijacking](3.md)
