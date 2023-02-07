@@ -14,6 +14,7 @@ As well as potentially allowing attackers direct access to sensitive data and fu
 
 ## How?
 
+* [Authentication vulnerabilities](../techniques/auth.md)
 * [Username enumeration via different responses](1.md)
 * [2FA simple bypass](2.md)
 * [Password reset broken logic](3.md)
