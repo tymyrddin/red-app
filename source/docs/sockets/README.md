@@ -8,7 +8,7 @@
 
 WebSockets are widely used in modern web applications. They are initiated over HTTP and provide long-lived connections with asynchronous communication in both directions.
 
-WebSockets are used for all kinds of purposes, including performing user actions and transmitting sensitive information. Virtually any web security vulnerability that arises with regular HTTP can also arise in relation to WebSockets communications. 
+WebSockets are used for all kinds of purposes, including performing user actions and transmitting sensitive information. Virtually any HTTP web security vulnerability can also exist in WebSockets communications. 
 
 ## Why?
 
