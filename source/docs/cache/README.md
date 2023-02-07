@@ -14,6 +14,7 @@ A poisoned web cache can potentially be a devastating means of distributing nume
 
 ## How?
 
+* [Web cache poisoning](../techniques/cache.md)
 * [Web cache poisoning with an unkeyed header](1.md)
 * [Web cache poisoning with an unkeyed cookie](2.md)
 * [Web cache poisoning with multiple headers](3.md)

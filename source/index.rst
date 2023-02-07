@@ -67,6 +67,7 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    docs/techniques/access.md
    docs/techniques/auth.md
    docs/techniques/sockets.md
+   docs/techniques/cache.md
    docs/techniques/rce.md
    docs/techniques/sop.md
    docs/techniques/sso.md
