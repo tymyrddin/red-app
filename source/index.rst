@@ -78,8 +78,8 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
 Portswigger lab writeups
 ------------------------------------------
 
-.. image:: _static/images/burp-books.png
-  :alt: Useful books
+.. image:: _static/images/portswigger.png
+  :alt: Portswigger labs
 
 .. toctree::
    :maxdepth: 1
@@ -484,13 +484,19 @@ Portswigger lab writeups
 
 ----
 
+CTFs
+------------------------------------------
+
+.. image:: _static/images/ctf.png
+  :alt: CTFs
+
 .. toctree::
    :maxdepth: 1
    :includehidden:
-   :caption: Capture The Flag
+   :caption: THM
 
-   docs/ctf/README.md
-   docs/ctf/picklerick.md
+   docs/thm/README.md
+   docs/thm/picklerick.md
 
 ----
 
