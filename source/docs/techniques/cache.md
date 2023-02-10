@@ -22,6 +22,16 @@ Modifying cache content is not an attack in itself but just a technique for deli
 
 If an application accepts non-standard GET requests that have a body (making them fat) and the request body is unkeyed **and** reflected in the response, it may be possible to include a malicious payload in the GET request, and the response will be cached (because the request body is not part of the key). Users sending a regular GET request that matches the same cache key will receive the poisoned response. In some cases, it may also be possible to use the `X-HTTP-Method-Override` header to trick the application into treating a fat `GET` request as a normal `POST` request.
 
+## Cache busting
+
+A cache-buster is a unique piece of code that prevents a browser from reusing an element it has already seen and cached, or saved, to a temporary memory file. 
+
+    GET /?parameter1=whatever&parameter2=evil HTTP/1.1
+
+A cache-buster doesn't stop a browser from caching an element, it just prevents it from reusing it.
+
+For dual caches, Burp's `param miner` can add a dynamic cache buster to each request made, which can be helpful for bypassing one cache and focusing on the other.
+
 ## Escalation
 
 The impact of web cache poisoning is heavily dependent on several key factors: What can successfully get cached, the amount of traffic on the affected page, and for more targeted attacks, who is likely to visit the poisoned page.
