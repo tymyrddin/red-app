@@ -59,8 +59,8 @@ The responsibility of remediation falls onto a backend maintainer as much as a f
 * If possible, avoid the use of load balancers, content delivery networks (CDNs), or reverse proxies.
 * Use `HTTP/2`, making sure that frontend and backend servers only communicate using the `HTTP/2` protocol. This is still no guarantee. Prevent it being downgraded.
 * Configure the frontend server to normalise ambiguous requests to prevent malicious requests being passed to the backend server.
-* HTTP logs should only be available to administrative users, to avoid exposing unintended parts of an HTTP request to potential attackers.
-* Use a web application firewall (WAF) which can identify and blocks or sanitise HTTP traffic. Check whether any changes to the WAF configuration are required to safeguard against an HTTP request smuggling vulnerability.
+* [HTTP logs](blue-nta:index) should only be available to administrative users, to avoid exposing unintended parts of an HTTP request to potential attackers.
+* Use a [web application firewall (WAF)](blue-server:docs/firewall/waf) which can identify and blocks or sanitise HTTP traffic. Check whether any changes to the WAF configuration are required to safeguard against an HTTP request smuggling vulnerability.
 
 ## Resources
 
