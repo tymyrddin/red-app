@@ -497,10 +497,3 @@ CTFs
 
    docs/thm/README.md
    docs/thm/picklerick.md
-
-----
-
-.. toctree::
-   :caption: Links
-
-   Red Team <https://red.tymyrddin.dev/>
