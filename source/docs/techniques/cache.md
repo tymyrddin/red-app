@@ -66,5 +66,6 @@ Still, to minimise attackers using the web cache poisoning vehicle, these are so
 ## Resources
 
 * [Portswigger: Web cache poisoning](https://portswigger.net/web-security/web-cache-poisoning)
+* [Portswigger: Bypassing Web Cache Poisoning Countermeasures](https://portswigger.net/research/bypassing-web-cache-poisoning-countermeasures)
 * [Snyk: Cache poisoning in popular open source packages](https://snyk.io/blog/cache-poisoning-in-popular-open-source-packages/)
 * [Cache Poisoning at Scale](https://youst.in/posts/cache-poisoning-at-scale/)

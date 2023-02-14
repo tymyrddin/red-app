@@ -10,7 +10,7 @@ Insecure deserialisation is a type of vulnerability that arises when an attacker
 2. If you cannot get access to source code, look for large blobs of data passed into an application. These could indicate serialised objects that are encoded.
 3. Alternatively, look for features that might have to deserialise objects supplied by the user, such as database inputs, authentication tokens, and HTML form parameters.
 4. If the serialised object contains information about the identity of the user, try tampering with the serialised object found and see if you can achieve authentication bypass.
-5. See if you can escalate the flaw into a SQL injection or remote code execution. Be extra careful not to cause damage to your target application or server.
+5. See if you can escalate the flaw into an SQL injection or remote code execution. Be extra careful not to cause damage to the target application or server.
 6. Draft report.
 
 ## Code review
@@ -19,11 +19,11 @@ Conducting a source code review is the most reliable way to detect deserialisati
 
 ## Other ways
 
-And it is possible to find deserialisation vulnerabilities without examining any code.
+It is also possible to find deserialisation vulnerabilities without examining any code.
 
-Begin by paying close attention to the large blobs of data passed into an application. Large data blobs could be serialised objects that represent object injection opportunities. If the data is encoded, try to decode it. Most encoded data passed into web applications is encoded with base64.
+Begin by paying close attention to the large blobs of data passed into an application. Large data blobs could be serialised objects that represent object injection opportunities. If the data is encoded, try to decode it. Most encoded data passed into web applications is encoded with `base64`.
 
-Alternatively, you can start by seeking out features that are prone to deserialisation flaws. Look for features that might have to deserialise objects supplied by the user, such as database inputs, authentication tokens, and HTML form parameters.
+Alternatively, start by seeking out features that are prone to deserialisation flaws. Look for features that might have to deserialise objects supplied by the user, such as database inputs, authentication tokens, and HTML form parameters.
 
 Once you’ve found a user-supplied serialised object, you need to determine the type of serialised object it is. Is it a PHP object, a Python object, a Ruby object, or a Java object? Read each programming language’s documentation to familiarise yourself with the structure of its serialised objects.
 
