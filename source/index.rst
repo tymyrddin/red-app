@@ -64,13 +64,14 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    docs/techniques/smuggling.md
    docs/techniques/ssti.md
    docs/techniques/traversal.md
-   docs/techniques/access.md
    docs/techniques/auth.md
+   docs/techniques/sso.md
+   docs/techniques/acl.md
+   docs/techniques/business.md
    docs/techniques/sockets.md
    docs/techniques/cache.md
    docs/techniques/rce.md
    docs/techniques/sop.md
-   docs/techniques/sso.md
    docs/techniques/disclosure.md
 
 ----

@@ -10,7 +10,7 @@ The basic OAuth process is widely used to integrate third-party functionality th
 
 ## Why?
 
-OAuth 2.0 is highly interesting for attackers because it is both extremely common and inherently prone to implementation mistakes. This can result in a number of vulnerabilities, allowing attackers to obtain sensitive user data and potentially bypass authentication completely. 
+OAuth 2.0 is popular with attackers because it is both extremely common and inherently prone to implementation mistakes. This can result in a number of vulnerabilities, allowing attackers to obtain sensitive user data and potentially bypass authentication completely. 
 
 ## How?
 

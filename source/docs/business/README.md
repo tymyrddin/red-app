@@ -14,7 +14,7 @@ Business logic vulnerabilities are flaws in the design and implementation of an 
 
 ## How?
 
-* [Application logic errors and broken access control vulnerabilities](../techniques/access.md)
+* [Application logic errors and broken access control vulnerabilities](../techniques/business.md)
 * [Excessive trust in client-side controls](1.md)
 * [High-level logic vulnerability](2.md)
 * [Inconsistent security controls](3.md)

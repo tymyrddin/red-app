@@ -59,7 +59,7 @@ You can also combine IDORs with other vulnerabilities to increase their impact. 
 * Replace the insecure direct object references with indirect object references that are then internally mapped to actual objects. This could mean using a temporary per-session reference map populated only with values valid for a specific user and associated with random, non-sequential keys.
 * Using secure (salted) hashes instead of actual object references is another way to make it harder for attackers to tamper with user-controllable values.
 
-These mitigations hide internal implementation details but do not address the underlying [access control issues](access.md). A better approach to eliminating IDOR vulnerabilities is to ensure proper session management and object-level user access control checks. Even if an attacker manages to discover an internal object reference and manipulate it, they will not obtain unauthorised access.
+These mitigations hide internal implementation details but do not address the underlying [access control issues](acl.md). A better approach to eliminating IDOR vulnerabilities is to ensure proper session management and object-level user access control checks. Even if an attacker manages to discover an internal object reference and manipulate it, they will not obtain unauthorised access.
 
 ## Resources
 

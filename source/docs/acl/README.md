@@ -6,7 +6,7 @@
 
 ## What?
 
-Access control (or authorisation) is the application of constraints on who (or what) can perform attempted actions or access resources that they have requested. In the context of web applications, access control is dependent on authentication and session management:
+Access control (or authorisation) is the application of constraints on whom (or what) can perform attempted actions or access resources that they have requested. In the context of web applications, access control is dependent on authentication and session management:
 
 * Authentication identifies the user and confirms that they are who they say they are.
 * Session management identifies which subsequent HTTP requests are being made by that same user.
@@ -18,7 +18,7 @@ Broken access controls are a commonly encountered and often critical security vu
 
 ## How?
 
-* [Application logic errors and broken access control vulnerabilities](../techniques/access.md)
+* [Broken access control](../techniques/acl.md)
 * [Insecure direct object references (IDOR)](../techniques/idor.md)
 * [Unprotected admin functionality](1.md)
 * [Unprotected admin functionality with unpredictable URL](2.md)

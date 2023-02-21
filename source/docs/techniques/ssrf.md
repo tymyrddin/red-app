@@ -92,7 +92,7 @@ These headers offer protection against SSRFs because most often during an SSRF, 
 
 Because blind SSRFs don’t return a response or error message, their exploitation is often limited to network mapping, port scanning, and service discovery. And because you can’t extract information directly from the target server, this exploitation relies heavily on inference. Yet by analysing HTTP status codes and server response times, we can often achieve results similar to regular SSRF.
 
-Use what you’ve found by scanning the network, identifying services, and pulling instance metadata to execute attacks that have impact. It may be possible to [bypass access controls](access.md), [leak confidential information](disclosure.md), and [execute code](rce.md).
+Use what you’ve found by scanning the network, identifying services, and pulling instance metadata to execute attacks that have impact. It may be possible to [bypass access controls](acl.md), [leak confidential information](disclosure.md), and [execute code](rce.md).
 
 ## Remediation
 
