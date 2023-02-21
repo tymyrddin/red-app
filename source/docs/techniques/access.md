@@ -1,6 +1,6 @@
 # Application logic errors and broken access control
 
-Application logic errors and broken access control vulnerabilities are a different beast. These are not about patterns. Developers take decisions in the code, and after processing them, they have a result. When they do that, they think about just the possible options they have from design.
+Application (business) logic errors and broken access control vulnerabilities are a different beast. These are not about patterns. Developers take decisions in the code, and after processing them, they have a result. When they do that, they think about just the possible options they have from design.
 
 Finding logic bugs and not just security bugs is not possible using static analysis or automated tools, and if testing is done from the application's design paradigms, the fails are never detected.
 
@@ -34,16 +34,25 @@ Use your creativity to think of ways to bypass access control or otherwise inter
 
 Escalating application logic errors and broken access control depends entirely on the nature of the flaw you find. But a general rule of thumb is that you can try to combine the application logic error or broken access control with other vulnerabilities to increase their impact.
 
-A broken access control that gives you access to the admin panel with a console or application deployment capabilities can lead to [remote code execution](rce.md). 
-
-If you can find the configuration files of a web application, you can search for CVEs for the software versions in use to further compromise the application. 
-
-You might also find credentials in a file that can be used to access different machines on the network.
+* A broken access control that gives you access to the admin panel with a console or application deployment capabilities can lead to [remote code execution](rce.md). 
+* If you can find the configuration files of a web application, you can search for CVEs for the software versions in use to further compromise the application. 
+* You might also find credentials in a file that can be used to access different machines on the network.
 
 Think of ways malicious users can exploit these vulnerabilities to the fullest extent, and communicate their impact in detail in the report.
 
 ## Portswigger lab writeups
 
+* [Excessive trust in client-side controls](../business/1.md)
+* [High-level logic vulnerability](../business/2.md)
+* [Inconsistent security controls](../business/3.md)
+* [Flawed enforcement of business rules](../business/4.md)
+* [Low-level logic flaw](../business/5.md)
+* [Inconsistent handling of exceptional input](../business/6.md)
+* [Weak isolation on dual-use endpoint](../business/7.md)
+* [Insufficient workflow validation](../business/8.md)
+* [Authentication bypass via flawed state machine](../business/9.md)
+* [Infinite money logic flaw](../business/10.md)
+* [Authentication bypass via encryption oracle](../business/11.md)
 * [Unprotected admin functionality](../acl/1.md)
 * [Unprotected admin functionality with unpredictable URL](../acl/2.md)
 * [User role controlled by request parameter](../acl/3.md)
@@ -60,11 +69,24 @@ Think of ways malicious users can exploit these vulnerabilities to the fullest e
 
 ## Remediation
 
-* Frameworks do not yet have the capability of automatically implementing permissions structures. Permissions structures need to be implemented by developers, because every application has specific, custom requirements. In most cases, the reason that access control is broken is because it has not been implemented. 
+### Business logic
+
+* Everybody involved in developing the software needs to understand the domain that the application serves.
+* Avoid making implicit assumptions about user behaviour or the behaviour of other parts of the application.
+* Assess the codebase to understand the business rules and logic of the application and identify the security controls in place, how they work, and any control gaps.
+  * Identify assumptions made about server-side states and implement the logic to verify that these assumptions are met. This includes verifying the value of any input makes sense before proceeding.
+  * Maintain clear design documents and data flows for all transactions and workflows, noting any assumptions that are made at each stage. 
+  * If it is difficult to understand what is supposed to happen, it will be difficult to spot any logic flaws. In unavoidably complex cases, producing clear documentation is essential to ensure that other developers and testers know what assumptions are being made and exactly what the expected behaviour is. 
+  * Note any references to other code that uses each component. Think about any side effects of these dependencies if a malicious party were to manipulate them in an unusual way.
+
+### Permission structures
+
+* Most frameworks do not yet have the capability of automatically implementing permissions structures. Permissions structures need to be implemented by developers, because every application has specific, custom requirements. In most cases, the reason that access control is broken is that it has not been implemented. 
 * When designing a permissions structure for an application, implement a "deny by default" (for all requests to all endpoints), and require allowlisting specific users/roles for any interaction to occur with that endpoint.
 
 ## Resources
 
+* [CWE CATEGORY: Business Logic Errors](https://cwe.mitre.org/data/definitions/840.html)
 * [Portswigger: Access control vulnerabilities and privilege escalation](https://portswigger.net/web-security/access-control)
 * [OWASP: Broken Access Control](https://owasp.org/www-community/Broken_Access_Control)
 * [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)

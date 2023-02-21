@@ -6,7 +6,7 @@
 
 ## What?
 
-Business logic flaws are often the most critical in terms of consequences, as they are deeply tied into the company's process.
+Business (application) logic flaws are often the most critical in terms of consequences, as they are deeply tied into the company's process.
 
 ## Why?
 
@@ -14,6 +14,7 @@ Business logic vulnerabilities are flaws in the design and implementation of an 
 
 ## How?
 
+* [Application logic errors and broken access control vulnerabilities](../techniques/access.md)
 * [Excessive trust in client-side controls](1.md)
 * [High-level logic vulnerability](2.md)
 * [Inconsistent security controls](3.md)

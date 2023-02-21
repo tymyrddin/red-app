@@ -75,9 +75,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
 
 ----
 
-Portswigger lab writeups
-------------------------------------------
-
 .. image:: _static/images/portswigger.png
   :alt: Portswigger labs
 
@@ -483,9 +480,6 @@ Portswigger lab writeups
    docs/pollution/5.md
 
 ----
-
-CTFs
-------------------------------------------
 
 .. image:: _static/images/ctf.png
   :alt: CTFs
