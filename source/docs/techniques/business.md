@@ -60,10 +60,8 @@ Think of ways malicious users can exploit these vulnerabilities to the fullest e
 ## Resources
 
 * [CWE CATEGORY: Business Logic Errors](https://cwe.mitre.org/data/definitions/840.html)
-* [Portswigger: Access control vulnerabilities and privilege escalation](https://portswigger.net/web-security/access-control)
-* [OWASP: Broken Access Control](https://owasp.org/www-community/Broken_Access_Control)
-* [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
-* [Role and Attribute based Access Control for Node.js](https://www.npmjs.com/package/accesscontrol)
+* [Portswigger: Business logic vulnerabilities](https://portswigger.net/web-security/logic-flaws)
+* [OWASP: Business logic vulnerability](https://owasp.org/www-community/vulnerabilities/Business_logic_vulnerability)
 * [Bug Bounty Bootcamp](https://nostarch.com/bug-bounty-bootcamp)
 * [Bug Bounty Hunting Essentials](https://www.packtpub.com/product/bug-bounty-hunting-essentials/9781788626897)
 * [Bug Bounty Hunting for Web Security](https://link.springer.com/book/10.1007/978-1-4842-5391-5)
