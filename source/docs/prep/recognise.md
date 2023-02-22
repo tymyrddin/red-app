@@ -1,6 +1,4 @@
-# Recognise targets
-
-These tools are focused on target recognition.
+# Target recognition
 
 ## Knockpy
 

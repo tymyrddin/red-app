@@ -11,9 +11,9 @@ Develop an agile choreography for building disposable local web application pent
 ## How?
 
 * [Build a virtual local testlab](red-iac:docs/lab/README)
-* [HTTP proxies, requests, responses, and traffic analysers](proxies.md)
-* [Vulnerability discovery and exploitation](automate.md)
-* [Recognise targets](recognise.md)
-* [Re-useful extensions](extensions.md)
+* [HTTP proxies and traffic analysers](proxies.md)
+* [Vulnerability discovery tools](automate.md)
+* [Target recognition](recognise.md)
+* [Browser extensions](extensions.md)
 * [Create recon scripts](recon-scripts.md)
 

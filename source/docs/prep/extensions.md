@@ -1,4 +1,4 @@
-# Re-useful extensions
+# Browser extensions
 
 ## FoxyProxy
 

@@ -61,6 +61,7 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    docs/techniques/ssrf.md
    docs/techniques/id.md
    docs/techniques/xxe.md
+   docs/techniques/cache.md
    docs/techniques/smuggling.md
    docs/techniques/ssti.md
    docs/techniques/traversal.md
@@ -69,7 +70,6 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    docs/techniques/acl.md
    docs/techniques/business.md
    docs/techniques/sockets.md
-   docs/techniques/cache.md
    docs/techniques/rce.md
    docs/techniques/sop.md
    docs/techniques/disclosure.md

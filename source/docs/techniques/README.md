@@ -20,6 +20,7 @@ Tackle challenges in determining and exploring vulnerabilities in web applicatio
 * [Server-side request forgery (SSRF)](ssrf.md)
 * [Insecure deserialisation](id.md)
 * [XML external entity (XXE) injection](xxe.md)
+* [Web cache poisoning](cache.md)
 * [HTTP Request smuggling](smuggling.md)
 * [Template injection (SSTI)](ssti.md)
 * [Authentication vulnerabilities](auth.md)

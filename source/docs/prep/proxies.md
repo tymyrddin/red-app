@@ -1,4 +1,4 @@
-# HTTP proxies, requests, responses, and traffic analysers
+# HTTP proxies and traffic analysers
 
 ## Burp Suite
 

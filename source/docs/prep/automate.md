@@ -1,4 +1,4 @@
-# Vulnerability discovery and exploitation
+# Vulnerability discovery tools
 
 These can save time and are perfect for so-called juicy bugs, such as XSS, SQL injections, cross-site request forgery (CSRF), and other kinds of injections.
 
