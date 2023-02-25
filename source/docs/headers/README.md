@@ -20,6 +20,7 @@ As the Host header is in fact user controllable, this practice can lead to a num
 
 ## How?
 
+* [HTTP Host header attacks](../techniques/headers.md)
 * [Basic password reset poisoning](1.md)
 * [Host header authentication bypass](2.md)
 * [Web cache poisoning via ambiguous requests](3.md)

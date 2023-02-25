@@ -27,6 +27,7 @@ Tackle challenges in determining and exploring vulnerabilities in web applicatio
 * [Single-sign-on security (SSO)](sso.md)
 * [Broken access control](acl.md)
 * [Application logic errors](business.md)
+* [HTTP Host header attacks](headers.md)
 * [Websocket vulnerabilities](sockets.md)
 * [Remote code execution (RCE)](rce.md)
 * [Same-origin policy (SOP)](sop.md)

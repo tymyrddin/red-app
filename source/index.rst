@@ -69,6 +69,7 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    docs/techniques/sso.md
    docs/techniques/acl.md
    docs/techniques/business.md
+   docs/techniques/headers.md
    docs/techniques/sockets.md
    docs/techniques/rce.md
    docs/techniques/sop.md
