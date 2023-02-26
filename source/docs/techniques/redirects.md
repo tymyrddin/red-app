@@ -173,6 +173,7 @@ Open redirects can also be used to steal credentials and OAuth tokens. When a pa
 * [DOM-based open redirection](../dom/4.md)
 * [DOM XSS using web messages and a JavaScript URL](../dom/2.md)
 * [SSRF with filter bypass via open redirection vulnerability](../ssrf/4.md)
+* [Stealing OAuth access tokens via an open redirect](../oauth/4.md)
 
 ## Remediation
 

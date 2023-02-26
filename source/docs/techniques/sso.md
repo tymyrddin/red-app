@@ -2,6 +2,8 @@
 
 Cookie sharing, SAML, and OAuth are the three most common ways of implementing SSO. Each mechanism has unique strengths and weaknesses, and developers choose different approaches depending on their needs.
 
+The centralised nature of SSO provides a range of security benefits, but also makes SSO a high-profile target to attackers. A small misconfiguration in an SSO implementation can lead to  large vulnerabilities.
+
 ## Steps
 
 1. If the target application is using single sign-on, determine the SSO mechanism in use.
@@ -57,7 +59,9 @@ And, you can try to leak data, execute sensitive actions, or take over the appli
 
 ## Resources
 
-* [Daily Swig: Vulnerabilities in Single Sign-On services could be abused to bypass authentication controls](https://portswigger.net/daily-swig/vulnerabilities-in-single-sign-on-services-could-be-abused-to-bypass-authentication-controls)
-* [Bug Bounty Bootcamp](https://nostarch.com/bug-bounty-bootcamp)
-* [Bug Bounty Hunting Essentials](https://www.packtpub.com/product/bug-bounty-hunting-essentials/9781788626897)
-* [Bug Bounty Hunting for Web Security](https://link.springer.com/book/10.1007/978-1-4842-5391-5)
+* [Portswigger: OAuth grant types](https://portswigger.net/web-security/oauth/grant-types)
+* [Portswigger: OAuth 2.0 authentication vulnerabilities](https://portswigger.net/web-security/oauth)
+* [OWASP: Testing for OAuth Weaknesses](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/05-Testing_for_OAuth_Weaknesses)
+* [Portswigger Research Articles: Hidden OAuth attack vectors](https://portswigger.net/research/hidden-oauth-attack-vectors), March 2021
+* [Daily Swig: Vulnerabilities in Single Sign-On services could be abused to bypass authentication controls](https://portswigger.net/daily-swig/vulnerabilities-in-single-sign-on-services-could-be-abused-to-bypass-authentication-controls), March 2021
+* [Daily Swig: ‘Dirty dancing’ in OAuth: Researcher discloses how cyber-attacks can lead to account hijacking](https://portswigger.net/daily-swig/dirty-dancing-in-oauth-researcher-discloses-how-cyber-attacks-can-lead-to-account-hijacking), July 2022

@@ -74,6 +74,7 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    docs/techniques/rce.md
    docs/techniques/sop.md
    docs/techniques/disclosure.md
+   docs/techniques/pollution.md
 
 ----
 
@@ -480,6 +481,11 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    docs/pollution/3.md
    docs/pollution/4.md
    docs/pollution/5.md
+   docs/pollution/6.md
+   docs/pollution/7.md
+   docs/pollution/8.md
+   docs/pollution/9.md
+   docs/pollution/10.md
 
 ----
 

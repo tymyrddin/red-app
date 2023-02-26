@@ -32,3 +32,4 @@ Tackle challenges in determining and exploring vulnerabilities in web applicatio
 * [Remote code execution (RCE)](rce.md)
 * [Same-origin policy (SOP)](sop.md)
 * [Information disclosure](disclosure.md)
+* [Prototype pollution](pollution.md)
