@@ -8,11 +8,21 @@ JavaScript can run on the client-side and server-side of a web application, and 
 
 ## Steps
 
-For client-side prototype pollution (CSPP):
+### Client-side prototype pollution (CSPP)
 
 * Find prototype pollution sources
 * Testing a prototype pollution sources/Try to modify the prototype
 * Find possible prototype pollution gadgets
+* Try the Burpsuite [DOM Invader](https://portswigger.net/burp/documentation/desktop/tools/dom-invader) browser extension
+
+### Server-side prototype pollution (SSPP)
+
+* Polluted property reflection
+* If no reflection, try:
+  * Status code override
+  * JSON spaces override
+  * Charset override
+* Try the [Server-Side Prototype Pollution Scanner](https://portswigger.net/bappstore/c1d4bd60626d4178a54d36ee802cf7e8) extension
 
 ## Prototype pollution sources
 
@@ -41,6 +51,27 @@ To find gadgets, click on **Scan for Gadgets** and in the new tab that appears *
 ![DOM Invader settings](../../_static/images/dom-invader5.png)
 
 In this example, DOM Invader has discovered a gadget called "html", which ends up in an `innerHTML` sink. A green "Exploit" button has appeared, combining the source discovered with the gadget and automatically creating a prototype pollution exploit. 
+
+## Detecting SSPP with the Server-Side Prototype Pollution Scanner
+
+[Server-Side Prototype Pollution Scanner](https://portswigger.net/bappstore/c1d4bd60626d4178a54d36ee802cf7e8)
+
+* Install the Server-Side Prototype Pollution Scanner extension from the BApp Store and make sure that it is enabled. 
+* Explore the target website using Burp's browser to map as much of the content as possible and accumulate traffic in the proxy history. 
+* In Burp, go to the **Proxy -> HTTP history** tab. 
+* Filter the list to show only in-scope items. 
+* Select all items in the list. 
+* Right-click your selection and go to **Extensions -> Server-Side Prototype Pollution Scanner -> Server-Side Prototype Pollution**, then select one of the scanning techniques from the list. 
+* When prompted, modify the attack configuration if required, then click **OK** to launch the scan. 
+
+In Burp Suite Professional, the extension reports and prototype pollution sources it finds via the Issue activity panel on the Dashboard and Target tabs. If you're using Burp Suite Community Edition, you need to go to the **Extensions -> Installed** tab, select the extension, then monitor its **Output** tab for any reported issues. 
+
+## Bypassing input filters for server-side prototype pollution
+
+Websites often attempt to prevent or patch prototype pollution vulnerabilities by filtering suspicious keys like `__proto__`. This key sanitisation approach is not a robust long-term solution as there are a number of ways it can potentially be bypassed:
+
+* Obfuscate the prohibited keywords, so they're missed during the sanitization. 
+* Access the prototype via the `constructor` property instead of `__proto__`. 
 
 ## Escalation
 

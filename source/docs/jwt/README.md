@@ -16,6 +16,7 @@ Design issues and flawed handling of JSON web tokens (JWTs) can leave websites v
 
 ## How?
 
+* [JSON web tokens attacks](../techniques/jwt.md)
 * [JWT authentication bypass via unverified signature](1.md)
 * [JWT authentication bypass via flawed signature verification](2.md)
 * [JWT authentication bypass via weak signing key](3.md)

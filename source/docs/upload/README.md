@@ -14,6 +14,7 @@ File upload functions can be used as a powerful vector for a number of high-seve
 
 ## How?
 
+* [File uploads](../techniques/shells.md)
 * [Remote code execution via web shell upload](1.md)
 * [Web shell upload via Content-Type restriction bypass](2.md)
 * [Web shell upload via path traversal](3.md)

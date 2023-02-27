@@ -74,6 +74,8 @@ These pages contain notes on techniques and writeups of Portswigger Labs. For so
    docs/techniques/rce.md
    docs/techniques/sop.md
    docs/techniques/disclosure.md
+   docs/techniques/shells.md
+   docs/techniques/jwt.md
    docs/techniques/pollution.md
 
 ----
