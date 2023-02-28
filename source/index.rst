@@ -3,7 +3,7 @@ A canopy of apple-blossom
 
 TL/DR: Many web applications can still easily be exploited to gain unauthorised access to sensitive data and webservers. Threats include SQL Injection, Code Injection, XSS, and Cookie poisoning.
 
-These pages contain notes on techniques based on, and writeups of, Portswigger Labs and challenges and CTFs done in vulnerable web application Lab environments.
+These pages contain notes on techniques based on, and writeups of, Portswigger Labs and challenges and ctfs done in vulnerable web application lab environments.
 
 ----
 
