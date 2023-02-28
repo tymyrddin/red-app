@@ -5,9 +5,9 @@ File upload functions can be used as a powerful vector for a number of high-seve
 ## Steps
 
 * Browse the site and find each upload functionality.
-* Start with basic test by simply uploading a web shell using Weevely.
+* Start with basic test by uploading a webshell using Weevely.
 * If that fails, try the bypasses. If a bypass is successful, exploit further, or try another.
-* Upload small POC report.
+* Make report.
 
 ## Blacklisting bypass
 
@@ -51,9 +51,9 @@ Try these extensions on the `filename=` parameter:
     file.
     .html
 
-## Content-type validation
+## Content-Type validation
 
-Change the `Content-type: application/x-php` or `Content-Type : application/octet-stream` to `Content-type: image/png` or `Content-type: image/gif` or `Content-type: image/jpg`.
+Change the `Content-Type: application/x-php` or `Content-Type : application/octet-stream` to `Content-Type: image/png` or `Content-Type: image/gif` or `Content-Type: image/jpg`.
 
 ## Content-Length validation
 
@@ -93,13 +93,9 @@ Try uploading the modified `img.jpg`.
 
 Try, for example, uploading a `.htaccess` file [htshells](https://github.com/wireghoul/htshells) or a `.config` file. Code can be appended at the end of the file.
 
-For example, uploading a `.htaccess` file with 
+For example, uploading a `.htaccess` file with `AddType application/x-httpd-php .l33t`, instructs the Apache HTTP Server to execute PNG images as though they were PHP scripts. After that, upload a php webshell file with extension `.l33t`.
 
-    AddType application/x-httpd-php .png 
-
-Instructs the Apache HTTP Server to execute PNG images as though they were PHP scripts. After that, upload a php webshell file with extension `.png`.
-
-## Zip Slip
+## Zip slip
 
 If a site accepts `.zip` files, upload `.php` by compressing it into `.zip` and uploading it. Then visit `target.com/path?page=zip://path/file.zip%23rce.php`.
 
