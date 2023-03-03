@@ -183,6 +183,7 @@ Force redirects to first go to a page that notify users they are redirected out 
 
 ## Resources
 
+* [RootMe: Understanding and Discovering Open Redirect Vulnerabilities](https://repository.root-me.org/Exploitation%20-%20Web/EN%20-%20Understanding%20and%20Discovering%20Open%20Redirect%20Vulnerabilities%20-%20Trustwave.pdf)
 * [Portswigger: Using Burp to Test for Open Redirections](https://portswigger.net/support/using-burp-to-test-for-open-redirections)
 * [OWASP: Testing for Client-side URL Redirect](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/11-Client-side_Testing/04-Testing_for_Client-side_URL_Redirect)
 * [swisskyrepo/PayloadsAllTheThings/Open Redirect](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Open%20Redirect)

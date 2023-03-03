@@ -2,11 +2,11 @@
 
 ## What?
 
-Not an exhaustive list of application hacking methods, but does include some "edge-case" tactics that may be seen in THM Capture the Flag (CTF) exercises.
+![TryHackMe](../../_static/images/tryhackme.png)
 
 ## Why?
 
-To build experience with a beautiful canopy.
+Reinforce skills in a real-world environment by completing guided, objective-based tasks and challenges.
 
 ## How?
 

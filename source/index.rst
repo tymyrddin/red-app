@@ -492,12 +492,20 @@ These pages contain notes on techniques based on, and writeups of, Portswigger L
 ----
 
 .. image:: _static/images/ctf.png
-  :alt: CTFs
+  :alt: CTFs and challenges
 
 .. toctree::
    :maxdepth: 1
    :includehidden:
-   :caption: THM
+   :caption: RootMe
+
+   docs/rootme/README.md
+   docs/rootme/git.md
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+   :caption: TryHackMe
 
    docs/thm/README.md
    docs/thm/picklerick.md
