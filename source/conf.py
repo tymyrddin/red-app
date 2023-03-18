@@ -80,7 +80,7 @@ html_show_copyright = False
 
 # Intersphinx
 intersphinx_mapping = {
-    "red-iac": ("https://red.tymyrddin.dev/projects/iac/en/latest/", None),
+    "red-testlab": ("https://red.tymyrddin.dev/projects/testlab/en/latest/", None),
     "red-recon": ("https://red.tymyrddin.dev/projects/recon/en/latest/", None),
     "red-bbh": ("https://red.tymyrddin.dev/projects/bbh/en/latest/", None),
     "blue-devsecops":("https://blue.tymyrddin.dev/projects/devsecops/en/latest/", None),

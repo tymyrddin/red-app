@@ -87,7 +87,7 @@ Manually visiting all the pages you’ve found through brute-forcing can be time
 
 Another way of discovering directories and paths is through web spidering, or web crawling, a process used to identify all pages on a site. A web spider tool starts with a page to visit. It then identifies all the URLs embedded on the page and visits them. By recursively visiting all URLs found on all pages of a site, the web spider can uncover many hidden endpoints in an application.
 
-[OWASP Zed Attack Proxy (ZAP)](red-iac:docs/lab/zap) has a built-in web spider, and [Burp Suite](red-iac:docs/lab/burp) has an equivalent tool called the crawler.
+[OWASP Zed Attack Proxy (ZAP)](red-testlab:docs/webapp/zap) has a built-in web spider, and [Burp Suite](red-testlab:docs/webapp/burp) has an equivalent tool called the crawler.
 
 ## Third-party hosting
 

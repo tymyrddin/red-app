@@ -20,8 +20,8 @@
 ## Resources
 
 * [Burp Suite's web vulnerability scanner](https://portswigger.net/burp/vulnerability-scanner)
-* [Burp on Kali](red-iac:docs/lab/burp)
-* [Zaproxy on Kali](red-iac:docs/lab/zap)
+* [Burp on Kali](red-testlab:docs/webapp/burp)
+* [Zaproxy on Kali](red-testlab:docs/webapp/zap)
 * [ZAP Getting Started](https://www.zaproxy.org/getting-started/)
 * [ZAP Baseline scan](https://www.zaproxy.org/docs/docker/baseline-scan/)
 * [ZAP Full scan](https://www.zaproxy.org/docs/docker/full-scan/)
