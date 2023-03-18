@@ -45,7 +45,7 @@ html_theme = 'sphinx_rtd_theme'
 html_theme_options = {
     'display_version': True,
     'prev_next_buttons_location': 'bottom',
-    'style_external_links': True,
+    'style_external_links': False,
     'logo_only': True,
     # Toc options
     'collapse_navigation': True,
@@ -82,6 +82,7 @@ html_show_copyright = False
 intersphinx_mapping = {
     "red-testlab": ("https://red.tymyrddin.dev/projects/testlab/en/latest/", None),
     "red-recon": ("https://red.tymyrddin.dev/projects/recon/en/latest/", None),
+    "red-reverse": ("https://red.tymyrddin.dev/projects/reverse/en/latest/", None),
     "red-bbh": ("https://red.tymyrddin.dev/projects/bbh/en/latest/", None),
     "blue-devsecops":("https://blue.tymyrddin.dev/projects/devsecops/en/latest/", None),
     "blue-server": ("https://blue.tymyrddin.dev/projects/server/en/latest/", None),
