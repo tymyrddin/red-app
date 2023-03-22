@@ -23,7 +23,7 @@ Many pentesters, red teamers and bounty hunters aim to find command injection vu
 
 ## Gather information about the target
 
-The first step to finding any vulnerability is to [gather information](../recon/README.md) about the target. When hunting for RCEs, this step is especially important because the route to achieving an RCE is extremely dependent on the way the target is built. Find out information about the web server, programming language, and other technologies used by your current target. These will allow focusing the attacks on using payloads with the proper syntax.
+The first step to finding any vulnerability is to [gather information](red-recon:docs/app/README) about the target. When hunting for RCEs, this step is especially important because the route to achieving an RCE is extremely dependent on the way the target is built. Find out information about the web server, programming language, and other technologies used by your current target. These will allow focusing the attacks on using payloads with the proper syntax.
 
 ## Identify suspicious user input locations
 

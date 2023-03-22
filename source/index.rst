@@ -13,30 +13,8 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
    :caption: Preparation
 
    Build a local testlab <https://red.tymyrddin.dev/projects/testlab/en/latest/docs/webapp/README.html>
-
-.. toctree::
-   :glob:
-   :maxdepth: 1
-   :includehidden:
-   :caption: Reconnaissance
-
-   docs/recon/README.md
-   docs/recon/stroll.md
-   Advanced searching <https://red.tymyrddin.dev/projects/recon/en/latest/docs/osint/searching.html>
-   Google dorking <https://red.tymyrddin.dev/projects/recon/en/latest/docs/osint/google-dorking.html>
-   docs/recon/dns.md
-   docs/recon/sneaky.md
-   docs/recon/techstack.md
-
-.. toctree::
-   :glob:
-   :maxdepth: 1
-   :includehidden:
-   :caption: Enumeration
-
-   docs/enum/README.md
-   docs/enum/scanning.md
-   docs/enum/binaries.md
+   Reconnaissance <https://red.tymyrddin.dev/projects/recon/en/latest/>
+   Enumeration <https://red.tymyrddin.dev/projects/enum/en/latest/>
 
 .. toctree::
    :glob:
