@@ -13,8 +13,8 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
    :caption: Preparation
 
    Build a local testlab <https://red.tymyrddin.dev/projects/testlab/en/latest/docs/webapp/README.html>
-   Reconnaissance <https://red.tymyrddin.dev/projects/recon/en/latest/>
-   Enumeration <https://red.tymyrddin.dev/projects/enum/en/latest/>
+   Reconnaissance <https://red.tymyrddin.dev/projects/recon/en/latest/docs/app/README.html>
+   Enumeration <https://red.tymyrddin.dev/projects/enum/en/latest/docs/app/README.html>
 
 .. toctree::
    :glob:
