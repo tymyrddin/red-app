@@ -5,6 +5,9 @@ TL/DR: Many web applications can still easily be exploited to gain unauthorised 
 
 Notes on techniques based on, and writeups of, Portswigger Labs and challenges and CTFs done in vulnerable web application lab environments.
 
+.. image:: _static/images/in-progress.png
+  :alt: Forever in progress ...
+
 ----
 
 .. toctree::
@@ -49,6 +52,24 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
    docs/techniques/shells.md
    docs/techniques/jwt.md
    docs/techniques/pollution.md
+
+----
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+   :caption: RootMe
+
+   docs/rootme/README.md
+   docs/rootme/git.md
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+   :caption: TryHackMe
+
+   docs/thm/README.md
+   docs/thm/picklerick.md
 
 ----
 
@@ -461,23 +482,4 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
    docs/pollution/9.md
    docs/pollution/10.md
 
-----
 
-.. image:: _static/images/ctf.png
-  :alt: CTFs and challenges
-
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
-   :caption: RootMe
-
-   docs/rootme/README.md
-   docs/rootme/git.md
-
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
-   :caption: TryHackMe
-
-   docs/thm/README.md
-   docs/thm/picklerick.md
