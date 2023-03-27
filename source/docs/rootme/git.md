@@ -4,7 +4,7 @@
 
 Intercept, send to Repeater and check the (existence and content of) `.git` directory:
 
-![TryHackMe](../../_static/images/insecure-code-management1.png)
+![RootMe](../../_static/images/insecure-code-management1.png)
 
 Download the directory:
 
@@ -12,9 +12,9 @@ Download the directory:
 wget -r http://challenge01.root-me.org/web-serveur/ch61/.git/
 ```
 
-![TryHackMe](../../_static/images/insecure-code-management2.png)
+![RootMe](../../_static/images/insecure-code-management2.png)
 
 Open the directory which contains `.git` in GitCola (for example), and **Undo Commit**:
 
-![TryHackMe](../../_static/images/insecure-code-management3.png)
+![RootMe](../../_static/images/insecure-code-management3.png)
 

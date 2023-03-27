@@ -57,6 +57,7 @@ The impact of JWT attacks is usually severe. If an attacker is able to create th
 
 ## Resources
 
+* [RFC7519](https://repository.root-me.org/RFC/EN%20-%20rfc7519.txt)
 * [Portswigger: JWT attacks](https://portswigger.net/web-security/jwt)
 * [Portswigger: Working with JWTs in Burp Suite](https://portswigger.net/web-security/jwt/working-with-jwts-in-burp-suite)
 * [Portswigger: Burpsuite JWT Editor extension](https://portswigger.net/bappstore/26aaa5ded2f74beea19e2ed8345a93dd)
@@ -64,4 +65,6 @@ The impact of JWT attacks is usually severe. If an attacker is able to create th
 * [JWT Attack Methodology](https://github.com/ticarpi/jwt_tool/wiki/Attack-Methodology)
 * [The JSON Web Token Toolkit v2](https://github.com/ticarpi/jwt_tool)
 * [PayloadsAllTheThings/JSON Web Token](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/JSON%20Web%20Token)
+* [Attacking JWT authentication - Sjoerd Langkemper](https://repository.root-me.org/Exploitation%20-%20Web/EN%20-%20Attacking%20JWT%20authentication%20-%20Sjoerd%20Langkemper.pdf)
+* [Hacking JSON Web Token (JWT) - Rudra Pratap](https://repository.root-me.org/Exploitation%20-%20Web/EN%20-%20Hacking%20JSON%20Web%20Token%20(JWT)%20-%20Rudra%20Pratap.pdf)
 * [JWT Writeups Bug Bounty HackerOne (Karim Habeeb)](https://nored0x.github.io/penetration%20testing/writeups-Bug-Bounty-hackrone/#jwt)
