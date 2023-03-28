@@ -23,9 +23,7 @@ Get token for `admin:admin`:
 
 ![RootMe JWT jti](../../_static/images/rootme-jwt2c.png)
 
-Use the token to get the flag (add an `=` at the end):
-
-![RootMe JWT jti](../../_static/images/rootme-jwt2d.png)
+Use the token to get the flag (add an `=` at the end of it).
 
 ## Resources
 

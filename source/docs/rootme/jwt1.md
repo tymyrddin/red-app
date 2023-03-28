@@ -4,8 +4,6 @@
 
 Log in as guest, change the first two parts of the JWT token (`none` and `admin`), and connect as `admin` instead of `guest`.
 
-![RootMe JWT Intro](../../_static/images/rootme-jwt1.png)
-
 ## Resources
 
 * [JWT techniques (these writeups)](../jwt/README.md)

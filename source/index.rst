@@ -62,11 +62,15 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
 
    docs/rootme/README.md
    docs/rootme/git.md
-   docs/rootme/jwt1.md
    docs/rootme/traversal.md
    docs/rootme/upload-null.md
+   docs/rootme/php1.md
+   docs/rootme/php2.md
+   docs/rootme/php3.md
+   docs/rootme/jwt1.md
    docs/rootme/jwt2.md
    docs/rootme/jwt3.md
+   docs/rootme/python1.md
 
 .. toctree::
    :maxdepth: 1

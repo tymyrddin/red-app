@@ -26,6 +26,8 @@ hacked_token = jwt.encode({"role": "admin"}, secret, algorithm="HS512")
 print(f"Hacked token:{hacked_token}")
 ```
 
+etcetera.
+
 ## Resources
 
 * [JWT techniques (these writeups)](../jwt/README.md)
