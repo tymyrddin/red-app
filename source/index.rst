@@ -15,7 +15,7 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
    :includehidden:
    :caption: Preparation
 
-   Build a local testlab <https://red.tymyrddin.dev/projects/testlab/en/latest/docs/webapp/README.html>
+   Application pentesting tools <https://red.tymyrddin.dev/projects/testlab/en/latest/docs/webapp/README.html>
    Reconnaissance <https://red.tymyrddin.dev/projects/recon/en/latest/docs/app/README.html>
    Enumeration <https://red.tymyrddin.dev/projects/enum/en/latest/docs/app/README.html>
 
@@ -58,7 +58,7 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
 .. toctree::
    :maxdepth: 1
    :includehidden:
-   :caption: RootMe
+   :caption: Root-me
 
    docs/rootme/README.md
    docs/rootme/git.md
