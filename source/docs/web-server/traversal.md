@@ -1,6 +1,6 @@
 # Directory traversal
 
-[RootMe challenge: Directory traversal](https://www.root-me.org/en/Challenges/Web-Server/Directory-traversal): Find the hidden section of the photo galery.
+[root-me challenge: Directory traversal](https://www.root-me.org/en/Challenges/Web-Server/Directory-traversal): Find the hidden section of the photo galery.
 
 ![RootMe Traversal](../../_static/images/rootme-traversal.png)
 

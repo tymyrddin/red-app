@@ -27,10 +27,10 @@ Using gobuster to enumerate:
 
     gobuster dir -u <Machine IP> -w /usr/share/dirb/wordlists/common.txt
 
-Visiting many places and files. The `Machine IP/robots.txt` file inside the webserver contains `Wubbalubbadubdub`. 
+Visiting many places and files. The `Machine IP/robots.txt` file inside the web server contains `Wubbalubbadubdub`. 
 Could be a password. Or just nonsense.
 
-[Enumerating the webserver using dirbuster](https://git.mst.edu/slbnmc/ici-wiki/-/wikis/Enumerating-Web-Server-Files-and-Directories-with-DirBuster) 
+[Enumerating the web server using dirbuster](https://git.mst.edu/slbnmc/ici-wiki/-/wikis/Enumerating-Web-Server-Files-and-Directories-with-DirBuster) 
 gives a `portal.php` gobuster did not list. Visiting the portal site brings a login page.
 
 Trying the found username `R1ckRul3s` and `Wubbalubbadubdub` as password gives a command panel page 

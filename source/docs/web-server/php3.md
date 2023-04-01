@@ -1,6 +1,6 @@
 # PHP Register globals
 
-[RootMe challenge: PHP - Register globals](https://www.root-me.org/en/Challenges/Web-Server/PHP-register-globals): It seems that the developer often leaves backup files lying around ...
+[root-me challenge: PHP - Register globals](https://www.root-me.org/en/Challenges/Web-Server/PHP-register-globals): It seems that the developer often leaves backup files lying around ...
 
 ----
 

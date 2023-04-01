@@ -1,6 +1,6 @@
 # File upload: null byte
 
-[RootMe challenge: File upload - Null byte](https://www.root-me.org/en/Challenges/Web-Server/File-upload-Null-byte):
+[root-me challenge: File upload - Null byte](https://www.root-me.org/en/Challenges/Web-Server/File-upload-Null-byte):
 Hack this photo galery by uploading PHP code.
 
 ![RootMe Upload Null](../../_static/images/rootme-upload-null.png)

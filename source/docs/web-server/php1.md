@@ -1,6 +1,6 @@
 # PHP assert()
 
-[RootMe challenge: PHP - assert()](https://www.root-me.org/fr/Challenges/Web-Serveur/PHP-assert): Find and exploit the vulnerability to read the file `.passwd`.
+[root-me challenge: PHP - assert()](https://www.root-me.org/fr/Challenges/Web-Serveur/PHP-assert): Find and exploit the vulnerability to read the file `.passwd`.
 
 ![PHP assert()](../../_static/images/rootme-php1.png)
 

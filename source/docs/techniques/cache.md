@@ -56,7 +56,7 @@ The impact of web cache poisoning is heavily dependent on several key factors: W
 
 Cache poisoning is just another vehicle for attackers to deliver their payloads. When hit by a cache poisoning attempt that injects an [XSS](xss.md) payload into the cache, it will be harmless if the application is not vulnerable to that type of cross-site scripting. Use [secure coding practices](blue-devsecops:docs/ssdlc/coding) at every stage of the development and operations pipeline.
 
-Still, to minimise attackers using the web cache poisoning vehicle, these are some recommendations for configuring the webserver cache:
+Still, to minimise attackers using the web cache poisoning vehicle, these are some recommendations for configuring the web server cache:
 
 * If the application only uses default ports, strip the port number from the `Host` header before generating the cache key. Poisoning via an unkeyed port value can lead to DoS.
 * Caching only `GET` and `HEAD` requests reduces the risk of poisoning via an unkeyed request method. `POST` and other `HTTP` commands are designed to trigger an operation on the server, and responses to state-changing requests are often unique, hence there is no performance benefit to caching their responses anyway.

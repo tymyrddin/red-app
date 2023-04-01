@@ -58,19 +58,35 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
 .. toctree::
    :maxdepth: 1
    :includehidden:
-   :caption: Root-me
+   :caption: Root-me web server
 
-   docs/rootme/README.md
-   docs/rootme/git.md
-   docs/rootme/traversal.md
-   docs/rootme/upload-null.md
-   docs/rootme/php1.md
-   docs/rootme/php2.md
-   docs/rootme/php3.md
-   docs/rootme/jwt1.md
-   docs/rootme/jwt2.md
-   docs/rootme/jwt3.md
-   docs/rootme/python1.md
+   docs/web-server/README.md
+   docs/web-server/git.md
+   docs/web-server/traversal.md
+   docs/web-server/upload-null.md
+   docs/web-server/php1.md
+   docs/web-server/php2.md
+   docs/web-server/php3.md
+   docs/web-server/jwt1.md
+   docs/web-server/jwt2.md
+   docs/web-server/jwt3.md
+   docs/web-server/python1.md
+   docs/web-server/ci-filter-bypass.md
+   docs/web-server/java-ssti.md
+   docs/web-server/sql-authentication.md
+   docs/web-server/sql-string.md
+   docs/web-server/sql-numeric.md
+   docs/web-server/sql-time.md
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+   :caption: Root-me web client
+
+   docs/web-client/README.md
+   docs/web-client/disabled-buttons.md
+   docs/web-client/js-authentication.md
+   docs/web-client/js-source.md
 
 .. toctree::
    :maxdepth: 1

@@ -1,6 +1,6 @@
 # PHP Filters
 
-[RootMe challenge: PHP - Filters](https://www.root-me.org/en/Challenges/Web-Server/PHP-Filters): FileManager v 0.01 | Retrieve the administrator password of this application.
+[root-me challenge: PHP - Filters](https://www.root-me.org/en/Challenges/Web-Server/PHP-Filters): FileManager v 0.01 | Retrieve the administrator password of this application.
 
 ----
 

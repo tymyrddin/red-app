@@ -1,6 +1,6 @@
 # Python: Server-side Template Injection Introduction
 
-[RootMe challenge: Python - Server-side Template Injection Introduction](https://www.root-me.org/fr/Challenges/Web-Serveur/Python-Server-side-Template-Injection-Introduction): This service allows you to generate a web page. Use it to read the flag!
+[root-me challenge: Python - Server-side Template Injection Introduction](https://www.root-me.org/fr/Challenges/Web-Serveur/Python-Server-side-Template-Injection-Introduction): This service allows you to generate a web page. Use it to read the flag!
 
 ----
 

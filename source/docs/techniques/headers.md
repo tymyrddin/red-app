@@ -4,7 +4,7 @@ HTTP Host header attacks exploit vulnerable websites that handle the value of th
 
 ## Steps
 
-Intercept the Request in Burp, and modify the Host header to an arbitrary value. When the site being tested is configured as the webserver’s default or fallback option, the page will display when given an improper Host header. When multiple websites are being hosted by the same webserver or front-end, the response is an error.
+Intercept the Request in Burp, and modify the Host header to an arbitrary value. When the site being tested is configured as the web server's default or fallback option, the page will display when given an improper Host header. When multiple websites are being hosted by the same web server or front-end, the response is an error.
 
 * Check for flawed validation
 * Send ambiguous requests to bypass front-end systems
