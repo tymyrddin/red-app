@@ -21,6 +21,8 @@ The fast, easy, and **very** affordable way to test hacking skills.
 * [JWT weak secret](jwt3.md)
 * [Command injection: filter bypass](ci-filter-bypass.md)
 * [Java: Server-side Template Injection (SSTI)](java-ssti.md)
+* [Local file inclusion: double encoding](lfi-double.md)
+* [PHP type juggling](php-type-juggling.md)
 * [SQL injection: authentication](sql-authentication.md)
 * [SQL injection: string](sql-string.md)
 * [SQL injection: numeric](sql-numeric.md)

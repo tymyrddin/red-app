@@ -55,10 +55,36 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
 
 ----
 
+.. image:: _static/images/try-hack-me.png
+  :alt: try hack me rooms
+
 .. toctree::
    :maxdepth: 1
    :includehidden:
-   :caption: Root-me web server
+   :caption: CTFs
+
+   docs/thm/README.md
+   docs/thm/picklerick.md
+
+----
+
+.. image:: _static/images/root-me.png
+  :alt: root-me challenges
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+   :caption: Web client
+
+   docs/web-client/README.md
+   docs/web-client/disabled-buttons.md
+   docs/web-client/js-authentication.md
+   docs/web-client/js-source.md
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
+   :caption: Web server
 
    docs/web-server/README.md
    docs/web-server/git.md
@@ -73,28 +99,12 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
    docs/web-server/python1.md
    docs/web-server/ci-filter-bypass.md
    docs/web-server/java-ssti.md
+   docs/web-server/lfi-double.md
+   docs/web-server/php-type-juggling.md
    docs/web-server/sql-authentication.md
    docs/web-server/sql-string.md
    docs/web-server/sql-numeric.md
    docs/web-server/sql-time.md
-
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
-   :caption: Root-me web client
-
-   docs/web-client/README.md
-   docs/web-client/disabled-buttons.md
-   docs/web-client/js-authentication.md
-   docs/web-client/js-source.md
-
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
-   :caption: TryHackMe
-
-   docs/thm/README.md
-   docs/thm/picklerick.md
 
 ----
 
