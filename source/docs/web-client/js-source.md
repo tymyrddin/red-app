@@ -4,7 +4,7 @@
 
 ----
 
-![Javascript: source Burp](../../_static/images/client-js-source.png)
+![Javascript: source Burp](../../_static/images/root-me-client-js-source.png)
 
 ## Resources
 

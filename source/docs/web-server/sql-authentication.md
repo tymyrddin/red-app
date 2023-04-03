@@ -8,6 +8,8 @@
 username: admin'--
 ```
 
+![SQL authentification](../../_static/images/root-me-sql-authentification.png)
+
 ## Resources
 
 * [Injection SQL](https://www.root-me.org/spip.php?article785)

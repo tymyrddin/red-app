@@ -108,13 +108,16 @@ Root-me challenges
    docs/web-server/python1.md
    docs/web-server/ci-filter-bypass.md
    docs/web-server/java-ssti.md
+   docs/web-server/lfi.md
    docs/web-server/lfi-double.md
    docs/web-server/php-preg-replace.md
    docs/web-server/php-type-juggling.md
    docs/web-server/sql-authentication.md
    docs/web-server/sql-string.md
    docs/web-server/php-truncation.md
+   docs/web-server/php-serialisation.md
    docs/web-server/sql-numeric.md
+   docs/web-server/sql-routed.md
    docs/web-server/sql-truncation.md
    docs/web-server/xpath-inject-auth.md
    docs/web-server/sql-time.md
