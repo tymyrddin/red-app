@@ -27,6 +27,7 @@ The fast, easy, and **very** affordable way to test hacking skills.
 * [PHP type juggling](php-type-juggling.md)
 * [SQL injection: authentication](sql-authentication.md)
 * [SQL injection: string](sql-string.md)
+* [XSLT code execution](xslt-code-exec.md)
 * [PHP path truncation](php-truncation.md)
 * [PHP serialisation](php-serialisation.md)
 * [SQL injection: numeric](sql-numeric.md)

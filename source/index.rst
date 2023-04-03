@@ -88,6 +88,7 @@ Root-me challenges
    docs/web-client/js-source.md
    docs/web-client/js-native.md
    docs/web-client/xss-stored1.md
+   docs/web-client/csp-bypass-inline.md
    docs/web-client/csrf-0.md
 
 .. toctree::
@@ -114,6 +115,7 @@ Root-me challenges
    docs/web-server/php-type-juggling.md
    docs/web-server/sql-authentication.md
    docs/web-server/sql-string.md
+   docs/web-server/xslt-code-exec.md
    docs/web-server/php-truncation.md
    docs/web-server/php-serialisation.md
    docs/web-server/sql-numeric.md
