@@ -58,10 +58,13 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
 .. image:: _static/images/try-hack-me.png
   :alt: try hack me rooms
 
+TryHackMe rooms
+-------------------------------------
+
 .. toctree::
    :maxdepth: 1
    :includehidden:
-   :caption: CTFs
+   :caption: CTF
 
    docs/thm/README.md
    docs/thm/picklerick.md
@@ -70,6 +73,9 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
 
 .. image:: _static/images/root-me.png
   :alt: root-me challenges
+
+Root-me challenges
+-------------------------------------
 
 .. toctree::
    :maxdepth: 1
@@ -80,6 +86,9 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
    docs/web-client/disabled-buttons.md
    docs/web-client/js-authentication.md
    docs/web-client/js-source.md
+   docs/web-client/js-native.md
+   docs/web-client/xss-stored1.md
+   docs/web-client/csrf-0.md
 
 .. toctree::
    :maxdepth: 1
@@ -100,16 +109,23 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
    docs/web-server/ci-filter-bypass.md
    docs/web-server/java-ssti.md
    docs/web-server/lfi-double.md
+   docs/web-server/php-preg-replace.md
    docs/web-server/php-type-juggling.md
    docs/web-server/sql-authentication.md
    docs/web-server/sql-string.md
+   docs/web-server/php-truncation.md
    docs/web-server/sql-numeric.md
+   docs/web-server/sql-truncation.md
+   docs/web-server/xpath-inject-auth.md
    docs/web-server/sql-time.md
 
 ----
 
 .. image:: _static/images/portswigger.png
   :alt: Portswigger labs
+
+Portswigger Web Security Academy labs
+-------------------------------------
 
 .. toctree::
    :maxdepth: 1

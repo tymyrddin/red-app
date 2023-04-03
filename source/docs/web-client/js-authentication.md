@@ -1,4 +1,4 @@
-# Javascript: authentication
+# Javascript authentication
 
 [root-me challenge: Javascript - Authentication](https://www.root-me.org/en/Challenges/Web-Client/Javascript-Authentication)
 

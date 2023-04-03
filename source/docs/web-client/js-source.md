@@ -1,4 +1,4 @@
-# Javascript: source
+# Javascript source
 
 [root-me challenge: Javascript - Source](https://www.root-me.org/en/Challenges/Web-Client/Javascript-Source)
 

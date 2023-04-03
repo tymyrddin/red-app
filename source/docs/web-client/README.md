@@ -10,6 +10,9 @@ The fast, easy, and **very** affordable way to test hacking skills.
 
 ## How?
 
-* [HTML: disabled buttons](disabled-buttons.md)
-* [Javascript: authentication](js-authentication.md)
-* [Javascript: source](js-source.md)
+* [HTML disabled buttons](disabled-buttons.md)
+* [Javascript authentication](js-authentication.md)
+* [Javascript source](js-source.md)
+* [Javascript native code](js-native.md)
+* [XSS stored 1](xss-stored1.md)
+* [CSRF: zero protection](csrf-0.md)
