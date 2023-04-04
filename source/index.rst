@@ -1,9 +1,7 @@
 A canopy of apple-blossom
 ===================================================
 
-TL/DR: Many web applications can still easily be exploited to gain unauthorised access to sensitive data and webservers. Threats include SQL Injection, Code Injection, XSS, and Cookie poisoning.
-
-Notes on techniques based on, and writeups of, Portswigger Labs and challenges and CTFs done in vulnerable web application lab environments.
+TL/DR: Many web applications can still easily be exploited to gain unauthorised access to sensitive data and webservers. Notes on techniques based on, and writeups of, Portswigger Labs, Root-me challenges and TryHackMe CTFs.
 
 .. image:: _static/images/in-progress.png
   :alt: Forever in progress ...
@@ -13,9 +11,15 @@ Notes on techniques based on, and writeups of, Portswigger Labs and challenges a
 .. toctree::
    :maxdepth: 1
    :includehidden:
+   :caption: Testlab
+
+   Web application pentesting tools <https://red.tymyrddin.dev/projects/testlab/en/latest/docs/webapp/README.html>
+
+.. toctree::
+   :maxdepth: 1
+   :includehidden:
    :caption: Preparation
 
-   Application pentesting tools <https://red.tymyrddin.dev/projects/testlab/en/latest/docs/webapp/README.html>
    Reconnaissance <https://red.tymyrddin.dev/projects/recon/en/latest/docs/app/README.html>
    Enumeration <https://red.tymyrddin.dev/projects/enum/en/latest/docs/app/README.html>
 
