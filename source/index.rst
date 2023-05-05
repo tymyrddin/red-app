@@ -59,24 +59,15 @@ TL/DR: Many web applications can still easily be exploited to gain unauthorised 
 
 ----
 
-.. image:: _static/images/try-hack-me.png
-  :alt: try hack me rooms
-
-TryHackMe rooms
--------------------------------------
-
 .. toctree::
    :maxdepth: 1
    :includehidden:
-   :caption: CTF
+   :caption: TryHackMe rooms
 
    docs/thm/README.md
    docs/thm/picklerick.md
 
 ----
-
-.. image:: _static/images/root-me.png
-  :alt: root-me challenges
 
 Root-me challenges
 -------------------------------------
@@ -129,9 +120,6 @@ Root-me challenges
    docs/web-server/sql-time.md
 
 ----
-
-.. image:: _static/images/portswigger.png
-  :alt: Portswigger labs
 
 Portswigger Web Security Academy labs
 -------------------------------------
