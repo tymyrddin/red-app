@@ -80,13 +80,13 @@ html_show_copyright = False
 
 # Intersphinx
 intersphinx_mapping = {
-    "red-testlab": ("https://red.tymyrddin.dev/projects/testlab/en/latest/", None),
-    "red-recon": ("https://red.tymyrddin.dev/projects/recon/en/latest/", None),
-    "red-reverse": ("https://red.tymyrddin.dev/projects/reverse/en/latest/", None),
-    "red-bbh": ("https://red.tymyrddin.dev/projects/bbh/en/latest/", None),
-    "blue-devsecops":("https://blue.tymyrddin.dev/projects/devsecops/en/latest/", None),
-    "blue-server": ("https://blue.tymyrddin.dev/projects/server/en/latest/", None),
-    "blue-dfir": ("https://blue.tymyrddin.dev/projects/dfir/en/latest/", None),
-    "blue-nta": ("https://blue.tymyrddin.dev/projects/nta/en/latest/", None),
+    "red-testlab": ("https://testlab.tymyrddin.dev/", None),
+    "red-recon": ("https://recon.tymyrddin.dev/", None),
+    "red-reverse": ("https://reverse.tymyrddin.dev/", None),
+    "red-bbh": ("https://bbh.tymyrddin.dev/", None),
+    "blue-devsecops":("https://devsecops.tymyrddin.dev/", None),
+    "blue-server": ("https://server.tymyrddin.dev/", None),
+    "blue-dfir": ("https://dfir.tymyrddin.dev/", None),
+    "blue-nta": ("https://nta.tymyrddin.dev/", None),
 }
 myst_url_schemes = ["http", "https", ]

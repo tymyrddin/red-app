@@ -13,15 +13,15 @@ TL/DR: Many web applications can still easily be exploited to gain unauthorised 
    :includehidden:
    :caption: Testlab
 
-   Web application pentesting tools <https://red.tymyrddin.dev/projects/testlab/en/latest/docs/webapp/README.html>
+   Web application pentesting tools <https://testlab.tymyrddin.dev/docs/webapp/README>
 
 .. toctree::
    :maxdepth: 1
    :includehidden:
    :caption: Preparation
 
-   Reconnaissance <https://red.tymyrddin.dev/projects/recon/en/latest/docs/app/README.html>
-   Enumeration <https://red.tymyrddin.dev/projects/enum/en/latest/docs/app/README.html>
+   Reconnaissance <https://recon.tymyrddin.dev/docs/app/README>
+   Enumeration <https://enum.tymyrddin.dev/docs/app/README>
 
 .. toctree::
    :glob:
