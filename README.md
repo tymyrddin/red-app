@@ -3,7 +3,7 @@
 Built with [Sphinx](https://www.sphinx-doc.org) using a [theme](https://github.com/readthedocs/sphinx_rtd_theme) provided
 by [Read the Docs](https://readthedocs.org/).
 
-[![Documentation Status](https://readthedocs.org/projects/red-app/badge/?version=latest)](https://red.tymyrddin.dev/projects/app/en/latest/?badge=latest)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d3278614-398a-48db-9777-5f1021dd6295/deploy-status)](https://app.netlify.com/sites/dashing-babka-d91fc5/deploys)
 
 ## Requirements
 
