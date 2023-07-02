@@ -4,7 +4,7 @@ Information disclosure occurs when an application fails to properly protect sens
 
 ## Steps
 
-1. Look for software version numbers and configuration information by using [recon techniques](red-recon:docs/app/README).
+1. Look for software version numbers and configuration information by using [recon techniques](https://recon.tymyrddin.dev/docs/app/README).
 2. Search for exposed configuration files, database files, and other sensitive files uploaded to the production server that aren’t protected properly. Techniques you can use include path traversal, scraping the Wayback Machine or paste dump sites, and looking for files in exposed .git directories.
 3. Find information in the application’s public files, such as its HTML and JavaScript source code, by grepping the file with keywords.
 4. Consider the impact of the information you find before reporting it, and explore ways to escalate its impact.

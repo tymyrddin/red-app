@@ -78,7 +78,7 @@ With a directory traversal, it may be possible to read arbitrary files on the se
 * If that is not possible, consider disallowing dangerous characters explicitly.
 * Sanitisation of user input is a never-ending story and requires constant verification against newly discovered ways to bypass known protection methods. It may be better to use a well-maintained open-source library for it. Check these open source libraries with vulnerability scanners to find the best candidates.
 * Another option is to build the application with web frameworks, which have built-in support for serving static content.
-* Use [secure coding practices](blue-devsecops:docs/ssdlc/coding) at every stage of the development and operations pipeline:
+* Use [secure coding practices](https://devsecops.tymyrddin.dev/docs/ssdlc/coding) at every stage of the development and operations pipeline:
   * Static application security testing (SAST) reviews the source code of the application when it is not running. SAST checks try to identify evidence of known insecure practices and vulnerabilities. SAST solutions employ white-box techniques.
   * Dynamic application security testing (DAST) communicates with the application through its front-end in order to identify security vulnerabilities. A DAST tool does not need any access to source code. It simulates real attacks using a black-box strategy. Security checks are done while executing or running the application or code under review. It can also involve fuzzing to uncover directory traversal vulnerabilities.
 
