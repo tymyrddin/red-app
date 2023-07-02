@@ -1,0 +1,7 @@
+# requirements.in
+sphinx
+sphinx_rtd_theme
+myst-parser
+sphinx-markdown-tables
+sphinx-copybutton
+sphinx-design

@@ -530,4 +530,24 @@ Portswigger Web Security Academy labs
    docs/pollution/9.md
    docs/pollution/10.md
 
+----
 
+Books
+---------------------------
+
+.. card-carousel:: 3
+
+    .. card::
+        :link: https://portswigger.net/web-security/web-application-hackers-handbook
+
+        .. image:: _static/images/bookcovers/web-application-hackers-handbook.png
+
+    .. card::
+        :link: https://www.packtpub.com/product/burp-suite-cookbook/9781789531732
+
+        .. image:: _static/images/bookcovers/burp-suite-cookbook.png
+
+    .. card::
+        :link: https://www.packtpub.com/product/zed-attack-proxy-cookbook/9781801817332
+
+        .. image:: _static/images/bookcovers/zed-attack-cookbook.png

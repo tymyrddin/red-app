@@ -22,6 +22,7 @@ extensions = [
     'sphinx_markdown_tables',
     'sphinx.ext.intersphinx',
     'sphinx_copybutton',
+    'sphinx_design',
 ]
 
 source_suffix = ['.rst', '.md']
@@ -90,3 +91,10 @@ intersphinx_mapping = {
     "blue-nta": ("https://nta.tymyrddin.dev/", None),
 }
 myst_url_schemes = ["http", "https", ]
+
+myst_enable_extensions = [
+    "amsmath",
+    "dollarmath",
+    "tasklist",
+    "colon_fence",
+]
