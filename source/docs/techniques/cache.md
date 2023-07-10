@@ -54,7 +54,7 @@ The impact of web cache poisoning is heavily dependent on several key factors: W
 
 ## Remediation
 
-Cache poisoning is just another vehicle for attackers to deliver their payloads. When hit by a cache poisoning attempt that injects an [XSS](xss.md) payload into the cache, it will be harmless if the application is not vulnerable to that type of cross-site scripting. Use [secure coding practices](https://shiftleft.tymyrddin.dev/docs/ssdlc/coding) at every stage of the development and operations pipeline.
+Cache poisoning is just another vehicle for attackers to deliver their payloads. When hit by a cache poisoning attempt that injects an [XSS](xss.md) payload into the cache, it will be harmless if the application is not vulnerable to that type of cross-site scripting. Use [secure coding practices](https://devsecops.tymyrddin.dev/docs/notes/coding) at every stage of the development and operations pipeline.
 
 Still, to minimise attackers using the web cache poisoning vehicle, these are some recommendations for configuring the web server cache:
 

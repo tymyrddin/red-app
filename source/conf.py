@@ -85,7 +85,7 @@ intersphinx_mapping = {
     "red-recon": ("https://recon.tymyrddin.dev/", None),
     "red-reverse": ("https://reverse.tymyrddin.dev/", None),
     "red-bbh": ("https://bbh.tymyrddin.dev/", None),
-    "blue-shiftleft":("https://shiftleft.tymyrddin.dev/", None),
+    "blue-devsecops":("https://devsecops.tymyrddin.dev/", None),
     "blue-server": ("https://server.tymyrddin.dev/", None),
     "blue-dfir": ("https://dfir.tymyrddin.dev/", None),
     "blue-nta": ("https://nta.tymyrddin.dev/", None),
